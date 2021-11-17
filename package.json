@@ -1,0 +1,27 @@
+{
+  "name": "regatron",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^16.0.0"
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "typescript": "^4.4.4"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "start": "electron dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandozanutto/INF01127-Regatron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandozanutto/INF01127-Regatron/issues"
+  },
+  "homepage": "https://github.com/fernandozanutto/INF01127-Regatron#readme"
+}
