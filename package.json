@@ -8,10 +8,11 @@
   },
   "devDependencies": {
     "@types/electron": "^1.6.10",
+    "copyfiles": "^2.4.1",
     "typescript": "^4.4.4"
   },
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
+    "build": "./node_modules/.bin/tsc && copyfiles -u 1 src/**/*.html src/**/*.css dist/",
     "start": "electron dist/app.js"
   },
   "repository": {
