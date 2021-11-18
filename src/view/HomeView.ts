@@ -1,7 +1,12 @@
-export class HomeView {
+import { BaseView } from "./BaseView";
 
-    UI: string = `
-    <button>Teste</button>
-    `
+export class HomeView extends BaseView {
+
+    constructor() {
+        super()
+        this.UI = `
+        <button>Home View</button>
+        `
+    }
 
 }

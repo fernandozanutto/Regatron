@@ -6,7 +6,8 @@
       "removeComments": true,
       "noImplicitAny": true,
       "suppressImplicitAnyIndexErrors": true,
-      "outDir": "dist"
+      "outDir": "dist",
+      "strict": true
     },
     "exclude": [ "node_modules", "src/Main.ts" ],
   }

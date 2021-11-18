@@ -2,7 +2,9 @@ import { HomeController } from "./controller/HomeController";
 import { HomeView } from "./view/HomeView";
 
 
-const currentController = new HomeController()
-const currentView = new HomeView()
+const currentController = new HomeController(new HomeView())
 
-document.getElementById("body").innerHTML = currentView.UI
+const body = document.getElementById("body")
+if (body != null) {
+    body.innerHTML = currentController.view.UI
+}

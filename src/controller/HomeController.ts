@@ -1,3 +1,5 @@
-export class HomeController {
+import { BaseController } from "./BaseController";
+
+export class HomeController extends BaseController {
     
 }
