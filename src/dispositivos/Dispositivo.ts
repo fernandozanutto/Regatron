@@ -1,4 +1,4 @@
 interface Dispositivo {
-    compararEExecutar()
-    notificarEstado()
+    compararEExecutar(): void
+    notificarEstado(): void
 }
