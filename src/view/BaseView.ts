@@ -1,3 +1,5 @@
 export abstract class BaseView {
-    UI: string = ""
+    body: string = ""
+
+    abstract onCreateView(): void
 }

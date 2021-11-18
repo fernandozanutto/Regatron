@@ -1,14 +1,14 @@
 import { BaseView } from "./BaseView";
 
-export class HomeView extends BaseView {
+export class TestView extends BaseView {
 
     onTesteButtonClick = () => {}
 
     constructor() {
         super()
         this.body = `
-        <h1> Aqui é a Home, tranquilo ai? </h1>
-        <button id='button'>Home View</button>
+        <h1> Estamos na TestView, olá tudo bem? </h1>
+        <button id='button'>Test View</button>
         `
     }
 
