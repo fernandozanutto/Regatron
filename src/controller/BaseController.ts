@@ -8,7 +8,7 @@ export abstract class BaseController<VT extends BaseView, ST> {
     abstract configureView(): void
 
     init(): void {
-        const body = document.getElementById("body")
+        const body = document.getElementById("app")
         if (body != null) {
             body.innerHTML = this.view.body
         }
