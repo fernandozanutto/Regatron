@@ -17,7 +17,11 @@ class App {
     }
 
     private static onReady() {
-        App.mainWindow = new App.BrowserWindow({ width: 800, height: 600 });
+        App.mainWindow = new App.BrowserWindow({ 
+            width: 800,
+            height: 600,
+            icon: __dirname + "/test.ico"
+            });
         
         const path = join('file://', __dirname, '/index.html')
         App.mainWindow.loadURL(path);
