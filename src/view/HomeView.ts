@@ -14,7 +14,7 @@ export class HomeView extends BaseView {
         `
     }
 
-    onCreateView(): void {
+    bindViewEvents(): void {
         const buttonTeste = document.getElementById('button-teste')
         const buttonPlanta = document.getElementById('button-planta')
         if (buttonTeste) {

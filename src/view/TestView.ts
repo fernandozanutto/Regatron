@@ -12,7 +12,7 @@ export class TestView extends BaseView {
         `
     }
 
-    onCreateView(): void {
+    bindViewEvents(): void {
         const button = document.getElementById('button')
         if (button) {
             button.addEventListener('click', () => this.onTesteButtonClick())

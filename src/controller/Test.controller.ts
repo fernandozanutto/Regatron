@@ -4,7 +4,7 @@ import {NavigatorController, Pages} from '../Main'
 export class TestController extends BaseController<TestView, null> {
     configureView(): void {
         this.view.onTesteButtonClick = () => {
-            NavigatorController.navigate(Pages.HOME)
+            NavigatorController.goBack()
         }
     }
 }

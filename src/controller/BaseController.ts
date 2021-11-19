@@ -12,9 +12,25 @@ export abstract class BaseController<VT extends BaseView, ST> {
         if (body != null) {
             body.innerHTML = this.view.body
         }
-        this.view.onCreateView()
+        this.view.bindViewEvents()
 
         this.configureView()
+    }
+
+    resume(): void {
+        const body = document.getElementById("app")
+        if (body != null) {
+            body.innerHTML = this.view.body
+        }
+
+        this.view.bindViewEvents()
+    }
+
+    pause(): void {
+        const body = document.getElementById("app")?.innerHTML
+        if (body) {
+            this.view.body = body
+        }
     }
 
     finish(): void {}

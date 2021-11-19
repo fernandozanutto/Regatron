@@ -8,10 +8,11 @@ export class PlantaView extends BaseView {
         super()
         this.body = `
         <p>PLANTAAAAAAAA</p>
+        Teste de input: <input type="text" name="teste" id="teste">
         <button id='button'>Voltar</button>
         `
     }
-    onCreateView(): void {
+    bindViewEvents(): void {
         const button = document.getElementById('button')
         if (button) {
             button.addEventListener('click', () => this.onButtonClick())

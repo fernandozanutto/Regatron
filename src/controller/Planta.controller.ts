@@ -6,7 +6,7 @@ import { BaseController } from "./BaseController";
 export class PlantaController extends BaseController<PlantaView, Planta> {
     configureView(): void {
         this.view.onButtonClick = () => {
-            NavigatorController.navigate(Pages.HOME)
+            NavigatorController.goBack()
         }
     }
     

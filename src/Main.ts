@@ -14,18 +14,34 @@ export enum Pages {
     PLANTA
 }
 export class NavigatorController {
-    private static currentController: BaseController<any, any> | null = null
+    private static currentPage: BaseController<any, any>
 
-    static temp: {[key in Pages]: BaseController<any, any>} = {
-        [Pages.HOME]: new HomeController(new HomeView()),
-        [Pages.TEST]: new TestController(new TestView()),
-        [Pages.PLANTA]: new PlantaController(new PlantaView(), new PlantaService())
+    private static pagesStack: BaseController<any, any>[] = []
+
+    private static pagesMap: { [key in Pages]: () => BaseController<any, any> } = {
+        [Pages.HOME]: () => new HomeController(new HomeView()),
+        [Pages.TEST]: () => new TestController(new TestView()),
+        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), new PlantaService())
     }
     
     static navigate(page: Pages) : void {
-        NavigatorController.currentController?.finish()
-        NavigatorController.currentController = NavigatorController.temp[page]
-        NavigatorController.currentController.init()
+        if (this.currentPage !== undefined) {
+            this.currentPage.pause()
+            this.pagesStack.push(this.currentPage)
+        }
+
+        this.currentPage = this.pagesMap[page]()
+        this.currentPage.init()
+    }
+
+    static goBack(): void {
+        const lastPage = this.pagesStack.pop()
+        
+        if (lastPage !== undefined) {
+            this.currentPage.finish()
+            this.currentPage = lastPage
+            this.currentPage.resume()
+        }
     }
 }
 
