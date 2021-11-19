@@ -1,21 +1,20 @@
 import { BaseView } from "./BaseView";
 
-export class TestView extends BaseView {
+export class PlantaView extends BaseView {
 
-    onTesteButtonClick = () => {}
+    onButtonClick = () => {}
 
     constructor() {
         super()
         this.body = `
-        <h1> Estamos na TestView, olá tudo bem? </h1>
+        <p>PLANTAAAAAAAA</p>
         <button id='button'>Voltar</button>
         `
     }
-
     onCreateView(): void {
         const button = document.getElementById('button')
         if (button) {
-            button.addEventListener('click', () => this.onTesteButtonClick())
+            button.addEventListener('click', () => this.onButtonClick())
         }
     }
 
