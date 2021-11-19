@@ -52,17 +52,3 @@ ts-gen
 
 # Used to accelerate builds after sync
 patches/mtime-cache.json
-
-spec/fixtures/logo.png
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
