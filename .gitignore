@@ -1,38 +1,3 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@fernandozanutto 
-electron
-/
-electron
-Public
-3k
-98.9k12.9k
-Code
-Issues
-1.3k
-Pull requests
-72
-Actions
-Projects
-5
-Security
-8
-Insights
-electron/.gitignore
-@MarshallOfSound
-MarshallOfSound build: embed binary checksums in the npm package (#30611)
-…
-Latest commit aab5ea5 on 19 Aug
- History
- 17 contributors
-@zcbenz@MarshallOfSound@jkleinsc@nornagon@zeke@deepak1556@tarruda@kevinsawicki@omrilitov@miniak@kwonoj@kanemontreuil
-56 lines (46 sloc)  736 Bytes
-   
 .DS_Store
 .env
 .gclient_done
