@@ -1,8 +1,6 @@
 import { TestView } from "../view/TestView";
 import { BaseController } from "./BaseController";
-import {NavigatorController} from '../Main'
-import { HomeController } from "./HomeController";
-import { HomeView } from "../view/HomeView";
+import {NavigatorController, Pages} from '../Main'
 export class TestController extends BaseController {
     view: TestView | null = null
 
@@ -10,7 +8,7 @@ export class TestController extends BaseController {
         this.view = this._view as TestView
 
         this.view.onTesteButtonClick = () => {
-            NavigatorController.setController(new HomeController(new HomeView()))
+            NavigatorController.navigate(Pages.HOME)
         }
     }
 }
