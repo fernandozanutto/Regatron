@@ -16,13 +16,21 @@ export class HomeView extends BaseView {
         super()
         this.body = `
         <center>
-        <h1> Aqui é a Home, tranquilo ai? </h1>
-        <button id='button-teste'>Ir para Test View</button>
-        <button id='button-planta'>Ir para Planta View</button>
-        <button id='button-vaso'> Ir para Vaso View</button>
+            <div class="container">
+                <h1> Bem vindo de volta </h1>
 
-        <div id="plantas"></div>
-        <div id="vasos"></div>
+                <button id='button-teste'>Ir para Test View</button>
+                <button id='button-planta'>Ir para Planta View</button>
+                <button id='button-vaso'> Ir para Vaso View</button>
+
+                <br>
+                <br>
+                <div class="row">
+                        <div id="plantas"></div>
+                        <div id="vasos"></div>
+                </div>
+
+            </div>
         </center>
         `
     }
@@ -32,16 +40,29 @@ export class HomeView extends BaseView {
 
         if (!plantasDiv) throw "Div das plantas não encontrada."
 
+        const table = document.createElement("table")
+        const thead = document.createElement("thead") 
+        thead.innerHTML = `
+            <tr>
+                <th>Nome científico</th>
+                <th>Nome usual</th>
+            </tr>
+        `
+        const tbody = document.createElement("tbody")
         plantas.forEach(planta => {
-            const el = document.createElement("div")
+            var tr = document.createElement("tr")
+            tr.innerHTML = `
+                <tr>
 
-            el.innerHTML = `
-            <p>Nome científico: ${planta.nomeCientifico}</p>
-            <p>Nome usual: ${planta.nomeUsual}</p>
+                    <td>${planta.nomeCientifico}</td>
+                    <td>${planta.nomeUsual}</td>
+                </tr>
             `
-
-            plantasDiv.appendChild(el)
+            tbody.appendChild(tr)
         })
+        table.appendChild(thead)
+        table.appendChild(tbody)
+        plantasDiv.appendChild(table)
     }
 
     populateVasoComponents(vasos: Vaso[]) {
