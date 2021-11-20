@@ -107,7 +107,7 @@ export class HomeView extends BaseView {
 
 
         this.vasos.forEach(vaso => {
-            const buttonPlanta = document.getElementById(`button-verplanta-${vaso.id}`)
+            const buttonPlanta = document.getElementById(`button-vervaso-${vaso.id}`)
             if (buttonPlanta) {
                 buttonPlanta.addEventListener('click', () => {
                     this.onVasoItemButtonClick(vaso.id)
