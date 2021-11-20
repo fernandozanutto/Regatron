@@ -1,4 +1,4 @@
-import { Dispositivo } from "./Dispositivo";
+import { Dispositivo } from "../Dispositivo";
 import { Termometro } from "./Termometro";
 
 export class GerenciadorTemperatura implements Dispositivo {
