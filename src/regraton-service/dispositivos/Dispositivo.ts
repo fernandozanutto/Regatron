@@ -1,5 +1,7 @@
+import { ACConfig } from "./ACInteligente/GerenciadorTemperatura";
+
 export interface Dispositivo {
-    configPlanta: ConfigPlanta 
+    setConfiguracao(config: ACConfig): void
     compararEExecutar(): void
     notificarEstado(): void
 }
