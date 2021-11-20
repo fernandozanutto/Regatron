@@ -4,7 +4,7 @@ import { BaseView } from "./BaseView";
 
 export class VasoView extends BaseView {
 
-    onButtonClick = () => {}
+    onBackButtonClick = () => {}
 
     constructor() {
         super()
@@ -24,7 +24,7 @@ export class VasoView extends BaseView {
     bindViewEvents(): void {
         const button = document.getElementById('button')
         if (button) {
-            button.addEventListener('click', () => this.onButtonClick())
+            button.addEventListener('click', () => this.onBackButtonClick())
         }
     }
 

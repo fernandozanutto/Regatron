@@ -1,4 +1,4 @@
-import { RegatronService } from "../services/BaseService";
+import { RegatronService } from "../services/RegatronService";
 import { BaseView } from "../view/BaseView";
 
 export abstract class BaseController<VT extends BaseView> {
@@ -34,6 +34,7 @@ export abstract class BaseController<VT extends BaseView> {
         }
 
         this.view.bindViewEvents()
+        this.configureView()
     }
 
     pause(): void {

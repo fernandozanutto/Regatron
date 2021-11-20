@@ -11,9 +11,7 @@ export class HomeView extends BaseView {
     private plantas: Planta[] = []
     private vasos: Vaso[] = []
 
-    onTesteButtonClick = () => {}
-    onPlantaButtonClick = () => {}
-    onVasoButtonClick = () => {}
+    onVasoItemButtonClick = (id: number) => {}
     onPlantaItemButtonClick = (id: number) => {}
 
     constructor() {
@@ -21,19 +19,12 @@ export class HomeView extends BaseView {
         this.body = `
         <center>
             <div class="container">
-                <button id='button-teste'>Ir para Test View</button>
-                <button id='button-planta'>Ir para Planta View</button>
-                <button id='button-vaso'> Ir para Vaso View</button>
-
-                <br>
-                <br>
                 <div class="row">
-                        <h5>Plantas</h5>
-                        <div id="plantas"></div>
-                        <h5>Vasos</h5>
-                        <div id="vasos"></div>
+                    <h5>Plantas</h5>
+                    <div id="plantas"></div>
+                    <h5>Vasos</h5>
+                    <div id="vasos"></div>
                 </div>
-
             </div>
         </center>
         `
@@ -43,6 +34,8 @@ export class HomeView extends BaseView {
         this.plantas = plantas
         const plantasDiv = document.getElementById("plantas")
         if (!plantasDiv) throw "Div das plantas não encontrada."
+        
+        plantasDiv.textContent = ""
 
         const table = document.createElement("table")
         const thead = document.createElement("thead") 
@@ -57,7 +50,6 @@ export class HomeView extends BaseView {
             var tr = document.createElement("tr")
             tr.innerHTML = `
                 <tr>
-
                     <td>${planta.nomeCientifico}</td>
                     <td>${planta.nomeUsual}</td>
                     <td><button id='button-verplanta-${planta.id}'>Ver</button></td>
@@ -76,6 +68,7 @@ export class HomeView extends BaseView {
         const vasosDiv = document.getElementById("vasos")
         if (!vasosDiv) throw "Div dos vasos não encontrada."
 
+        vasosDiv.textContent = ""
         const table = document.createElement("table")
         const thead = document.createElement("thead") 
         thead.innerHTML = `
@@ -89,9 +82,9 @@ export class HomeView extends BaseView {
             var tr = document.createElement("tr")
             tr.innerHTML = `
                 <tr>
-
                     <td>${vaso.id}</td>
                     <td>${vaso.descricao}</td>
+                    <td><button id='button-vervaso-${vaso.id}'>Ver</button></td>
                 </tr>
             `
             tbody.appendChild(tr)
@@ -103,27 +96,21 @@ export class HomeView extends BaseView {
     }
 
     bindViewEvents(): void {
-        const buttonTeste = document.getElementById('button-teste')
-        const buttonPlanta = document.getElementById('button-planta')
-        const buttonVaso = document.getElementById('button-vaso')
-
-        if (buttonTeste) {
-            buttonTeste.addEventListener('click', () => this.onTesteButtonClick())
-        }
-
-        if (buttonPlanta) {
-            buttonPlanta.addEventListener('click', () => {this.onPlantaButtonClick()})
-        }
-
-        if (buttonVaso){
-            buttonVaso.addEventListener('click', () => {this.onVasoButtonClick()})
-        }
-
         this.plantas.forEach(planta => {
             const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
             if (buttonPlanta) {
                 buttonPlanta.addEventListener('click', () => {
                     this.onPlantaItemButtonClick(planta.id)
+                })
+            }
+        })
+
+
+        this.vasos.forEach(vaso => {
+            const buttonPlanta = document.getElementById(`button-vervaso-${vaso.id}`)
+            if (buttonPlanta) {
+                buttonPlanta.addEventListener('click', () => {
+                    this.onVasoItemButtonClick(vaso.id)
                 })
             }
         })
