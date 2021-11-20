@@ -7,9 +7,11 @@ export class PlantaView extends BaseView {
     constructor() {
         super()
         this.body = `
-        <p>PLANTAAAAAAAA</p>
+        <center>
+        <p>Planta</p>
         Teste de input: <input type="text" name="teste" id="teste">
         <button id='button'>Voltar</button>
+        </center>
         `
     }
     bindViewEvents(): void {

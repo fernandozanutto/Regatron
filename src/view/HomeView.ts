@@ -12,9 +12,11 @@ export class HomeView extends BaseView {
     constructor() {
         super()
         this.body = `
+        <center>
         <h1> Aqui é a Home, tranquilo ai? </h1>
         <button id='button-teste'>Ir para Test View</button>
         <button id='button-planta'>Ir para Planta View</button>
+        </center>
         `
     }
 

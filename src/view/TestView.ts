@@ -7,8 +7,10 @@ export class TestView extends BaseView {
     constructor() {
         super()
         this.body = `
+        <center>
         <h1> Estamos na TestView, olá tudo bem? </h1>
         <button id='button'>Voltar</button>
+        </center>
         `
     }
 
