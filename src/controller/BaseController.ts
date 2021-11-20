@@ -3,7 +3,7 @@ import { BaseView } from "../view/BaseView";
 
 export abstract class BaseController<VT extends BaseView> {
     
-    constructor(protected view: VT, protected service: RegatronService | null = null) {}
+    constructor(protected view: VT, protected service: RegatronService) {}
 
     abstract configureView(): void
 

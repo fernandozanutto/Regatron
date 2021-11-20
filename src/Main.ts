@@ -18,10 +18,12 @@ export class NavigatorController {
 
     private static pagesStack: BaseController<any>[] = []
 
+    private static service = new RegatronService()
+
     private static pagesMap: { [key in Pages]: () => BaseController<any> } = {
-        [Pages.HOME]: () => new HomeController(new HomeView()),
-        [Pages.TEST]: () => new TestController(new TestView()),
-        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), new RegatronService())
+        [Pages.HOME]: () => new HomeController(new HomeView(), this.service),
+        [Pages.TEST]: () => new TestController(new TestView(), this.service),
+        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), this.service)
     }
     
     static navigate(page: Pages) : void {

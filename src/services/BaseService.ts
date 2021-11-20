@@ -5,20 +5,20 @@ export class RegatronService {
     plantas: Planta[] = []
     vasos: Vaso[] = []
 
-    public listPlantas() {
-
+    public listPlantas(): Planta[] {
+        return this.plantas
     }
 
-    public listVasos(){
-
+    public listVasos(): Vaso[]{
+        return this.vasos
     }
 
-    public getPlanta(id: number){
-
+    public getPlanta(id: number): Planta | null{
+        return null
     }
 
-    public getVaso(id: number){
-
+    public getVaso(id: number): Vaso | null{
+        return null
     }
 
 }
