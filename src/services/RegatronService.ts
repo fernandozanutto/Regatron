@@ -15,19 +15,30 @@ export class RegatronService {
     ]
 
     public listPlantas(): Planta[] {
-        return this.plantas
+        return this.clone(this.plantas)
     }
 
     public listVasos(): Vaso[]{
-        return this.vasos
+        return this.clone(this.vasos)
     }
 
     public getPlanta(id: number): Planta | undefined {
-        return this.plantas.find(planta => planta.id === id)
+        return this.clone(this.plantas.find(planta => planta.id === id))
     }
 
     public getVaso(id: number): Vaso | undefined {
-        return this.vasos.find(vaso => vaso.id === id)
+        return this.clone(this.vasos.find(vaso => vaso.id === id))
     }
 
+    public salvarPlanta(planta: Planta): void {
+        const indice = this.plantas.findIndex(p => p.id === planta.id)
+
+        console.log(planta)
+        console.log(this.plantas[indice])
+        this.plantas[indice] = planta
+    }
+
+    private clone<T>(data: T) {
+        return JSON.parse(JSON.stringify(data)) as T
+    }
 }
