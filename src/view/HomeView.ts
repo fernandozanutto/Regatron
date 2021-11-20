@@ -69,16 +69,6 @@ export class HomeView extends BaseView {
         table.appendChild(tbody)
         table.style.width = "70%"
         plantasDiv.appendChild(table)
-
-
-        this.plantas.forEach(planta => {
-            const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
-            if (buttonPlanta) {
-                buttonPlanta.addEventListener('click', () => {
-                    this.onPlantaItemButtonClick(planta.id)
-                })
-            }
-        })
     }
 
     populateVasoComponents(vasos: Vaso[]) {
@@ -128,6 +118,15 @@ export class HomeView extends BaseView {
         if (buttonVaso){
             buttonVaso.addEventListener('click', () => {this.onVasoButtonClick()})
         }
+
+        this.plantas.forEach(planta => {
+            const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
+            if (buttonPlanta) {
+                buttonPlanta.addEventListener('click', () => {
+                    this.onPlantaItemButtonClick(planta.id)
+                })
+            }
+        })
     }
 
 }

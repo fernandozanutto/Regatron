@@ -18,6 +18,8 @@ export class HomeController extends BaseController<HomeView> {
         this.view.populatePlantaComponents(this.plantas)
         this.view.populateVasoComponents(this.vasos)
 
+        this.view.bindViewEvents()
+
         this.view.onTesteButtonClick = () => {
             NavigatorController.navigate(Pages.TEST)
         }
