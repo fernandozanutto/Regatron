@@ -19,7 +19,7 @@ export class HomeView extends BaseView {
         <h1> Aqui é a Home, tranquilo ai? </h1>
         <button id='button-teste'>Ir para Test View</button>
         <button id='button-planta'>Ir para Planta View</button>
-        <button id='button-Vaso'> Ir para Vaso View</button>
+        <button id='button-vaso'> Ir para Vaso View</button>
 
         <div id="plantas"></div>
         <div id="vasos"></div>
