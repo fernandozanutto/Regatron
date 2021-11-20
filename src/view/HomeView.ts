@@ -28,8 +28,16 @@ export class HomeView extends BaseView {
     }
 
     populatePlantaComponents(plantas: Planta[]) {
+        const plantasDiv = document.getElementById("plantas")
+
+        if (!plantasDiv) throw "aaaaa"
+
         plantas.forEach(planta => {
             const el = document.createElement("div")
+
+            el.innerHTML = `UMA PLANTAAAAAAAA ${planta.nomeCientifico}`
+
+            plantasDiv.appendChild(el)
         })
     }
 

@@ -9,9 +9,9 @@ export class HomeController extends BaseController<HomeView> {
     vasos: Vaso[] = []
 
     override init() {
-        super.init()
         this.plantas = this.service.listPlantas()
         this.vasos = this.service.listVasos()
+        super.init()
     }
 
     configureView(): void {
