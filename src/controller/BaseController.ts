@@ -9,6 +9,8 @@ export abstract class BaseController<VT extends BaseView> {
 
     protected parameters: {[key: string]: any} = {}
 
+    protected onCreate(): void {}
+
     init(parameters: {[key: string]: any} = {}): void {
         this.parameters = parameters
 
@@ -16,6 +18,8 @@ export abstract class BaseController<VT extends BaseView> {
         if (body != null) {
             body.innerHTML = this.view.body
         }
+
+        this.onCreate()
         
         this.view.bindViewEvents()
 
@@ -25,11 +29,9 @@ export abstract class BaseController<VT extends BaseView> {
     resume(): void {
         const body = document.getElementById("app")
 
-        console.log(this.view.body)
         if (body != null) {
             body.innerHTML = this.view.body
         }
-        console.log(this.view.body)
 
         this.view.bindViewEvents()
     }

@@ -8,7 +8,7 @@ export class PlantaController extends BaseController<PlantaView> {
 
     private planta!: Planta
 
-    override init() {
+    override onCreate() {
         if (this.parameters.id) {
             const dbPlanta = this.service.getPlanta(this.parameters.id)
             if (dbPlanta) {
@@ -19,7 +19,6 @@ export class PlantaController extends BaseController<PlantaView> {
         } else {
             this.planta = new Planta({id: 0, luminosidade: Luminosidade.MEIA_LUZ, nomeCientifico: "", nomeUsual: "", quantidadeAguaPadrao: 0, temperaturaMaximaPadrao: 0, temperaturaMinimaPadrao: 0})
         }
-        super.init()
     }
 
     configureView(): void {

@@ -23,11 +23,11 @@ export class RegatronService {
     }
 
     public getPlanta(id: number): Planta | null{
-        return null
+        return this.plantas[id]
     }
 
     public getVaso(id: number): Vaso | null{
-        return null
+        return this.vasos[id]
     }
 
 }
