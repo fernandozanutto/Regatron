@@ -8,9 +8,12 @@ import { BaseView } from "./BaseView";
  */
 export class HomeView extends BaseView {
 
+    private plantas: Planta[] = []
+
     onTesteButtonClick = () => {}
     onPlantaButtonClick = () => {}
     onVasoButtonClick = () => {}
+    onPlantaItemButtonClick = (id: number) => {}
 
     constructor() {
         super()
@@ -36,6 +39,7 @@ export class HomeView extends BaseView {
     }
 
     populatePlantaComponents(plantas: Planta[]) {
+        this.plantas = plantas
         const plantasDiv = document.getElementById("plantas")
         if (!plantasDiv) throw "Div das plantas não encontrada."
 
@@ -68,7 +72,7 @@ export class HomeView extends BaseView {
 
     populateVasoComponents(vasos: Vaso[]) {
         const vasosDiv = document.getElementById("vasos")
-        if (!vasosDiv) throw "Div das plantas não encontrada."
+        if (!vasosDiv) throw "Div dos vasos não encontrada."
 
         const table = document.createElement("table")
         const thead = document.createElement("thead") 
@@ -113,6 +117,16 @@ export class HomeView extends BaseView {
         if (buttonVaso){
             buttonVaso.addEventListener('click', () => {this.onVasoButtonClick()})
         }
+
+        this.plantas.forEach(planta => {
+            const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
+
+            if (buttonPlanta) {
+                buttonPlanta.addEventListener('click', () => {
+                    this.onPlantaItemButtonClick(planta.id)
+                })
+            }
+        })
     }
 
 }
