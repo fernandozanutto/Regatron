@@ -62,6 +62,7 @@ export class HomeView extends BaseView {
         })
         table.appendChild(thead)
         table.appendChild(tbody)
+        table.style.width = "70%"
         plantasDiv.appendChild(table)
     }
 
