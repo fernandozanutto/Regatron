@@ -8,7 +8,11 @@ export class RegatronService {
         new Planta({id: 2, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "RUIM", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30})
         
     ]
-    vasos: Vaso[] = []
+    vasos: Vaso[] = [
+        new Vaso({descricao: "Vaso da cozinha", dispositivos: [], id: 1, planta: this.plantas[0]}),
+        new Vaso({descricao: "Vaso sanitário", dispositivos: [], id: 2, planta: this.plantas[0]}),
+        new Vaso({descricao: "Vaso da sacada", dispositivos: [], id: 3, planta: this.plantas[1]}),
+    ]
 
     public listPlantas(): Planta[] {
         return this.plantas

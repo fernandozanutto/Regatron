@@ -4,23 +4,46 @@ import { GerenciadorLuminosidade } from "../regraton-service/dispositivos/LuzInt
 import { Luminosidade } from "./Luminosidade";
 import { Planta } from "./Planta.model";
 
+interface VasoDTO {
+    id: number;
+    descricao: string;
+    quantidadeAgua?: number;
+    temperaturaMinima?: number;
+    temperaturaMaxima?: number;
+    luminosidade?: Luminosidade;
+    planta: Planta;
+    dispositivos: Dispositivo[]
+}
 export class Vaso {
-    dispositivos: Dispositivo[] = []
+    public id: number;
+    public descricao: string;
+    public quantidadeAgua: number;
+    public temperaturaMinima: number;
+    public temperaturaMaxima: number;
+    public luminosidade: Luminosidade;
+    public planta: Planta;
+    public dispositivos: Dispositivo[] = []
 
     constructor(
-        public id: number,
-        public descricao: string, 
-        public quantidadeAgua: number,
-        public temperaturaMaxima: number,
-        public temperaturaMinima: number,
-        public luminosidade: Luminosidade,
-        public planta: Planta,
-        dispositivos: Dispositivo[]
+        {id,
+        descricao,
+        quantidadeAgua,
+        temperaturaMaxima,
+        temperaturaMinima,
+        luminosidade,
+        planta,
+        dispositivos} : VasoDTO
     ) { 
+        this.id = id;
+        this.descricao = descricao;
+        this.quantidadeAgua = quantidadeAgua || planta.quantidadeAguaPadrao;
+        this.temperaturaMaxima = temperaturaMaxima || planta.temperaturaMaximaPadrao;
+        this.temperaturaMinima = temperaturaMinima || planta.temperaturaMinimaPadrao;
+        this.luminosidade = luminosidade || planta.luminosidade;
+        this.planta = planta;
         this.dispositivos = dispositivos;
         this.configurarDispositivos()
     }
-
 
     private configurarDispositivos() {
         this.dispositivos.forEach(disp => {
