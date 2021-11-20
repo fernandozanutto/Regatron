@@ -15,6 +15,7 @@
     "webpack-cli": "^4.9.1"
   },
   "scripts": {
+    "play": "npm run build && npm run start",
     "build": "tsc && webpack && copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ico dist/",
     "start": "electron dist/electron/App.js"
   },

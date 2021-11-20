@@ -26,16 +26,8 @@ export class HomeController extends BaseController<HomeView> {
 
         this.view.bindViewEvents()
 
-        this.view.onTesteButtonClick = () => {
-            NavigatorController.navigate(Pages.TEST)
-        }
-
-        this.view.onPlantaButtonClick = () => {
-            NavigatorController.navigate(Pages.PLANTA)
-        }
-
-        this.view.onVasoButtonClick = () => {
-            NavigatorController.navigate(Pages.VASO)
+        this.view.onVasoItemButtonClick = (id: number) => {
+            NavigatorController.navigate(Pages.VASO, {id: id})
         }
 
         this.view.onPlantaItemButtonClick = (id: number ) => {
