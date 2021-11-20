@@ -3,7 +3,16 @@ import { BaseView } from "./BaseView";
 
 export class PlantaView extends BaseView {
 
+    private planta!: Planta
+
     onButtonClick = () => {}
+    onSalvarButtonClick: (planta: Planta) => void = (planta: Planta) => {}
+
+    cancelarButton: HTMLElement | null = null
+    salvarButton: HTMLElement | null = null
+    inputNomeCientifico: HTMLInputElement | null = null
+    inputNomeUsual: HTMLInputElement | null = null
+    inputTempMinima: HTMLInputElement | null = null
 
     constructor() {
         super()
@@ -16,24 +25,44 @@ export class PlantaView extends BaseView {
         <br>
         Temperatura mínima padrão: <input type="number" name="temp_minima" id="temp_minima">
         <br>
-        <button id='button'>Voltar</button>
+        <button id='button'>Cancelar</button>
+        <button id='button-salvar'>Salvar</button>
         </center>
         `
     }
+
+    private updatePlantaFromInputs() {
+        this.planta.nomeCientifico = this.inputNomeCientifico?.value || ""
+        this.planta.nomeUsual = this.inputNomeUsual?.value || ""
+        this.planta.temperaturaMinimaPadrao = parseFloat(this.inputTempMinima?.value || "0.0")
+    }
+
     bindViewEvents(): void {
-        const button = document.getElementById('button')
-        if (button) {
-            button.addEventListener('click', () => this.onButtonClick())
+        this.cancelarButton = document.getElementById('button')
+        this.salvarButton = document.getElementById('button-salvar')
+
+        if (this.cancelarButton) {
+            this.cancelarButton.addEventListener('click', () => this.onButtonClick())
+        }
+
+        if (this.salvarButton) {
+            this.salvarButton.addEventListener('click', () => {
+                this.updatePlantaFromInputs()
+                this.onSalvarButtonClick(this.planta)
+            })
         }
     }
 
     bindViewData(planta: Planta) {
-        const nomeCientifico = <HTMLInputElement> document.getElementById("nome_cientifico")
-        const nomeUsual = <HTMLInputElement> document.getElementById("nome_usual")
-        const tempMinima = <HTMLInputElement> document.getElementById("temp_minima")
-        nomeCientifico.value = planta.nomeCientifico
-        nomeUsual.value = planta.nomeUsual
-        tempMinima.value = planta.temperaturaMinimaPadrao.toString()
+        this.planta = planta
+
+        this.inputNomeCientifico = <HTMLInputElement> document.getElementById("nome_cientifico")
+        this.inputNomeUsual = <HTMLInputElement> document.getElementById("nome_usual")
+        this.inputTempMinima = <HTMLInputElement> document.getElementById("temp_minima")
+        
+        this.inputNomeCientifico.value = planta.nomeCientifico
+        this.inputNomeUsual.value = planta.nomeUsual
+        this.inputTempMinima.value = planta.temperaturaMinimaPadrao.toString()
     }
 
 }

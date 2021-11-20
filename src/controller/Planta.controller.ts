@@ -27,6 +27,10 @@ export class PlantaController extends BaseController<PlantaView> {
             NavigatorController.goBack()
         }
 
+        this.view.onSalvarButtonClick = () => {
+            return 0.0
+        }
+
         this.view.bindViewData(this.planta)
     }   
 }

@@ -9,6 +9,7 @@ import { BaseView } from "./BaseView";
 export class HomeView extends BaseView {
 
     private plantas: Planta[] = []
+    private vasos: Vaso[] = []
 
     onTesteButtonClick = () => {}
     onPlantaButtonClick = () => {}
@@ -52,14 +53,14 @@ export class HomeView extends BaseView {
             </tr>
         `
         const tbody = document.createElement("tbody")
-        plantas.forEach(planta => {
+        this.plantas.forEach(planta => {
             var tr = document.createElement("tr")
             tr.innerHTML = `
                 <tr>
 
                     <td>${planta.nomeCientifico}</td>
                     <td>${planta.nomeUsual}</td>
-                    <td><button id='button-verplanta'>Ver</button></td>
+                    <td><button id='button-verplanta-${planta.id}'>Ver</button></td>
                 </tr>
             `
             tbody.appendChild(tr)
@@ -68,9 +69,20 @@ export class HomeView extends BaseView {
         table.appendChild(tbody)
         table.style.width = "70%"
         plantasDiv.appendChild(table)
+
+
+        this.plantas.forEach(planta => {
+            const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
+            if (buttonPlanta) {
+                buttonPlanta.addEventListener('click', () => {
+                    this.onPlantaItemButtonClick(planta.id)
+                })
+            }
+        })
     }
 
     populateVasoComponents(vasos: Vaso[]) {
+        this.vasos = vasos
         const vasosDiv = document.getElementById("vasos")
         if (!vasosDiv) throw "Div dos vasos não encontrada."
 
@@ -83,7 +95,7 @@ export class HomeView extends BaseView {
             </tr>
         `
         const tbody = document.createElement("tbody")
-        vasos.forEach(vaso => {
+        this.vasos.forEach(vaso => {
             var tr = document.createElement("tr")
             tr.innerHTML = `
                 <tr>
@@ -98,7 +110,6 @@ export class HomeView extends BaseView {
         table.appendChild(tbody)
         table.style.width = "70%"
         vasosDiv.appendChild(table)
-
     }
 
     bindViewEvents(): void {
@@ -117,16 +128,6 @@ export class HomeView extends BaseView {
         if (buttonVaso){
             buttonVaso.addEventListener('click', () => {this.onVasoButtonClick()})
         }
-
-        this.plantas.forEach(planta => {
-            const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
-
-            if (buttonPlanta) {
-                buttonPlanta.addEventListener('click', () => {
-                    this.onPlantaItemButtonClick(planta.id)
-                })
-            }
-        })
     }
 
 }
