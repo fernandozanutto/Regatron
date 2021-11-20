@@ -17,8 +17,6 @@ export class HomeView extends BaseView {
         this.body = `
         <center>
             <div class="container">
-                <h1> Bem vindo de volta </h1>
-
                 <button id='button-teste'>Ir para Test View</button>
                 <button id='button-planta'>Ir para Planta View</button>
                 <button id='button-vaso'> Ir para Vaso View</button>
@@ -26,7 +24,9 @@ export class HomeView extends BaseView {
                 <br>
                 <br>
                 <div class="row">
+                        <h5>Plantas</h5>
                         <div id="plantas"></div>
+                        <h5>Vasos</h5>
                         <div id="vasos"></div>
                 </div>
 
@@ -37,7 +37,6 @@ export class HomeView extends BaseView {
 
     populatePlantaComponents(plantas: Planta[]) {
         const plantasDiv = document.getElementById("plantas")
-
         if (!plantasDiv) throw "Div das plantas não encontrada."
 
         const table = document.createElement("table")
@@ -68,16 +67,32 @@ export class HomeView extends BaseView {
 
     populateVasoComponents(vasos: Vaso[]) {
         const vasosDiv = document.getElementById("vasos")
-
         if (!vasosDiv) throw "Div das plantas não encontrada."
 
+        const table = document.createElement("table")
+        const thead = document.createElement("thead") 
+        thead.innerHTML = `
+            <tr>
+                <th>Número</th>
+                <th>Descrição</th>
+            </tr>
+        `
+        const tbody = document.createElement("tbody")
         vasos.forEach(vaso => {
-            const el = document.createElement("div")
+            var tr = document.createElement("tr")
+            tr.innerHTML = `
+                <tr>
 
-            el.innerHTML = `UMA PLANTAAAAAAAA ${vaso.descricao}`
-
-            vasosDiv.appendChild(el)
+                    <td>${vaso.id}</td>
+                    <td>${vaso.descricao}</td>
+                </tr>
+            `
+            tbody.appendChild(tr)
         })
+        table.appendChild(thead)
+        table.appendChild(tbody)
+        table.style.width = "70%"
+        vasosDiv.appendChild(table)
 
     }
 
