@@ -1,9 +1,9 @@
-import { BaseService } from "../services/BaseService";
+import { RegatronService } from "../services/BaseService";
 import { BaseView } from "../view/BaseView";
 
-export abstract class BaseController<VT extends BaseView, ST> {
+export abstract class BaseController<VT extends BaseView> {
     
-    constructor(protected view: VT, protected service: BaseService<ST> | null = null) {}
+    constructor(protected view: VT, protected service: RegatronService | null = null) {}
 
     abstract configureView(): void
 

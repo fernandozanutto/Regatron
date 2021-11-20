@@ -2,7 +2,7 @@ import { NavigatorController, Pages } from "../Main";
 import { HomeView } from "../view/HomeView";
 import { BaseController } from "./BaseController";
 
-export class HomeController extends BaseController<HomeView, null> {
+export class HomeController extends BaseController<HomeView> {
 
     configureView(): void {
         this.view.onTesteButtonClick = () => {

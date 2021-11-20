@@ -1,9 +1,24 @@
-export abstract class BaseService<T> {
-    dataList: T[] = []
+import { Planta } from "../model/Planta.model";
+import { Vaso } from "../model/Vaso.model";
 
-    abstract create(model: T): number
-    abstract get(id: number): void
-    abstract delete(id: number): void
-    abstract update(model: T): void
+export class RegatronService {
+    plantas: Planta[] = []
+    vasos: Vaso[] = []
+
+    public listPlantas() {
+
+    }
+
+    public listVasos(){
+
+    }
+
+    public getPlanta(id: number){
+
+    }
+
+    public getVaso(id: number){
+
+    }
 
 }

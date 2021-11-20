@@ -1,4 +1,5 @@
 import { Dispositivo } from "../Dispositivo";
+import { ArCondicionado } from "./ArCondicionado";
 import { Termometro } from "./Termometro";
 
 export interface ACConfig {
@@ -8,12 +9,13 @@ export interface ACConfig {
 
 export class GerenciadorTemperatura implements Dispositivo {
 
-    termometro: Termometro
     temperaturaMinima: number = 0;
     temperaturaMaxima: number = 0;
 
-    constructor(termometro: Termometro) {
-        this.termometro = termometro
+    constructor(
+        public termometro: Termometro, 
+        public arCondicionado: ArCondicionado
+        ) {
 
         setInterval(() => {
             console.log("Estado Medidor Temperatura: " + this.notificarEstado())
