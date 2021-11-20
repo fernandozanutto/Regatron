@@ -22,12 +22,12 @@ export class RegatronService {
         return this.vasos
     }
 
-    public getPlanta(id: number): Planta | null{
-        return this.plantas[id]
+    public getPlanta(id: number): Planta | undefined {
+        return this.plantas.find(planta => planta.id === id)
     }
 
-    public getVaso(id: number): Vaso | null{
-        return this.vasos[id]
+    public getVaso(id: number): Vaso | undefined {
+        return this.vasos.find(vaso => vaso.id === id)
     }
 
 }
