@@ -2,7 +2,7 @@
 
 ## Requirements
 
-npm
+npm (node package manager)
 
 ## Instructions
 
