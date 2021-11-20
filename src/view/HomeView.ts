@@ -1,5 +1,9 @@
 import { BaseView } from "./BaseView";
 
+/**
+ * Mostra a lista de Vasos do usuário e link para editar/cadastrar novo Vaso.
+ * Mostra a lista de Plantas cadastradas e link para editar/cadastrar nova Planta.
+ */
 export class HomeView extends BaseView {
 
     onTesteButtonClick = () => {}
