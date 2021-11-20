@@ -17,7 +17,7 @@ class App {
     }
 
     private static onReady() {
-        App.mainWindow = new App.BrowserWindow({ 
+        App.mainWindow = new App.BrowserWindow({
             width: 800,
             height: 600,
             icon: __dirname + "/test.ico"

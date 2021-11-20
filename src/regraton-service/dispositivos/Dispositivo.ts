@@ -1,4 +1,4 @@
-interface Dispositivo {
+export interface Dispositivo {
     compararEExecutar(): void
     notificarEstado(): void
 }

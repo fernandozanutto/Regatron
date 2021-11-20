@@ -1,0 +1,3 @@
+interface Sensor {
+    getValorAtual(): number
+}
