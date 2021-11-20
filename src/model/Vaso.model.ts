@@ -7,6 +7,7 @@ export class Vaso {
     dispositivos: Dispositivo[] = []
 
     constructor(
+        public id: number,
         public descricao: string, 
         public quantidadeAgua: number,
         public temperaturaMaxima: number,
