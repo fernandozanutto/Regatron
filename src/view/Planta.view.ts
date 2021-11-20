@@ -33,7 +33,7 @@ export class PlantaView extends BaseView {
             <br>
             Quantidade água padrão: <input type="number" name="quantidade_agua" id="quantidade_agua">
             <br>
-            Luminosidade: <select name="luminosidade" id="luminosidade"><item value="1">TESTE</item></select>
+            Luminosidade: <select name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select>
             <br>
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
