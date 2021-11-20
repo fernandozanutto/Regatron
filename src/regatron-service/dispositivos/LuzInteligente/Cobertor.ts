@@ -6,11 +6,11 @@ export class Cobertor {
         this.estado = Estado.DESATIVADO
     }
 
-    extendeParcialmente() : void{
+    estendeParcialmente() : void{
         this.estado = Estado.ATIVADO_PARCIALMENTE
     }
 
-    extendeTotalmente() : void{
+    estendeTotalmente() : void{
         this.estado = Estado.ATIVADO
     }
 

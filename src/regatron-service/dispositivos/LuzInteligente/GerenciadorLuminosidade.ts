@@ -30,10 +30,10 @@ export class GerenciadorLuminosidade implements Dispositivo {
         if(luzAtual > this.luminosidadeIdeal){
             switch(luzAtual){
                 case Luminosidade.SOL_PLENO:
-                    this.cobertor.extendeTotalmente()
+                    this.cobertor.estendeTotalmente()
                     break
                 case Luminosidade.MEIA_LUZ:
-                    this.cobertor.extendeParcialmente()
+                    this.cobertor.estendeParcialmente()
                     break
             }
         }
