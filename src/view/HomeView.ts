@@ -30,18 +30,32 @@ export class HomeView extends BaseView {
     populatePlantaComponents(plantas: Planta[]) {
         const plantasDiv = document.getElementById("plantas")
 
-        if (!plantasDiv) throw "aaaaa"
+        if (!plantasDiv) throw "Div das plantas não encontrada."
 
         plantas.forEach(planta => {
             const el = document.createElement("div")
 
-            el.innerHTML = `UMA PLANTAAAAAAAA ${planta.nomeCientifico}`
+            el.innerHTML = `
+            <p>Nome científico: ${planta.nomeCientifico}</p>
+            <p>Nome usual: ${planta.nomeUsual}</p>
+            `
 
             plantasDiv.appendChild(el)
         })
     }
 
     populateVasoComponents(vasos: Vaso[]) {
+        const vasosDiv = document.getElementById("vasos")
+
+        if (!vasosDiv) throw "Div das plantas não encontrada."
+
+        vasos.forEach(vaso => {
+            const el = document.createElement("div")
+
+            el.innerHTML = `UMA PLANTAAAAAAAA ${vaso.descricao}`
+
+            vasosDiv.appendChild(el)
+        })
 
     }
 
