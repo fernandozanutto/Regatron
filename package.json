@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "tsc && webpack && copyfiles -u 1 src/**/*.html src/**/*.css src/**/*.ico dist/",
-    "start": "electron dist/electron/app.js"
+    "start": "electron dist/electron/App.js"
   },
   "repository": {
     "type": "git",
