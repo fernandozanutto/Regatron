@@ -55,6 +55,7 @@ export class HomeView extends BaseView {
 
                     <td>${planta.nomeCientifico}</td>
                     <td>${planta.nomeUsual}</td>
+                    <td><button id='button-verplanta'>Ver</button></td>
                 </tr>
             `
             tbody.appendChild(tr)
