@@ -18,10 +18,11 @@ class App {
 
     private static onReady() {
         App.mainWindow = new App.BrowserWindow({
-            width: 800,
-            height: 600,
-            icon: __dirname + "/test.ico"
-            });
+            width: 1000,
+            height: 800,
+            icon: __dirname + "/test.ico",
+            title: "Regatron"
+        });
         
         const path = join('file://', __dirname, '/index.html')
         App.mainWindow.loadURL(path);
