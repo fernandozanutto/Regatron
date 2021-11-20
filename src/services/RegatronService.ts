@@ -4,11 +4,24 @@ import { Vaso } from "../model/Vaso.model";
 import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
 import { ArCondicionado } from "../regatron-service/dispositivos/ACInteligente/ArCondicionado";
 import { Termometro } from "../regatron-service/dispositivos/ACInteligente/Termometro";
+import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
+import { Cobertor } from "../regatron-service/dispositivos/LuzInteligente/Cobertor";
+import { FotoSensor } from "../regatron-service/dispositivos/LuzInteligente/Fotosensor";
+//import { Lampada } from "../regatron-service/dispositivos/LuzInteligente/Lampada";
 
 export class RegatronService {
-    private arCondicionado = new ArCondicionado(20)
-    private termometro = new Termometro
-    private gerenciadorTemperatura = new GerenciadorTemperatura(this.termometro, this.arCondicionado)
+    private arCondicionado1 = new ArCondicionado(20)
+    private termometro1 = new Termometro
+    private gerenciadorTemperatura1 = new GerenciadorTemperatura(this.termometro1, this.arCondicionado1)
+
+    private arCondicionado2 = new ArCondicionado(22)
+    private termometro2 = new Termometro
+    private gerenciadorTemperatura2 = new GerenciadorTemperatura(this.termometro2, this.arCondicionado1)
+    //vaso dois compartilha ar condicionado com vaso 1.
+
+    private arCondicionado3 = new ArCondicionado(24)
+    private termometro3 = new Termometro
+    private gerenciadorTemperatura3 = new GerenciadorTemperatura(this.termometro3, this.arCondicionado2)    
 
     plantas: Planta[] = [
         new Planta({id: 1, nomeCientifico: "PLANTUS DELICIUS", nomeUsual: "GOSTOSA", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 74, temperaturaMinimaPadrao: 0}),
@@ -16,9 +29,9 @@ export class RegatronService {
         
     ]
     vasos: Vaso[] = [
-        new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura], id: 1, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso sanitário", dispositivos: [], id: 2, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso da sacada", dispositivos: [], id: 3, planta: this.plantas[1]}),
+        new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura1], id: 1, planta: this.plantas[0]}),
+        new Vaso({descricao: "Vaso sanitário", dispositivos: [this.gerenciadorTemperatura2], id: 2, planta: this.plantas[0]}),
+        new Vaso({descricao: "Vaso da sacada", dispositivos: [this.gerenciadorTemperatura3], id: 3, planta: this.plantas[1]}),
     ]
 
     public listPlantas(): Planta[] {

@@ -31,7 +31,6 @@ export class GerenciadorTemperatura implements Dispositivo {
     compararEExecutar(): void {
         this.temperaturaAtual = this.notificarEstado();
         const arLigado = this.arCondicionado.estaLigado();
-        const diff = Math.abs(this.temperaturaAtual - this.temperaturaMaxima);
 
         if(this.temperaturaAtual > this.temperaturaMaxima){//temp da planta acima do maximo
             if (arLigado){
