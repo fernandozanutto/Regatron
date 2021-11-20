@@ -27,7 +27,7 @@ export class HomeController extends BaseController<HomeView> {
         }
 
         this.view.onVasoButtonClick = () => {
-            
+            NavigatorController.navigate(Pages.VASO)
         }
     }
 }
