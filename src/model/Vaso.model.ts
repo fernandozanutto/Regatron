@@ -1,6 +1,6 @@
-import { GerenciadorTemperatura } from "../regraton-service/dispositivos/ACInteligente/GerenciadorTemperatura";
-import { Dispositivo } from "../regraton-service/dispositivos/Dispositivo";
-import { GerenciadorLuminosidade } from "../regraton-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
+import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
+import { Dispositivo } from "../regatron-service/dispositivos/Dispositivo";
+import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
 import { Luminosidade } from "./Luminosidade";
 import { Planta } from "./Planta.model";
 
