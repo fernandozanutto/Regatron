@@ -12,5 +12,9 @@ export class HomeController extends BaseController<HomeView, null> {
         this.view.onPlantaButtonClick = () => {
             NavigatorController.navigate(Pages.PLANTA)
         }
+
+        this.view.onVasoButtonClick = () => {
+            
+        }
     }
 }
