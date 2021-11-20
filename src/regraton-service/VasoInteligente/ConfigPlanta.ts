@@ -1,0 +1,3 @@
+interface ConfigPlanta {
+    getConfig(): void
+}
