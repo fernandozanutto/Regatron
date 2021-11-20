@@ -14,6 +14,12 @@ export class HomeController extends BaseController<HomeView> {
         super.init()
     }
 
+    override resume() {
+        this.plantas = this.service.listPlantas()
+        this.vasos = this.service.listVasos()
+        super.resume()
+    }
+
     configureView(): void {
         this.view.populatePlantaComponents(this.plantas)
         this.view.populateVasoComponents(this.vasos)

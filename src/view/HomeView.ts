@@ -33,7 +33,6 @@ export class HomeView extends BaseView {
                         <h5>Vasos</h5>
                         <div id="vasos"></div>
                 </div>
-
             </div>
         </center>
         `
@@ -43,6 +42,8 @@ export class HomeView extends BaseView {
         this.plantas = plantas
         const plantasDiv = document.getElementById("plantas")
         if (!plantasDiv) throw "Div das plantas não encontrada."
+        
+        plantasDiv.textContent = ""
 
         const table = document.createElement("table")
         const thead = document.createElement("thead") 
@@ -57,7 +58,6 @@ export class HomeView extends BaseView {
             var tr = document.createElement("tr")
             tr.innerHTML = `
                 <tr>
-
                     <td>${planta.nomeCientifico}</td>
                     <td>${planta.nomeUsual}</td>
                     <td><button id='button-verplanta-${planta.id}'>Ver</button></td>
@@ -76,6 +76,7 @@ export class HomeView extends BaseView {
         const vasosDiv = document.getElementById("vasos")
         if (!vasosDiv) throw "Div dos vasos não encontrada."
 
+        vasosDiv.textContent = ""
         const table = document.createElement("table")
         const thead = document.createElement("thead") 
         thead.innerHTML = `

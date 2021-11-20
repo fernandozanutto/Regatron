@@ -2,7 +2,7 @@ import { BaseController } from "./controller/BaseController";
 import { HomeController } from "./controller/Home.controller";
 import { PlantaController } from "./controller/Planta.controller";
 import { TestController } from "./controller/Test.controller";
-import { RegatronService } from "./services/BaseService";
+import { RegatronService } from "./services/RegatronService";
 import { VasoController } from "./controller/Vaso.controller";
 import { HomeView } from "./view/HomeView";
 import { PlantaView } from "./view/Planta.view";
