@@ -11,6 +11,7 @@ export class GerenciadorTemperatura implements Dispositivo {
 
     temperaturaMinima: number = 0;
     temperaturaMaxima: number = 0;
+    temperaturaAtual: number = 0;
 
     constructor(
         public termometro: Termometro, 
@@ -28,7 +29,16 @@ export class GerenciadorTemperatura implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        throw new Error("Method not implemented.");
+        this.temperaturaAtual = this.notificarEstado();
+
+        if(this.temperaturaAtual > this.temperaturaMaxima){
+            //aciona resfriamento do ar condicionado
+        }
+
+        else if(this.temperaturaAtual < this.temperaturaMinima){
+            //aciona aquecimento do ar condicionado
+        }
+
     }
     notificarEstado(): number {
         return this.termometro.getValorAtual()
