@@ -1,3 +1,4 @@
+import { Planta } from "../model/Planta.model";
 import { BaseView } from "./BaseView";
 
 export class PlantaView extends BaseView {
@@ -9,7 +10,12 @@ export class PlantaView extends BaseView {
         this.body = `
         <center>
         <p>Planta</p>
-        Teste de input: <input type="text" name="teste" id="teste">
+        Nome científico: <input type="text" name="nome_cientifico" id="nome_cientifico">
+        <br>
+        Nome usual: <input type="text" name="nome_usual" id="nome_usual">
+        <br>
+        Temperatura mínima padrão: <input type="number" name="temp_minima" id="temp_minima">
+        <br>
         <button id='button'>Voltar</button>
         </center>
         `
@@ -19,6 +25,15 @@ export class PlantaView extends BaseView {
         if (button) {
             button.addEventListener('click', () => this.onButtonClick())
         }
+    }
+
+    bindViewData(planta: Planta) {
+        const nomeCientifico = <HTMLInputElement> document.getElementById("nome_cientifico")
+        const nomeUsual = <HTMLInputElement> document.getElementById("nome_usual")
+        const tempMinima = <HTMLInputElement> document.getElementById("temp_minima")
+        nomeCientifico.value = planta.nomeCientifico
+        nomeUsual.value = planta.nomeUsual
+        tempMinima.value = planta.temperaturaMinimaPadrao.toString()
     }
 
 }

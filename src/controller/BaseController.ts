@@ -7,11 +7,16 @@ export abstract class BaseController<VT extends BaseView> {
 
     abstract configureView(): void
 
-    init(): void {
+    protected parameters: {[key: string]: any} = {}
+
+    init(parameters: {[key: string]: any} = {}): void {
+        this.parameters = parameters
+
         const body = document.getElementById("app")
         if (body != null) {
             body.innerHTML = this.view.body
         }
+        
         this.view.bindViewEvents()
 
         this.configureView()

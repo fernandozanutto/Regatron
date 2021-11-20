@@ -30,14 +30,14 @@ export class NavigatorController {
         [Pages.VASO]: () => new VasoController(new VasoView(), this.service)
     }
     
-    static navigate(page: Pages) : void {
+    static navigate(page: Pages, parameters: {[key: string]: any} = {}) : void {
         if (this.currentPage !== undefined) {
             this.currentPage.pause()
             this.pagesStack.push(this.currentPage)
         }
 
         this.currentPage = this.pagesMap[page]()
-        this.currentPage.init()
+        this.currentPage.init(parameters)
     }
 
     static goBack(): void {
