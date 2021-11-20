@@ -1,5 +1,6 @@
 import { GerenciadorTemperatura } from "../regraton-service/dispositivos/ACInteligente/GerenciadorTemperatura";
 import { Dispositivo } from "../regraton-service/dispositivos/Dispositivo";
+import { GerenciadorLuminosidade } from "../regraton-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
 import { Luminosidade } from "./Luminosidade";
 import { Planta } from "./Planta.model";
 
@@ -25,6 +26,8 @@ export class Vaso {
         this.dispositivos.forEach(disp => {
             if (disp instanceof GerenciadorTemperatura) {
                 disp.setConfiguracao({tempMinima: this.temperaturaMinima, tempMaxima: this.temperaturaMaxima})
+            } else if (disp instanceof GerenciadorLuminosidade) {
+                disp.setConfiguracao({luminosidadeIdeal: this.luminosidade})
             }
         })
     }

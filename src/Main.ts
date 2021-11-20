@@ -2,7 +2,7 @@ import { BaseController } from "./controller/BaseController";
 import { HomeController } from "./controller/Home.controller";
 import { PlantaController } from "./controller/Planta.controller";
 import { TestController } from "./controller/Test.controller";
-import { PlantaService } from "./services/Planta.service";
+import { RegatronService } from "./services/BaseService";
 import { HomeView } from "./view/HomeView";
 import { PlantaView } from "./view/Planta.view";
 import { TestView } from "./view/TestView";
@@ -14,14 +14,16 @@ export enum Pages {
     PLANTA
 }
 export class NavigatorController {
-    private static currentPage: BaseController<any, any>
+    private static currentPage: BaseController<any>
 
-    private static pagesStack: BaseController<any, any>[] = []
+    private static pagesStack: BaseController<any>[] = []
 
-    private static pagesMap: { [key in Pages]: () => BaseController<any, any> } = {
-        [Pages.HOME]: () => new HomeController(new HomeView()),
-        [Pages.TEST]: () => new TestController(new TestView()),
-        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), new PlantaService())
+    private static service = new RegatronService()
+
+    private static pagesMap: { [key in Pages]: () => BaseController<any> } = {
+        [Pages.HOME]: () => new HomeController(new HomeView(), this.service),
+        [Pages.TEST]: () => new TestController(new TestView(), this.service),
+        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), this.service)
     }
     
     static navigate(page: Pages) : void {

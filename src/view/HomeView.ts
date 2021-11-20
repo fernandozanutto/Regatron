@@ -1,3 +1,5 @@
+import { Planta } from "../model/Planta.model";
+import { Vaso } from "../model/Vaso.model";
 import { BaseView } from "./BaseView";
 
 /**
@@ -18,8 +20,21 @@ export class HomeView extends BaseView {
         <button id='button-teste'>Ir para Test View</button>
         <button id='button-planta'>Ir para Planta View</button>
         <button id='button-Vaso'> Ir para Vaso View</button>
+
+        <div id="plantas"></div>
+        <div id="vasos"></div>
         </center>
         `
+    }
+
+    populatePlantaComponents(plantas: Planta[]) {
+        plantas.forEach(planta => {
+            const el = document.createElement("div")
+        })
+    }
+
+    populateVasoComponents(vasos: Vaso[]) {
+
     }
 
     bindViewEvents(): void {
