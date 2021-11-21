@@ -4,8 +4,8 @@ export class ArCondicionado {
     private temperaturaMaxima: number;
     private ligado: boolean;
     
-    constructor(temperaturaAtual: number){
-        this.temperaturaAtual = temperaturaAtual;
+    constructor(){
+        this.temperaturaAtual = 20;
         this.temperaturaMinima = 15;
         this.temperaturaMaxima = 28;
         this.ligado = false;

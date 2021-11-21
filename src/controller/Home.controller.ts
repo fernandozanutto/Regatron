@@ -33,5 +33,13 @@ export class HomeController extends BaseController<HomeView> {
         this.view.onPlantaItemButtonClick = (id: number ) => {
             NavigatorController.navigate(Pages.PLANTA, {id: id})
         }
+
+        this.view.onPlantaButtonClick = () => {
+            NavigatorController.navigate(Pages.PLANTA)
+        }
+
+        this.view.onVasoButtonClick = () => {
+            NavigatorController.navigate(Pages.VASO)
+        }
     }
 }

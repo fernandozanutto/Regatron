@@ -14,11 +14,17 @@ export class HomeView extends BaseView {
     onVasoItemButtonClick = (id: number) => {}
     onPlantaItemButtonClick = (id: number) => {}
 
+    onPlantaButtonClick = () => {}
+    onVasoButtonClick = () => {}
+
     constructor() {
         super()
         this.body = `
         <center>
             <div class="container">
+                <button id='button-planta'>Cadastrar nova Planta</button>
+                <button id='button-vaso'>Cadastrar novo Vaso</button>
+
                 <div class="row">
                     <h5>Plantas</h5>
                     <div id="plantas"></div>
@@ -96,6 +102,18 @@ export class HomeView extends BaseView {
     }
 
     bindViewEvents(): void {
+        const buttonPlanta = document.getElementById('button-planta')
+        const buttonVaso = document.getElementById('button-vaso')
+
+        if (buttonPlanta) {
+            buttonPlanta.addEventListener('click', () => {this.onPlantaButtonClick()})
+        }
+
+        if (buttonVaso){
+            buttonVaso.addEventListener('click', () => {this.onVasoButtonClick()})
+        }
+
+
         this.plantas.forEach(planta => {
             const buttonPlanta = document.getElementById(`button-verplanta-${planta.id}`)
             if (buttonPlanta) {
