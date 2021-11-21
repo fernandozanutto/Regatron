@@ -23,7 +23,7 @@ export class HomeView extends BaseView {
         <center>
             <div class="container">
                 <button id='button-planta'>Cadastrar nova Planta</button>
-                <button id='button-vaso'> Cadastrar novo Vaso</button>
+                <button id='button-vaso'>Cadastrar novo Vaso</button>
 
                 <div class="row">
                     <h5>Plantas</h5>

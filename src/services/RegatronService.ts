@@ -12,16 +12,16 @@ import { Lampada } from "../regatron-service/dispositivos/LuzInteligente/Lampada
 export class RegatronService {
 
     //instanciando dispositivos de temperatura
-    private arCondicionado1 = new ArCondicionado(20)
+    private arCondicionado1 = new ArCondicionado()
     private termometro1 = new Termometro
     private gerenciadorTemperatura1 = new GerenciadorTemperatura(this.termometro1, this.arCondicionado1)
 
-    private arCondicionado2 = new ArCondicionado(22)
+    private arCondicionado2 = new ArCondicionado()
     private termometro2 = new Termometro
     private gerenciadorTemperatura2 = new GerenciadorTemperatura(this.termometro2, this.arCondicionado1)
     //vaso dois compartilha ar condicionado com vaso 1.
 
-    private arCondicionado3 = new ArCondicionado(24)
+    private arCondicionado3 = new ArCondicionado()
     private termometro3 = new Termometro
     private gerenciadorTemperatura3 = new GerenciadorTemperatura(this.termometro3, this.arCondicionado2)
     

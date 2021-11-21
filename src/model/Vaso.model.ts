@@ -1,6 +1,14 @@
+import { ArCondicionado } from "../regatron-service/dispositivos/ACInteligente/ArCondicionado";
 import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
-import { Dispositivo } from "../regatron-service/dispositivos/Dispositivo";
+import { Termometro } from "../regatron-service/dispositivos/ACInteligente/Termometro";
+import { Dispositivo, DispositivoEnum } from "../regatron-service/dispositivos/Dispositivo";
+import { Cobertor } from "../regatron-service/dispositivos/LuzInteligente/Cobertor";
+import { FotoSensor } from "../regatron-service/dispositivos/LuzInteligente/Fotosensor";
 import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
+import { Lampada } from "../regatron-service/dispositivos/LuzInteligente/Lampada";
+import { Balanca } from "../regatron-service/dispositivos/RegadorInteligente/Balanca";
+import { GerenciadorAgua } from "../regatron-service/dispositivos/RegadorInteligente/GerenciadorAgua";
+import { Regador } from "../regatron-service/dispositivos/RegadorInteligente/Regador";
 import { Luminosidade } from "./Luminosidade";
 import { Planta } from "./Planta.model";
 
@@ -53,5 +61,19 @@ export class Vaso {
                 disp.setConfiguracao({luminosidadeIdeal: this.luminosidade})
             }
         })
+    }
+
+    public adicionarDispositivo(tipo: DispositivoEnum) {
+        switch(tipo) {
+            case DispositivoEnum.AGUA: 
+                this.dispositivos.push(new GerenciadorAgua(new Regador(), new Balanca()))
+                break
+            case DispositivoEnum.LUZ: 
+            this.dispositivos.push(new GerenciadorLuminosidade(new FotoSensor(), new Lampada(), new Cobertor()))
+                break
+            case DispositivoEnum.TEMPERATURA: 
+                this.dispositivos.push(new GerenciadorTemperatura(new Termometro(), new ArCondicionado()))
+                break
+        }
     }
 }
