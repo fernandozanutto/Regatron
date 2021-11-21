@@ -46,6 +46,7 @@ export class PlantaView extends BaseView {
         this.planta.nomeUsual = this.inputNomeUsual?.value || ""
         this.planta.temperaturaMinimaPadrao = parseFloat(this.inputTempMinima?.value || "0.0")
         this.planta.temperaturaMaximaPadrao = parseFloat(this.inputTempMaxima?.value || "0.0")
+        this.planta.quantidadeAguaPadrao = parseFloat(this.inputQuantidadeAgua?.value || "0")
         this.planta.luminosidade = parseInt(this.selectLuminosidade?.value || "0")
     }
 
