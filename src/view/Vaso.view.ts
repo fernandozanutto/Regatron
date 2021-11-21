@@ -73,14 +73,14 @@ export class VasoView extends BaseView {
     }
 
     bindViewData(vaso: Vaso, plantasDisponiveis: Planta[]) : void {
-        console.log(vaso)
         this.vaso = vaso
         this.plantas = plantasDisponiveis
 
         this.inputDescricao = <HTMLInputElement> document.getElementById("descricao")
         this.inputTempMinima = <HTMLInputElement> document.getElementById("temp_minima")
-        this.selectLuminosidade = <HTMLSelectElement> document.getElementById("luminosidade")
         this.inputQuantidadeAgua = <HTMLInputElement> document.getElementById("quantidade_agua")
+        this.selectLuminosidade = <HTMLSelectElement> document.getElementById("luminosidade")
+        this.selectPlanta = <HTMLSelectElement> document.getElementById("planta")
 
         this.inputDescricao.value = vaso.descricao
         this.inputTempMinima.value = vaso.temperaturaMinima.toString()
@@ -93,5 +93,7 @@ export class VasoView extends BaseView {
             optionPlanta.text = planta.nomeUsual
             this.selectPlanta?.appendChild(optionPlanta)
         })
+
+        this.selectPlanta.value = vaso.planta?.id.toString() || "0"
     }
 }
