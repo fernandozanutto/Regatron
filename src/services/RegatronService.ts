@@ -74,13 +74,27 @@ export class RegatronService {
     public salvarPlanta(planta: Planta): void {
         const indice = this.plantas.findIndex(p => p.id === planta.id)
 
-        this.plantas[indice] = planta
+        if (indice == -1){
+            this.plantas.push(planta) //planta nova
+        }
+
+        else{
+            this.plantas[indice] = planta //planta existente
+        }
+        
     }
 
     public salvarVaso(vaso: Vaso): void {
         const indice = this.vasos.findIndex(p => p.id === vaso.id)
 
-        this.vasos[indice] = vaso
+        if (indice == -1){
+            this.vasos.push(vaso) //vaso novo
+        }
+
+        else{
+            this.vasos[indice] = vaso //vaso existente
+        }
+
     }
 
     private clone<T>(data: T) {
