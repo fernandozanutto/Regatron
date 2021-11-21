@@ -19,7 +19,8 @@ export class GerenciadorTemperatura implements Dispositivo {
         ) {
 
         setInterval(() => {
-            console.log("Estado Medidor Temperatura: " + this.notificarEstado())
+            console.log("Estado Medidor Temperatura: " + this.notificarEstado());
+            this.compararEExecutar();
         }, 1000)
     }
 

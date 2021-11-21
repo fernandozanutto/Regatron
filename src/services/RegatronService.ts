@@ -41,7 +41,7 @@ export class RegatronService {
     private lampada3 = new Lampada()
     private gerenciadorLuminosidade3 = new GerenciadorLuminosidade(this.fotoSensor3, this.lampada3, this.cobertor3)
 
-    //instanciando dispositivos de regacao
+    //instanciando dispositivos de rega
  
 
     plantas: Planta[] = [
