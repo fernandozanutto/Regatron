@@ -17,7 +17,7 @@ export class GerenciadorAgua implements Dispositivo {
         public regador: Regador,
         public balanca: Balanca) {
             setInterval(() =>{
-                // console.log("Estado do Reservatorio de Agua: " + this.notificarEstado());
+                console.log("Estado do Reservatorio de Agua: " + this.notificarEstado() + " mL");
                 this.compararEExecutar();
             }, this.intervaloMs)
     }
@@ -28,12 +28,15 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        this.regador.rega(this.quantidade);
+        this.regador.rega(this.quantidade);         //Isso teoricamente deveria diminuir o nível da agua mas
+        this.balanca.setAguaMl(                     //Já que não estamos usando os componentes o método só n faz nada
+            this.balanca.getAguaMl() - this.quantidade
+        )
 
     }
 
-    notificarEstado(): void {
-        throw new Error("Method not implemented.");
+    notificarEstado(): number {
+       return this.balanca.getAguaMl()
     }
 
 }
