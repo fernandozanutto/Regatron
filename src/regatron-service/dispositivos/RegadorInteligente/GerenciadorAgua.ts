@@ -32,7 +32,6 @@ export class GerenciadorAgua implements Dispositivo {
         this.balanca.setAguaMl(                     //Já que não estamos usando os componentes o método só n faz nada
             this.balanca.getAguaMl() - this.quantidade
         )
-
     }
 
     notificarEstado(): number {
