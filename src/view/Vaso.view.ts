@@ -42,6 +42,9 @@ export class VasoView extends BaseView {
             
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
+
+
+            <div id="log"></div>
         </center>
         `
     }
@@ -78,12 +81,14 @@ export class VasoView extends BaseView {
 
         this.inputDescricao = <HTMLInputElement> document.getElementById("descricao")
         this.inputTempMinima = <HTMLInputElement> document.getElementById("temp_minima")
+        this.inputTempMaxima = <HTMLInputElement> document.getElementById("temp_maxima")
         this.inputQuantidadeAgua = <HTMLInputElement> document.getElementById("quantidade_agua")
         this.selectLuminosidade = <HTMLSelectElement> document.getElementById("luminosidade")
         this.selectPlanta = <HTMLSelectElement> document.getElementById("planta")
 
         this.inputDescricao.value = vaso.descricao
         this.inputTempMinima.value = vaso.temperaturaMinima.toString()
+        this.inputTempMaxima.value = vaso.temperaturaMaxima.toString()
         this.inputQuantidadeAgua.value = vaso.quantidadeAgua.toString()
         this.selectLuminosidade.value = vaso.luminosidade.toString()
 
