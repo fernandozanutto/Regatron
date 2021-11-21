@@ -21,7 +21,7 @@ export class Vaso {
     public temperaturaMinima: number;
     public temperaturaMaxima: number;
     public luminosidade: Luminosidade;
-    public planta: Planta | null;
+    public planta: Planta | undefined;
     public dispositivos: Dispositivo[] = []
 
     constructor(
@@ -40,7 +40,7 @@ export class Vaso {
         this.temperaturaMaxima = temperaturaMaxima || planta?.temperaturaMaximaPadrao || 0;
         this.temperaturaMinima = temperaturaMinima || planta?.temperaturaMinimaPadrao || 0;
         this.luminosidade = luminosidade || planta?.luminosidade || Luminosidade.MEIA_LUZ;
-        this.planta = planta || null;
+        this.planta = planta || undefined;
         this.dispositivos = dispositivos || [];
         this.configurarDispositivos()
     }

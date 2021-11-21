@@ -74,9 +74,13 @@ export class RegatronService {
     public salvarPlanta(planta: Planta): void {
         const indice = this.plantas.findIndex(p => p.id === planta.id)
 
-        console.log(planta)
-        console.log(this.plantas[indice])
         this.plantas[indice] = planta
+    }
+
+    public salvarVaso(vaso: Vaso): void {
+        const indice = this.vasos.findIndex(p => p.id === vaso.id)
+
+        this.vasos[indice] = vaso
     }
 
     private clone<T>(data: T) {

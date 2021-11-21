@@ -6,7 +6,7 @@ export class PlantaView extends BaseView {
 
     private planta!: Planta
 
-    onButtonClick = () => {}
+    onBackButtonClick = () => {}
     onSalvarButtonClick: (planta: Planta) => void = (planta: Planta) => {}
 
     cancelarButton: HTMLElement | null = null
@@ -54,7 +54,7 @@ export class PlantaView extends BaseView {
         this.salvarButton = document.getElementById('button-salvar')
 
         if (this.cancelarButton) {
-            this.cancelarButton.addEventListener('click', () => this.onButtonClick())
+            this.cancelarButton.addEventListener('click', () => this.onBackButtonClick())
         }
 
         if (this.salvarButton) {

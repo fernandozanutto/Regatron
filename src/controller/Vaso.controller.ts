@@ -25,7 +25,11 @@ export class VasoController extends BaseController<VasoView> {
     }
 
     configureView(): void {
-        this.view.onBackButtonClick = () => {
+        this.view.onVoltarButtonClick = () => {
+            NavigatorController.goBack()
+        }
+        this.view.onSalvarButtonClick = (vaso: Vaso) => {
+            this.service.salvarVaso(vaso)
             NavigatorController.goBack()
         }
 

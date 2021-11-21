@@ -22,7 +22,7 @@ export class PlantaController extends BaseController<PlantaView> {
     }
 
     configureView(): void {
-        this.view.onButtonClick = () => {
+        this.view.onBackButtonClick = () => {
             NavigatorController.goBack()
         }
 
