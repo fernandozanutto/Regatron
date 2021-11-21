@@ -16,12 +16,8 @@ export class GerenciadorTemperatura implements Dispositivo {
     constructor(
         public termometro: Termometro, 
         public arCondicionado: ArCondicionado
-        ) {
+    ) {
 
-        setInterval(() => {
-            console.log("Estado Medidor Temperatura: " + this.notificarEstado());
-            this.compararEExecutar();
-        }, 1000)
     }
 
     setConfiguracao({tempMinima, tempMaxima}: ACConfig): void {

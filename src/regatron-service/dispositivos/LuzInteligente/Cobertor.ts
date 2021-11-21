@@ -1,4 +1,4 @@
-export enum Estado{ATIVADO, ATIVADO_PARCIALMENTE, DESATIVADO}
+export enum Estado{DESATIVADO, ATIVADO_PARCIALMENTE, ATIVADO}
 export class Cobertor {
     private estado : Estado
 

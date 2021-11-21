@@ -1,5 +1,5 @@
 export enum Luminosidade {
-    SOL_PLENO,
     SOMBRA,
-    MEIA_LUZ
+    MEIA_LUZ,
+    SOL_PLENO
 }

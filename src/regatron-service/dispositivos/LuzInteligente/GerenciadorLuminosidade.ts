@@ -21,9 +21,8 @@ export class GerenciadorLuminosidade implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        var luzAtual : Luminosidade = this.fotoSensor.getValorAtual()
+        var luzAtual = this.fotoSensor.getValorAtual()
         this.atualizaRelogio()
-
         if(this.horaAtual >= 6 && this.horaAtual <= 19 && this.lampada.estaLigada())
             this.lampada.desliga()
 
@@ -48,7 +47,7 @@ export class GerenciadorLuminosidade implements Dispositivo {
     }
 
     atualizaRelogio(): void {
-        this.horaAtual = new Date().getHours()
+        this.horaAtual = 8//new Date().getHours()
     }
 
     
