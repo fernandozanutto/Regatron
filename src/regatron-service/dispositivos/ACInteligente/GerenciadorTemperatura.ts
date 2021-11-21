@@ -18,6 +18,9 @@ export class GerenciadorTemperatura implements Dispositivo {
         public arCondicionado: ArCondicionado
     ) {
 
+        setInterval(() => {
+            this.compararEExecutar();
+        }, 1000)
     }
 
     setConfiguracao({tempMinima, tempMaxima}: ACConfig): void {

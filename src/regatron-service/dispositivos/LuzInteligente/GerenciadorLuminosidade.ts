@@ -14,6 +14,9 @@ export class GerenciadorLuminosidade implements Dispositivo {
     horaAtual : number
     constructor(public fotoSensor: FotoSensor, public lampada: Lampada, public cobertor: Cobertor) {
         this.horaAtual = new Date().getHours()
+        setInterval(() => {
+            this.compararEExecutar();
+        }, 1000)
     }
 
     setConfiguracao(config: LuminosidadeConfig): void {
@@ -47,7 +50,7 @@ export class GerenciadorLuminosidade implements Dispositivo {
     }
 
     atualizaRelogio(): void {
-        this.horaAtual = 8//new Date().getHours()
+        this.horaAtual = new Date().getHours()
     }
 
     
