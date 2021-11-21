@@ -8,6 +8,7 @@ import { HomeView } from "./view/HomeView";
 import { PlantaView } from "./view/Planta.view";
 import { TestView } from "./view/TestView";
 import { VasoView } from "./view/Vaso.view";
+import { Regatron } from "./regatron-service/Regatron";
 
 
 export enum Pages {
@@ -19,9 +20,9 @@ export enum Pages {
 export class NavigatorController {
     private static currentPage: BaseController<any>
 
-    private static pagesStack: BaseController<any>[] = []
+    public static service : RegatronService
 
-    private static service = new RegatronService()
+    private static pagesStack: BaseController<any>[] = []
 
     private static pagesMap: { [key in Pages]: () => BaseController<any> } = {
         [Pages.HOME]: () => new HomeController(new HomeView(), this.service),
@@ -50,5 +51,7 @@ export class NavigatorController {
         }
     }
 }
-
+const service = new RegatronService()
+NavigatorController.service = service;
 NavigatorController.navigate(Pages.HOME)
+const regatron = new Regatron(service);
