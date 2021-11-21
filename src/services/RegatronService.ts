@@ -8,22 +8,25 @@ import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInt
 import { Cobertor } from "../regatron-service/dispositivos/LuzInteligente/Cobertor";
 import { FotoSensor } from "../regatron-service/dispositivos/LuzInteligente/Fotosensor";
 import { Lampada } from "../regatron-service/dispositivos/LuzInteligente/Lampada";
+import { GerenciadorAgua } from "../regatron-service/dispositivos/RegadorInteligente/GerenciadorAgua";
+import { Regador } from "../regatron-service/dispositivos/RegadorInteligente/Regador";
+import { Balanca } from "../regatron-service/dispositivos/RegadorInteligente/Balanca";
 
 export class RegatronService {
 
     //instanciando dispositivos de temperatura
     private arCondicionado1 = new ArCondicionado()
-    private termometro1 = new Termometro
+    private termometro1 = new Termometro()
     private gerenciadorTemperatura1 = new GerenciadorTemperatura(this.termometro1, this.arCondicionado1)
 
     private arCondicionado2 = new ArCondicionado()
-    private termometro2 = new Termometro
-    private gerenciadorTemperatura2 = new GerenciadorTemperatura(this.termometro2, this.arCondicionado1)
+    private termometro2 = new Termometro()
+    private gerenciadorTemperatura2 = new GerenciadorTemperatura(this.termometro2, this.arCondicionado2)
     //vaso dois compartilha ar condicionado com vaso 1.
 
     private arCondicionado3 = new ArCondicionado()
-    private termometro3 = new Termometro
-    private gerenciadorTemperatura3 = new GerenciadorTemperatura(this.termometro3, this.arCondicionado2)
+    private termometro3 = new Termometro()
+    private gerenciadorTemperatura3 = new GerenciadorTemperatura(this.termometro3, this.arCondicionado3)
     
     //instanciando dispositivos de iluminacao
     private cobertor1 = new Cobertor()
@@ -41,8 +44,9 @@ export class RegatronService {
     private lampada3 = new Lampada()
     private gerenciadorLuminosidade3 = new GerenciadorLuminosidade(this.fotoSensor3, this.lampada3, this.cobertor3)
 
-    //instanciando dispositivos de rega
- 
+    private regador1 = new Regador()
+    private balanca1 = new Balanca()
+    private gerenciadorAgua1 = new GerenciadorAgua(this.regador1, this.balanca1)
 
     plantas: Planta[] = [
         new Planta({id: 1, nomeCientifico: "PLANTUS DELICIUS", nomeUsual: "GOSTOSA", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 74, temperaturaMinimaPadrao: 0}),
@@ -51,7 +55,7 @@ export class RegatronService {
     ]
     vasos: Vaso[] = [
         new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura1, this.gerenciadorLuminosidade1], id: 1, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso sanitário", dispositivos: [this.gerenciadorTemperatura2, this.gerenciadorLuminosidade2], id: 2, planta: this.plantas[0]}),
+        new Vaso({descricao: "Vaso sanitário", dispositivos: [this.gerenciadorTemperatura2, this.gerenciadorLuminosidade2, this.gerenciadorAgua1], id: 2, planta: this.plantas[0]}),
         new Vaso({descricao: "Vaso da sacada", dispositivos: [this.gerenciadorTemperatura3, this.gerenciadorLuminosidade3], id: 3, planta: this.plantas[1]}),
     ]
 
@@ -64,11 +68,19 @@ export class RegatronService {
     }
 
     public getPlanta(id: number): Planta | undefined {
-        return this.clone(this.plantas.find(planta => planta.id === id))
+        const planta = this.plantas.find(planta => planta.id === id)
+        return this.clone(planta)
     }
 
     public getVaso(id: number): Vaso | undefined {
-        return this.clone(this.vasos.find(vaso => vaso.id === id))
+        const vaso = this.vasos.find(vaso => vaso.id === id)
+        const clone = this.clone(vaso)
+
+        if (clone && vaso) {
+            clone.dispositivos = vaso.dispositivos
+        }
+        
+        return clone
     }
 
     public salvarPlanta(planta: Planta): void {

@@ -15,6 +15,7 @@ export class GerenciadorLuminosidade implements Dispositivo {
     constructor(public fotoSensor: FotoSensor, public lampada: Lampada, public cobertor: Cobertor) {
         this.horaAtual = new Date().getHours()
         setInterval(() => {
+            // console.log("Gerenciador Luminosidade: " + this.notificarEstado())
             this.compararEExecutar();
         }, 1000)
     }

@@ -1,7 +1,10 @@
 import { Planta } from "../model/Planta.model";
 import { Vaso } from "../model/Vaso.model";
 import { BaseView } from "./BaseView";
-
+import { GerenciadorAgua } from "../regatron-service/dispositivos/RegadorInteligente/GerenciadorAgua";
+import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
+import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
+import { Dispositivo, DispositivoEnum } from "../regatron-service/dispositivos/Dispositivo";
 export class VasoView extends BaseView {
 
     private vaso!: Vaso
@@ -38,6 +41,7 @@ export class VasoView extends BaseView {
             Luminosidade: <select name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select>
             <br>
             Dispositivos: (aqui vai ter uma lista dos dispositivos do vaso)
+            <table id="dispositivos"><thead><tr><th>Tipo</th></tr></thead></table>
             <br>
             
             <button id='button'>Cancelar</button>
@@ -100,5 +104,28 @@ export class VasoView extends BaseView {
         })
 
         this.selectPlanta.value = vaso.planta?.id.toString() || "0"
+
+        const tabelaDispositivos = document.getElementById("dispositivos")
+        const tbody = document.createElement("tbody")
+
+        this.vaso.dispositivos.forEach(dispositivo => {
+            const tr = document.createElement("tr")
+            const tdTipo = document.createElement("td")
+
+            let tipoDispositivo = "fallback"
+            if(dispositivo instanceof GerenciadorTemperatura) {
+                tipoDispositivo = "Temperatura"
+            } else if (dispositivo instanceof GerenciadorAgua) {
+                tipoDispositivo = "Água"
+            } else if (dispositivo instanceof GerenciadorLuminosidade) {
+                tipoDispositivo = "Luminosidade"
+            }
+
+            tdTipo.innerHTML = tipoDispositivo
+
+            tr.appendChild(tdTipo)
+            tbody.appendChild(tr)
+        })
+        tabelaDispositivos?.appendChild(tbody)
     }
 }

@@ -17,7 +17,7 @@ export class GerenciadorAgua implements Dispositivo {
         public regador: Regador,
         public balanca: Balanca) {
             setInterval(() =>{
-                console.log("Estado do Reservatorio de Agua: " + this.notificarEstado());
+                // console.log("Estado do Reservatorio de Agua: " + this.notificarEstado());
                 this.compararEExecutar();
             }, this.intervaloMs)
     }
