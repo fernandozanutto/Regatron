@@ -4,13 +4,12 @@ import { Balanca} from "./Balanca";
 
 export interface RegadorConfig {
 
-     intervaloMs: number;
      quantidade: number; 
 }
 
 export class GerenciadorAgua implements Dispositivo {
 
-    intervaloMs: number = 10000;
+    intervaloMs: number = 3600000; // Regador rega automáticamente a cada 1h
     quantidade: number = 0;
 
     constructor(
@@ -22,8 +21,7 @@ export class GerenciadorAgua implements Dispositivo {
             }, this.intervaloMs)
     }
 
-    setConfiguracao({intervaloMs,quantidade}: RegadorConfig): void {
-        this.intervaloMs = intervaloMs;
+    setConfiguracao({quantidade}: RegadorConfig): void {
         this.quantidade = quantidade;
     }
 
