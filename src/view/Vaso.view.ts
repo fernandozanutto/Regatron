@@ -13,11 +13,6 @@ export class VasoView extends BaseView {
     cancelarButton: HTMLElement | null = null
     salvarButton: HTMLElement | null = null
     inputDescricao: HTMLInputElement | null = null
-    inputNomeUsual: HTMLInputElement | null = null
-    inputTempMinima: HTMLInputElement | null = null
-    inputTempMaxima: HTMLInputElement | null = null
-    inputQuantidadeAgua: HTMLInputElement | null = null
-    selectLuminosidade: HTMLSelectElement | null = null
     selectPlanta: HTMLSelectElement | null = null
 
     onVoltarButtonClick = () => {}
