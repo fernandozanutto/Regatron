@@ -15,10 +15,6 @@ import { Planta } from "./Planta.model";
 interface VasoDTO {
     id: number;
     descricao: string;
-    quantidadeAgua?: number;
-    temperaturaMinima?: number;
-    temperaturaMaxima?: number;
-    luminosidade?: Luminosidade;
     planta?: Planta;
     gerenciadorAgua?: GerenciadorAgua;
     gerenciadorTemp?: GerenciadorTemperatura;
@@ -27,10 +23,6 @@ interface VasoDTO {
 export class Vaso {
     public id: number;
     public descricao: string;
-    public quantidadeAgua: number;
-    public temperaturaMinima: number;
-    public temperaturaMaxima: number;
-    public luminosidade: Luminosidade;
     public planta?: Planta;
     public gerenciadorAgua?: GerenciadorAgua;
     public gerenciadorTemp?: GerenciadorTemperatura;
@@ -39,10 +31,6 @@ export class Vaso {
     constructor(
         {id,
         descricao,
-        quantidadeAgua,
-        temperaturaMaxima,
-        temperaturaMinima,
-        luminosidade,
         planta,
         gerenciadorAgua,
         gerenciadorTemp,
@@ -50,10 +38,6 @@ export class Vaso {
     ) { 
         this.id = id;
         this.descricao = descricao;
-        this.quantidadeAgua = quantidadeAgua || planta?.quantidadeAguaPadrao || 0;
-        this.temperaturaMaxima = temperaturaMaxima || planta?.temperaturaMaximaPadrao || 0;
-        this.temperaturaMinima = temperaturaMinima || planta?.temperaturaMinimaPadrao || 0;
-        this.luminosidade = luminosidade || planta?.luminosidade || Luminosidade.MEIA_LUZ;
         this.planta = planta;
         this.gerenciadorAgua = gerenciadorAgua;
         this.gerenciadorTemp = gerenciadorTemp;
@@ -63,21 +47,37 @@ export class Vaso {
         this.configurarGerenciadorTemp();
     }
 
+    public getLuminosidade(){
+        return this.planta?.luminosidade || Luminosidade.SOMBRA;
+    }
+
+    public getQuantidadeAgua(){
+        return this.planta?.quantidadeAguaPadrao || -1;
+    }
+
+    public getTempMinima(){
+        return this.planta?.temperaturaMinimaPadrao || -1;
+    }
+
+    public getTempMaxima(){
+        return this.planta?.temperaturaMaximaPadrao || -1;
+    }
+
     private configurarGerenciadorTemp(){
         if (this.gerenciadorTemp){
-            this.gerenciadorTemp.setConfiguracao({tempMinima: this.temperaturaMinima, tempMaxima: this.temperaturaMaxima})
+            this.gerenciadorTemp.setConfiguracao({tempMinima: this.getTempMinima(), tempMaxima: this.getTempMaxima()})
         }
     }
 
     private configurarGerenciadorLum(){
         if (this.gerenciadorLum){
-            this.gerenciadorLum.setConfiguracao({luminosidadeIdeal: this.luminosidade})
+            this.gerenciadorLum.setConfiguracao({luminosidadeIdeal: this.getLuminosidade()})
         }
     }
 
     private configurarGerenciadorAgua(){
         if (this.gerenciadorAgua){
-            this.gerenciadorAgua.setConfiguracao({quantidade: this.quantidadeAgua})
+            this.gerenciadorAgua.setConfiguracao({quantidade: this.getQuantidadeAgua()})
         }
     }
 
