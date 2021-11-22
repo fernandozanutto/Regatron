@@ -22,6 +22,23 @@ export class VasoController extends BaseController<VasoView> {
         }
 
         this.plantasDisponiveis = this.service.listPlantas()
+
+
+        setInterval(() => {
+            console.log(this)
+            if (this.vaso.gerenciadorAgua){
+                this.view.addLogAgua(this.vaso.gerenciadorAgua.notificarEstado())
+            }
+
+            if (this.vaso.gerenciadorTemp) {
+                this.view.addLogTemperatura(this.vaso.gerenciadorTemp.notificarEstado())
+            }
+
+            if (this.vaso.gerenciadorLum) {
+                this.view.addLogLuminosidade(this.vaso.gerenciadorLum.notificarEstado())
+            }
+            
+        }, 2000)
     }
 
     configureView(): void {

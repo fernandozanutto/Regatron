@@ -14,9 +14,9 @@ export class GerenciadorAgua implements Dispositivo {
         public regador: Regador,
         public balanca: Balanca) {
             setInterval(() =>{
-                console.log("Estado do Reservatorio de Agua: " + this.notificarEstado() + " mL");
+                console.log(this.notificarEstado());
                 this.compararEExecutar();
-            }, 3600000)
+            }, 3_600_000)
     }
 
     setConfiguracao(config: RegadorConfig): void {
@@ -30,8 +30,7 @@ export class GerenciadorAgua implements Dispositivo {
         )
     }
 
-    notificarEstado(): number {
-       return this.balanca.getAguaMl()
+    notificarEstado(): string {
+       return "Estado do Reservatorio de Agua: " + this.balanca.getAguaMl() + " mL"
     }
-
 }

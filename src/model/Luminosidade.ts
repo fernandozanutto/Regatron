@@ -1,5 +1,5 @@
 export enum Luminosidade {
-    SOMBRA,
-    MEIA_LUZ,
-    SOL_PLENO
+    SOMBRA = "Sombra",
+    MEIA_LUZ = "Meia Luz",
+    SOL_PLENO = "Sol Pleno"
 }

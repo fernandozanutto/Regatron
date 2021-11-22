@@ -6,16 +6,20 @@ export class VasoView extends BaseView {
     private vaso!: Vaso
     private plantas!: Planta[]
 
-    cancelarButton: HTMLElement | null = null;
-    salvarButton: HTMLElement | null = null;
-    inputDescricao: HTMLInputElement | null = null;
-    selectPlanta: HTMLSelectElement | null = null;
+    cancelarButton?: HTMLElement;
+    salvarButton?: HTMLElement;
+    inputDescricao?: HTMLInputElement;
+    selectPlanta?: HTMLSelectElement;
 
     onVoltarButtonClick = () => {}
     onSalvarButtonClick: (vaso: Vaso) => void = (vaso: Vaso) => {}
-    selectLuminosidade: HTMLSelectElement | null = null;
-    selectAgua: HTMLSelectElement | null = null;
-    selectTemperatura: HTMLSelectElement | null = null;
+    selectLuminosidade?: HTMLSelectElement;
+    selectAgua?: HTMLSelectElement;
+    selectTemperatura?: HTMLSelectElement;
+
+    divLogLuminosidade?: HTMLElement;
+    divLogAgua?: HTMLElement;
+    divLogTemperatura?: HTMLElement;
 
     constructor() {
         super()
@@ -38,7 +42,9 @@ export class VasoView extends BaseView {
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
 
-            <div id="log"></div>
+            <div id="log-luminosidade"></div>
+            <div id="log-agua"></div>
+            <div id="log-temperatura"></div>
         </center>
         `
     }
@@ -71,8 +77,8 @@ export class VasoView extends BaseView {
     }
     
     bindViewEvents(): void {
-        this.cancelarButton = document.getElementById('button')
-        this.salvarButton = document.getElementById('button-salvar')
+        this.cancelarButton = document.getElementById('button') || undefined
+        this.salvarButton = document.getElementById('button-salvar') || undefined
 
         if (this.cancelarButton) {
             this.cancelarButton.addEventListener('click', () => this.onVoltarButtonClick())
@@ -110,5 +116,23 @@ export class VasoView extends BaseView {
         this.selectLuminosidade.value = (!!this.vaso.gerenciadorLum) ? "1" : "0"
         this.selectAgua.value = (!!this.vaso.gerenciadorAgua) ? "1" : "0"
         this.selectTemperatura.value = (!!this.vaso.gerenciadorTemp) ? "1" : "0"
+    }
+
+    addLogLuminosidade(log: string) {
+        const text = document.createElement("p")
+        text.innerHTML = log
+        this.divLogLuminosidade?.appendChild(text)
+    }
+
+    addLogAgua(log: string) {
+        const text = document.createElement("p")
+        text.innerHTML = log
+        this.divLogAgua?.appendChild(text)
+    }
+
+    addLogTemperatura(log: string) {
+        const text = document.createElement("p")
+        text.innerHTML = log
+        this.divLogTemperatura?.appendChild(text)
     }
 }

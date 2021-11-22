@@ -15,7 +15,7 @@ export class GerenciadorLuminosidade implements Dispositivo {
     constructor(public fotoSensor: FotoSensor, public lampada: Lampada, public cobertor: Cobertor) {
         this.horaAtual = new Date().getHours()
         setInterval(() => {
-            // console.log("Gerenciador Luminosidade: " + this.notificarEstado())
+            // console.log(this.notificarEstado())
             this.compararEExecutar();
         }, 1000)
     }
@@ -25,7 +25,7 @@ export class GerenciadorLuminosidade implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        var luzAtual = this.fotoSensor.getValorAtual()
+        var luzAtual = this.getLuminosidadeSensor()
         this.atualizaRelogio()
         if(this.horaAtual >= 6 && this.horaAtual <= 19 && this.lampada.estaLigada())
             this.lampada.desliga()
@@ -46,13 +46,31 @@ export class GerenciadorLuminosidade implements Dispositivo {
         }
     }
 
-    notificarEstado(): Luminosidade {
-        return this.fotoSensor.getValorAtual()
+    notificarEstado(): string {
+        return "Gerenciador Luminosidade: " + this.getLuminosidadeSensor()
     }
 
     atualizaRelogio(): void {
         this.horaAtual = new Date().getHours()
     }
 
-    
+    getLuminosidadeSensor() {
+        var luz : Luminosidade 
+        const valor = this.fotoSensor.getValorAtual()
+        switch(valor){
+            case 0:
+                luz = Luminosidade.SOMBRA
+                break
+            case 1:
+                luz = Luminosidade.MEIA_LUZ
+                break
+            case 2:
+                luz = Luminosidade.SOL_PLENO
+                break
+            default:
+                luz = Luminosidade.SOMBRA //darkness prevails
+                break
+        }
+        return luz
+    }
 }

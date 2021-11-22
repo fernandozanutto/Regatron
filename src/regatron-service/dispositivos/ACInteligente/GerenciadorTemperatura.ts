@@ -20,7 +20,7 @@ export class GerenciadorTemperatura implements Dispositivo {
 
         setInterval(() => {
             this.compararEExecutar();
-            // console.log("Gerenciador Temperatura: " + this.notificarEstado())
+            // console.log(this.notificarEstado())
         }, 1000)
     }
 
@@ -30,7 +30,7 @@ export class GerenciadorTemperatura implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        this.temperaturaAtual = this.notificarEstado();
+        this.temperaturaAtual = this.termometro.getValorAtual();
         const arLigado = this.arCondicionado.estaLigado();
 
         if(this.temperaturaAtual > this.temperaturaMaxima){//temp da planta acima do maximo
@@ -66,8 +66,8 @@ export class GerenciadorTemperatura implements Dispositivo {
         }
 
     }
-    notificarEstado(): number {
-        return this.termometro.getValorAtual()
+    notificarEstado(): string {
+        return "Gerenciador Temperatura: " + this.termometro.getValorAtual()
     }
 
 }
