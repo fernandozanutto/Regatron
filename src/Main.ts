@@ -52,6 +52,6 @@ export class NavigatorController {
     }
 }
 const service = new RegatronService()
+const regatron = new Regatron(service);
 NavigatorController.service = service;
 NavigatorController.navigate(Pages.HOME)
-const regatron = new Regatron(service);

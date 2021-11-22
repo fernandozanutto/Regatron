@@ -49,13 +49,8 @@ export class RegatronService {
     private gerenciadorAgua1 = new GerenciadorAgua(this.regador1, this.balanca1)
 
     plantas: Planta[] = []
-    
-    vasos: Vaso[] = [
-        //new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura1, this.gerenciadorLuminosidade1], id: 1, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso da cozinha", gerenciadorTemp: this.gerenciadorTemperatura1, gerenciadorLum: this.gerenciadorLuminosidade1, id: 1, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso sanitário", gerenciadorTemp: this.gerenciadorTemperatura2, gerenciadorLum: this.gerenciadorLuminosidade2, gerenciadorAgua: this.gerenciadorAgua1, id: 2, planta: this.plantas[0]}),
-        new Vaso({descricao: "Vaso da sacada", gerenciadorTemp: this.gerenciadorTemperatura3, gerenciadorLum: this.gerenciadorLuminosidade3, id: 3, planta: this.plantas[1]}),
-    ]
+
+    vasos: Vaso[] = []
 
     public listPlantas(): Planta[] {
         return this.clone(this.plantas)
