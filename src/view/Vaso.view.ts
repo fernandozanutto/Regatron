@@ -30,20 +30,11 @@ export class VasoView extends BaseView {
         <p>Vaso</p>
             Descrição: <input type="text" name="descricao" id="descricao">
             <br>
-            Temperatura mínima: <input type="number" name="temp_minima" id="temp_minima">
-            <br>
-            Temperatura máxima: <input type="number" name="temp_maxima" id="temp_maxima">
-            <br>
-            Quantidade água: <input type="number" name="quantidade_agua" id="quantidade_agua">
-            <br>
             Planta: <select name="planta" id="planta"></select>
-            <br>
-            Luminosidade: <select name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select>
             <br>
             Dispositivos: (aqui vai ter uma lista dos dispositivos do vaso)
             <table id="dispositivos"><thead><tr><th>Tipo</th></tr></thead></table>
             <br>
-            
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
 
@@ -55,10 +46,6 @@ export class VasoView extends BaseView {
 
     private updateVasoFromInputs() {
         this.vaso.descricao = this.inputDescricao?.value || ""
-        this.vaso.temperaturaMinima = parseFloat(this.inputTempMinima?.value || "0.0")
-        this.vaso.temperaturaMaxima = parseFloat(this.inputTempMaxima?.value || "0.0")
-        this.vaso.luminosidade = parseInt(this.selectLuminosidade?.value || "0")
-        this.vaso.quantidadeAgua = parseFloat(this.inputQuantidadeAgua?.value || "0")
         this.vaso.planta = this.plantas.find(planta => planta.id === parseInt(this.selectPlanta?.value || "0"))
         // TODO: dispositivos
     }
@@ -84,18 +71,9 @@ export class VasoView extends BaseView {
         this.plantas = plantasDisponiveis
 
         this.inputDescricao = <HTMLInputElement> document.getElementById("descricao")
-        this.inputTempMinima = <HTMLInputElement> document.getElementById("temp_minima")
-        this.inputTempMaxima = <HTMLInputElement> document.getElementById("temp_maxima")
-        this.inputQuantidadeAgua = <HTMLInputElement> document.getElementById("quantidade_agua")
-        this.selectLuminosidade = <HTMLSelectElement> document.getElementById("luminosidade")
         this.selectPlanta = <HTMLSelectElement> document.getElementById("planta")
 
         this.inputDescricao.value = vaso.descricao
-        this.inputTempMinima.value = vaso.temperaturaMinima.toString()
-        this.inputTempMaxima.value = vaso.temperaturaMaxima.toString()
-        this.inputQuantidadeAgua.value = vaso.quantidadeAgua.toString()
-        this.selectLuminosidade.value = vaso.luminosidade.toString()
-
         this.plantas.forEach(planta => {
             const optionPlanta = document.createElement("option")
             optionPlanta.value = planta.id.toString()
