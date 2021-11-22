@@ -29,9 +29,6 @@ export class VasoView extends BaseView {
             <br>
             Dispositivos: 
             <table id="dispositivos"><thead><tr><th>Tipo</th></tr></thead></table>
-            Dispositivos de temperatura:
-            <table id="temperatura"><thead><tr><th>Dispositivo</th><th>Estado</th></tr></thead></table>
-            <br>
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
 
