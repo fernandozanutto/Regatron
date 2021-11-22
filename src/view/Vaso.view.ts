@@ -1,9 +1,6 @@
 import { Planta } from "../model/Planta.model";
 import { Vaso } from "../model/Vaso.model";
 import { BaseView } from "./BaseView";
-import { GerenciadorAgua } from "../regatron-service/dispositivos/RegadorInteligente/GerenciadorAgua";
-import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
-import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
 export class VasoView extends BaseView {
 
     private vaso!: Vaso
@@ -31,11 +28,11 @@ export class VasoView extends BaseView {
             <br>
             Dispositivos:
             <br>
-            Luminosidade: <select name="luminosidade"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            Luminosidade: <select name="luminosidade" id="luminosidade"><option value="1">Ativar</option><option value="0">Desativar</option></select>
             <br>
-            Água: <select name="agua"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            Água: <select name="agua" id="agua"><option value="1">Ativar</option><option value="0">Desativar</option></select>
             <br>
-            Temperatura: <selectname="temperatura"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            Temperatura: <select name="temperatura" id="temperatura"><option value="1">Ativar</option><option value="0">Desativar</option></select>
             <br>
 
             <button id='button'>Cancelar</button>
@@ -50,9 +47,27 @@ export class VasoView extends BaseView {
         this.vaso.descricao = this.inputDescricao?.value || ""
         this.vaso.planta = this.plantas.find(planta => planta.id === parseInt(this.selectPlanta?.value || "0"))
 
-        const aguaHabilitada = this.selectAgua?.value ==="1"
-        const luminosidadeHabilitada = this.selectLuminosidade?.value ==="1"
-        const temperaturaHabilitada = this.selectTemperatura?.value ==="1"
+        const aguaHabilitada = this.selectAgua?.value === "1"
+        const luminosidadeHabilitada = this.selectLuminosidade?.value === "1"
+        const temperaturaHabilitada = this.selectTemperatura?.value === "1"
+
+        if (!this.vaso.gerenciadorAgua && aguaHabilitada) {
+            this.vaso.adicionarGerenciadorAgua()
+        } else if (this.vaso.gerenciadorAgua && !aguaHabilitada) {
+            this.vaso.gerenciadorAgua = undefined
+        }
+
+        if (!this.vaso.gerenciadorLum && luminosidadeHabilitada) {
+            this.vaso.adicionarGerenciadorLum()
+        } else if (this.vaso.gerenciadorLum && !luminosidadeHabilitada) {
+            this.vaso.gerenciadorLum = undefined
+        }
+
+        if (!this.vaso.gerenciadorTemp && temperaturaHabilitada) {
+            this.vaso.adicionarGerenciadorTemp()
+        } else if (this.vaso.gerenciadorTemp && !temperaturaHabilitada) {
+            this.vaso.gerenciadorTemp = undefined
+        }
     }
     
     bindViewEvents(): void {
@@ -92,5 +107,8 @@ export class VasoView extends BaseView {
         this.selectAgua = <HTMLSelectElement> document.getElementById("agua")
         this.selectTemperatura = <HTMLSelectElement> document.getElementById("temperatura")
 
+        this.selectLuminosidade.value = (!!this.vaso.gerenciadorLum) ? "1" : "0"
+        this.selectAgua.value = (!!this.vaso.gerenciadorAgua) ? "1" : "0"
+        this.selectTemperatura.value = (!!this.vaso.gerenciadorTemp) ? "1" : "0"
     }
 }
