@@ -22,21 +22,38 @@ export class PlantaView extends BaseView {
         super()
         this.body = `
         <center>
-            <p>Planta</p>
-            Nome científico: <input type="text" name="nome_cientifico" id="nome_cientifico">
-            <br>
-            Nome usual: <input type="text" name="nome_usual" id="nome_usual">
-            <br>
-            Temperatura mínima padrão: <input type="number" name="temp_minima" id="temp_minima">
-            <br>
-            Temperatura máxima padrão: <input type="number" name="temp_maxima" id="temp_maxima">
-            <br>
-            Quantidade água padrão: <input type="number" name="quantidade_agua" id="quantidade_agua">
-            <br>
-            Luminosidade: <select name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select>
-            <br>
-            <button id='button'>Cancelar</button>
-            <button id='button-salvar'>Salvar</button>
+            <div class="container">
+                <p>Planta</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Nome científico:</td>
+                            <td><input type="text" name="nome_cientifico" id="nome_cientifico"></td>
+                        </tr>
+                        <tr>
+                            <td>Nome usual: </td>
+                            <td><input type="text" name="nome_usual" id="nome_usual"></td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura mínima padrão: </td>
+                            <td><input type="number" name="temp_minima" id="temp_minima"></td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura máxima padrão: </td>
+                            <td><input type="number" name="temp_maxima" id="temp_maxima"></td>
+                        </tr>
+                            <td>Quantidade água padrão: </td>
+                            <td><input type="number" name="quantidade_agua" id="quantidade_agua"></td>
+                        <tr>
+                            <td>Luminosidade: </td>
+                            <td><select class="u-full-width" name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <button id='button'>Cancelar</button>
+                <button id='button-salvar'>Salvar</button>
+            </div> 
         </center>
         `
     }
