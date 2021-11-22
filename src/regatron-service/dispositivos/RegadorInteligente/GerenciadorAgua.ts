@@ -3,14 +3,11 @@ import { Regador} from "./Regador";
 import { Balanca} from "./Balanca";
 
 export interface RegadorConfig {
-
-     intervaloMs: number;
      quantidade: number; 
 }
 
 export class GerenciadorAgua implements Dispositivo {
 
-    intervaloMs: number = 10000;
     quantidade: number = 0;
 
     constructor(
@@ -19,12 +16,11 @@ export class GerenciadorAgua implements Dispositivo {
             setInterval(() =>{
                 console.log("Estado do Reservatorio de Agua: " + this.notificarEstado() + " mL");
                 this.compararEExecutar();
-            }, this.intervaloMs)
+            }, 77777)
     }
 
-    setConfiguracao({intervaloMs,quantidade}: RegadorConfig): void {
-        this.intervaloMs = intervaloMs;
-        this.quantidade = quantidade;
+    setConfiguracao(config: RegadorConfig): void {
+        this.quantidade = config.quantidade;
     }
 
     compararEExecutar(): void {

@@ -60,7 +60,7 @@ export class Vaso {
             } else if (disp instanceof GerenciadorLuminosidade) {
                 disp.setConfiguracao({luminosidadeIdeal: this.luminosidade})
             } else if (disp instanceof GerenciadorAgua) {
-                disp.setConfiguracao({intervaloMs: this.quantidadeAgua / 3_600_000, quantidade: this.quantidadeAgua})
+                disp.setConfiguracao({quantidade: this.quantidadeAgua})
             }
         })
     }
