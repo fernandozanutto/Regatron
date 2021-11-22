@@ -20,7 +20,9 @@ interface VasoDTO {
     temperaturaMaxima?: number;
     luminosidade?: Luminosidade;
     planta?: Planta;
-    dispositivos?: Dispositivo[]
+    gerenciadorAgua?: GerenciadorAgua;
+    gerenciadorTemp?: GerenciadorTemperatura;
+    gerenciadorLum?: GerenciadorLuminosidade;
 }
 export class Vaso {
     public id: number;
@@ -29,8 +31,10 @@ export class Vaso {
     public temperaturaMinima: number;
     public temperaturaMaxima: number;
     public luminosidade: Luminosidade;
-    public planta: Planta | undefined;
-    public dispositivos: Dispositivo[] = []
+    public planta?: Planta;
+    public gerenciadorAgua?: GerenciadorAgua;
+    public gerenciadorTemp?: GerenciadorTemperatura;
+    public gerenciadorLum?: GerenciadorLuminosidade;
 
     constructor(
         {id,
@@ -40,7 +44,9 @@ export class Vaso {
         temperaturaMinima,
         luminosidade,
         planta,
-        dispositivos} : VasoDTO
+        gerenciadorAgua,
+        gerenciadorTemp,
+        gerenciadorLum} : VasoDTO
     ) { 
         this.id = id;
         this.descricao = descricao;
@@ -48,34 +54,48 @@ export class Vaso {
         this.temperaturaMaxima = temperaturaMaxima || planta?.temperaturaMaximaPadrao || 0;
         this.temperaturaMinima = temperaturaMinima || planta?.temperaturaMinimaPadrao || 0;
         this.luminosidade = luminosidade || planta?.luminosidade || Luminosidade.MEIA_LUZ;
-        this.planta = planta || undefined;
-        this.dispositivos = dispositivos || [];
-        this.configurarDispositivos()
+        this.planta = planta;
+        this.gerenciadorAgua = gerenciadorAgua;
+        this.gerenciadorTemp = gerenciadorTemp;
+        this.gerenciadorLum = gerenciadorLum;
+        this.configurarGerenciadorAgua();
+        this.configurarGerenciadorLum();
+        this.configurarGerenciadorTemp();
     }
 
-    private configurarDispositivos() {
-        this.dispositivos.forEach(disp => {
-            if (disp instanceof GerenciadorTemperatura) {
-                disp.setConfiguracao({tempMinima: this.temperaturaMinima, tempMaxima: this.temperaturaMaxima})
-            } else if (disp instanceof GerenciadorLuminosidade) {
-                disp.setConfiguracao({luminosidadeIdeal: this.luminosidade})
-            } else if (disp instanceof GerenciadorAgua) {
-                disp.setConfiguracao({quantidade: this.quantidadeAgua})
-            }
-        })
+    private configurarGerenciadorTemp(){
+        if (this.gerenciadorTemp){
+            this.gerenciadorTemp.setConfiguracao({tempMinima: this.temperaturaMinima, tempMaxima: this.temperaturaMaxima})
+        }
     }
 
-    public adicionarDispositivo(tipo: DispositivoEnum) {
-        switch(tipo) {
-            case DispositivoEnum.AGUA: 
-                this.dispositivos.push(new GerenciadorAgua(new Regador(), new Balanca()))
-                break
-            case DispositivoEnum.LUZ: 
-            this.dispositivos.push(new GerenciadorLuminosidade(new FotoSensor(), new Lampada(), new Cobertor()))
-                break
-            case DispositivoEnum.TEMPERATURA: 
-                this.dispositivos.push(new GerenciadorTemperatura(new Termometro(), new ArCondicionado()))
-                break
+    private configurarGerenciadorLum(){
+        if (this.gerenciadorLum){
+            this.gerenciadorLum.setConfiguracao({luminosidadeIdeal: this.luminosidade})
+        }
+    }
+
+    private configurarGerenciadorAgua(){
+        if (this.gerenciadorAgua){
+            this.gerenciadorAgua.setConfiguracao({quantidade: this.quantidadeAgua})
+        }
+    }
+
+    public adicionarGerenciadorAgua(){
+        if (!this.gerenciadorAgua){
+            this.gerenciadorAgua = new GerenciadorAgua(new Regador(), new Balanca())
+        }
+    }
+    
+    public adicionarGerenciadorTemp(){
+        if (!this.gerenciadorTemp){
+            this.gerenciadorTemp = new GerenciadorTemperatura(new Termometro(), new ArCondicionado())
+        }
+    }
+
+    public adicionarGerenciadorLum(){
+        if (!this.gerenciadorLum){
+            this.gerenciadorLum = new GerenciadorLuminosidade(new FotoSensor(), new Lampada(), new Cobertor())
         }
     }
 }
