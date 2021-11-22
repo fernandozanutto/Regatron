@@ -4,19 +4,21 @@ import { BaseView } from "./BaseView";
 import { GerenciadorAgua } from "../regatron-service/dispositivos/RegadorInteligente/GerenciadorAgua";
 import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
 import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
-import { Dispositivo, DispositivoEnum } from "../regatron-service/dispositivos/Dispositivo";
 export class VasoView extends BaseView {
 
     private vaso!: Vaso
     private plantas!: Planta[]
 
-    cancelarButton: HTMLElement | null = null
-    salvarButton: HTMLElement | null = null
-    inputDescricao: HTMLInputElement | null = null
-    selectPlanta: HTMLSelectElement | null = null
+    cancelarButton: HTMLElement | null = null;
+    salvarButton: HTMLElement | null = null;
+    inputDescricao: HTMLInputElement | null = null;
+    selectPlanta: HTMLSelectElement | null = null;
 
     onVoltarButtonClick = () => {}
     onSalvarButtonClick: (vaso: Vaso) => void = (vaso: Vaso) => {}
+    selectLuminosidade: HTMLSelectElement | null = null;
+    selectAgua: HTMLSelectElement | null = null;
+    selectTemperatura: HTMLSelectElement | null = null;
 
     constructor() {
         super()
@@ -27,11 +29,17 @@ export class VasoView extends BaseView {
             <br>
             Planta: <select name="planta" id="planta"></select>
             <br>
-            Dispositivos: 
-            <table id="dispositivos"><thead><tr><th>Tipo</th></tr></thead></table>
+            Dispositivos:
+            <br>
+            Luminosidade: <select name="luminosidade"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            <br>
+            Água: <select name="agua"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            <br>
+            Temperatura: <selectname="temperatura"><option value="1">Ativar</option><option value="0">Desativar</option></select>
+            <br>
+
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
-
 
             <div id="log"></div>
         </center>
@@ -41,7 +49,10 @@ export class VasoView extends BaseView {
     private updateVasoFromInputs() {
         this.vaso.descricao = this.inputDescricao?.value || ""
         this.vaso.planta = this.plantas.find(planta => planta.id === parseInt(this.selectPlanta?.value || "0"))
-        // TODO: dispositivos
+
+        const aguaHabilitada = this.selectAgua?.value ==="1"
+        const luminosidadeHabilitada = this.selectLuminosidade?.value ==="1"
+        const temperaturaHabilitada = this.selectTemperatura?.value ==="1"
     }
     
     bindViewEvents(): void {
@@ -77,25 +88,9 @@ export class VasoView extends BaseView {
 
         this.selectPlanta.value = vaso.planta?.id.toString() || "0"
 
-        const tabelaDispositivos = document.getElementById("dispositivos")
+        this.selectLuminosidade = <HTMLSelectElement> document.getElementById("luminosidade")
+        this.selectAgua = <HTMLSelectElement> document.getElementById("agua")
+        this.selectTemperatura = <HTMLSelectElement> document.getElementById("temperatura")
 
-        this.vaso.dispositivos.forEach(dispositivo => {
-            const tr = document.createElement("tr")
-            const tdTipo = document.createElement("td")
-
-            let tipoDispositivo = "fallback"
-            if(dispositivo instanceof GerenciadorTemperatura) {
-                tipoDispositivo = "Temperatura"
-            } else if (dispositivo instanceof GerenciadorAgua) {
-                tipoDispositivo = "Água"
-            } else if (dispositivo instanceof GerenciadorLuminosidade) {
-                tipoDispositivo = "Luminosidade"
-            }
-
-            tdTipo.innerHTML = tipoDispositivo
-
-            tr.appendChild(tdTipo)
-            tabelaDispositivos?.appendChild(tr)
-        })
     }
 }
