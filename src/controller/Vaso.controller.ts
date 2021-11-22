@@ -15,10 +15,10 @@ export class VasoController extends BaseController<VasoView> {
             if (dbVaso) {
                 this.vaso = dbVaso
             } else {
-                this.vaso = new Vaso({descricao: "", id: 0, dispositivos: []})
+                this.vaso = new Vaso({descricao: "", id: 0})
             }
         } else {
-            this.vaso = new Vaso({descricao: "", id: 0, dispositivos: []})
+            this.vaso = new Vaso({descricao: "", id: 0})
         }
 
         this.plantasDisponiveis = this.service.listPlantas()
