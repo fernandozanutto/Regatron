@@ -22,14 +22,15 @@ export class HomeView extends BaseView {
         this.body = `
         <center>
             <div class="container">
-                <button id='button-planta'>Cadastrar nova Planta</button>
-                <button id='button-vaso'>Cadastrar novo Vaso</button>
-
                 <div class="row">
-                    <h5>Plantas</h5>
+                    <h2>Plantas</h2>
                     <div id="plantas"></div>
-                    <h5>Vasos</h5>
+                    <button id='button-planta'>Cadastrar nova Planta</button>
+                </div>
+                <div class="row">
+                    <h2>Vasos</h2>
                     <div id="vasos"></div>
+                    <button id='button-vaso'>Cadastrar novo Vaso</button>
                 </div>
             </div>
         </center>
@@ -49,6 +50,7 @@ export class HomeView extends BaseView {
             <tr>
                 <th>Nome científico</th>
                 <th>Nome usual</th>
+                <th></th>
             </tr>
         `
         const tbody = document.createElement("tbody")
@@ -81,6 +83,7 @@ export class HomeView extends BaseView {
             <tr>
                 <th>Número</th>
                 <th>Descrição</th>
+                <th></th>
             </tr>
         `
         const tbody = document.createElement("tbody")

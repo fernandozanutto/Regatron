@@ -1,0 +1,33 @@
+body {
+    padding-top: 1rem;
+}
+
+div.row + div.row {
+    margin-top: 1rem;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+h2 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+td {
+    padding: 4px 8px;
+    align-items: center;
+}
+
+th {
+    padding: 12px 8px;
+}
+
+td button {
+    margin: 0;
+}
