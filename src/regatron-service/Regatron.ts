@@ -54,27 +54,27 @@ export class Regatron {
     constructor (database: RegatronService){
         this.database = database
 
-        this.database.salvarPlanta(new Planta({id: 1, nomeCientifico: "PLANTUS DELICIUS", 
-        nomeUsual: "GOSTOSA", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 200, 
-        temperaturaMaximaPadrao: 74, temperaturaMinimaPadrao: 0}))
+        this.database.salvarPlanta(new Planta({id: 1, nomeCientifico: "Helianthus Annuus", 
+        nomeUsual: "Girassol", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, 
+        temperaturaMaximaPadrao: 30, temperaturaMinimaPadrao: 10}))
 
-        this.database.salvarPlanta(new Planta({id: 2, nomeCientifico: "PLANTUS NOTDELICIUS", 
-        nomeUsual: "RUIM", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, 
-        temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30}))
+        this.database.salvarPlanta(new Planta({id: 2, nomeCientifico: "Cattleya Purpurata", 
+        nomeUsual: "Orquídea", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 250, 
+        temperaturaMaximaPadrao: 28, temperaturaMinimaPadrao: 14}))
 
-        this.database.salvarPlanta(new Planta({id: 3, nomeCientifico: "PLANTUS DARKUS ", 
-        nomeUsual: "TREVAS", luminosidade: Luminosidade.SOMBRA, quantidadeAguaPadrao: 150, 
+        this.database.salvarPlanta(new Planta({id: 3, nomeCientifico: "Leucanthemum Vulgare ", 
+        nomeUsual: "Margarida", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 150, 
         temperaturaMaximaPadrao: 29, temperaturaMinimaPadrao: 5}))
 
-        this.database.salvarVaso(new Vaso({descricao: "Vaso da cozinha", 
+        this.database.salvarVaso(new Vaso({descricao: "Vaso Azul", 
         gerenciadorTemp: this.gerenciadorTemperatura1, gerenciadorLum: this.gerenciadorLuminosidade1, 
         id: 1, planta: this.database.plantas[0]}))
 
-        this.database.salvarVaso(new Vaso({descricao: "Vaso sanitário", 
+        this.database.salvarVaso(new Vaso({descricao: "Vaso Vermelho", 
         gerenciadorTemp: this.gerenciadorTemperatura2, gerenciadorLum: this.gerenciadorLuminosidade2, 
         gerenciadorAgua: this.gerenciadorAgua1, id: 2, planta: this.database.plantas[0]}))
 
-        this.database.salvarVaso(new Vaso({descricao: "Vaso da sacada", 
+        this.database.salvarVaso(new Vaso({descricao: "Vaso Rosa", 
         gerenciadorTemp: this.gerenciadorTemperatura3, gerenciadorLum: this.gerenciadorLuminosidade3, 
         id: 3, planta: this.database.plantas[1]}))
         
