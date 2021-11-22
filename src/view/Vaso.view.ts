@@ -27,9 +27,8 @@ export class VasoView extends BaseView {
             <br>
             Planta: <select name="planta" id="planta"></select>
             <br>
-            Dispositivos: (aqui vai ter uma lista dos dispositivos do vaso)
+            Dispositivos: 
             <table id="dispositivos"><thead><tr><th>Tipo</th></tr></thead></table>
-            <br>
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
 
@@ -79,7 +78,6 @@ export class VasoView extends BaseView {
         this.selectPlanta.value = vaso.planta?.id.toString() || "0"
 
         const tabelaDispositivos = document.getElementById("dispositivos")
-        const tbody = document.createElement("tbody")
 
         this.vaso.dispositivos.forEach(dispositivo => {
             const tr = document.createElement("tr")
@@ -97,8 +95,7 @@ export class VasoView extends BaseView {
             tdTipo.innerHTML = tipoDispositivo
 
             tr.appendChild(tdTipo)
-            tbody.appendChild(tr)
+            tabelaDispositivos?.appendChild(tr)
         })
-        tabelaDispositivos?.appendChild(tbody)
     }
 }
