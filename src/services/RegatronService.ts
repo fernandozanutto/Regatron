@@ -50,8 +50,9 @@ export class RegatronService {
 
     plantas: Planta[] = [
         new Planta({id: 1, nomeCientifico: "PLANTUS DELICIUS", nomeUsual: "GOSTOSA", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 74, temperaturaMinimaPadrao: 0}),
-        //new Planta({id: 2, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "RUIM", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30})
-        
+        new Planta({id: 2, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "RUIM", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30}),
+        new Planta({id: 3, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "TESTE", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30}),
+        new Planta({id: 4, nomeCientifico: "PLANTINHA ", nomeUsual: "TESSTEEEE", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30})
     ]
     vasos: Vaso[] = [
         new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura1, this.gerenciadorLuminosidade1], id: 1, planta: this.plantas[0]}),
@@ -87,7 +88,8 @@ export class RegatronService {
         const indice = this.plantas.findIndex(p => p.id === planta.id)
 
         if (indice == -1){
-            this.plantas.push(planta) //planta nova
+            planta.id = (this.plantas.length + 1);   // Atrubui um ID pra planta nova
+            this.plantas.push(planta)               //  Planta nova         
         }
 
         else{
@@ -100,6 +102,7 @@ export class RegatronService {
         const indice = this.vasos.findIndex(p => p.id === vaso.id)
 
         if (indice == -1){
+            vaso.id = (this.vasos.length + 1);
             this.vasos.push(vaso) //vaso novo
         }
 
