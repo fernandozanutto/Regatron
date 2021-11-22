@@ -48,12 +48,8 @@ export class RegatronService {
     private balanca1 = new Balanca()
     private gerenciadorAgua1 = new GerenciadorAgua(this.regador1, this.balanca1)
 
-    plantas: Planta[] = [
-        new Planta({id: 1, nomeCientifico: "PLANTUS DELICIUS", nomeUsual: "GOSTOSA", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 74, temperaturaMinimaPadrao: 0}),
-        new Planta({id: 2, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "RUIM", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30}),
-        new Planta({id: 3, nomeCientifico: "PLANTUS NOTDELICIUS", nomeUsual: "TESTE", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30}),
-        new Planta({id: 4, nomeCientifico: "PLANTINHA ", nomeUsual: "TESSTEEEE", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, temperaturaMaximaPadrao: 220, temperaturaMinimaPadrao: 30})
-    ]
+    plantas: Planta[] = []
+    
     vasos: Vaso[] = [
         new Vaso({descricao: "Vaso da cozinha", dispositivos: [this.gerenciadorTemperatura1, this.gerenciadorLuminosidade1], id: 1, planta: this.plantas[0]}),
         new Vaso({descricao: "Vaso sanitário", dispositivos: [this.gerenciadorTemperatura2, this.gerenciadorLuminosidade2, this.gerenciadorAgua1], id: 2, planta: this.plantas[0]}),
