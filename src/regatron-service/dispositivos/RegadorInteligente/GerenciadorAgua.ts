@@ -27,7 +27,8 @@ export class GerenciadorAgua implements Dispositivo {
         if (this.balanca.getAguaMl() - 3*this.quantidade <= 0){
             this.notificador.adicionar("A água do reservatório está acabando!")
         }
-        else if (this.balanca.getAguaMl() - this.quantidade >= 0) {
+
+        if (this.balanca.getAguaMl() - this.quantidade >= 0) {
             this.regador.regar(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
             this.balanca.setAguaMl(
                 //Já que não estamos usando os componentes o método só n faz nada
