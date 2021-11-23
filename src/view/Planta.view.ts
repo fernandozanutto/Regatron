@@ -1,4 +1,3 @@
-import { Luminosidade } from "../model/Luminosidade";
 import { Planta } from "../model/Planta.model";
 import { BaseView } from "./BaseView";
 

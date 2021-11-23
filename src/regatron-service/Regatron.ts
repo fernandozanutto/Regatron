@@ -155,15 +155,20 @@ export class Regatron {
         console.log("Vasos existentes: ", this.database.listVasos());
 
         setInterval(() => {
-            var vasos = this.database.listVasos()
-            vasos.forEach(function(vaso){
+            var vasos = this.database.listVasos();
+            vasos.forEach(function (vaso) {
                 if (vaso.gerenciadorAgua) {
-                    const notificacao = vaso.gerenciadorAgua.checaNotificacao()
-                    if(notificacao){
-                        alert(notificacao.mensagem + " " +vaso.getId() + " está acabando!")
+                    const notificacao = vaso.gerenciadorAgua.checaNotificacao();
+                    if (notificacao) {
+                        alert(
+                            notificacao.mensagem +
+                                " " +
+                                vaso.getId() +
+                                " está acabando!"
+                        );
                     }
                 }
-            })
+            });
         }, 2000);
     }
 }

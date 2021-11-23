@@ -1,10 +1,6 @@
 import { ArCondicionado } from "../regatron-service/dispositivos/ACInteligente/ArCondicionado";
 import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
 import { Termometro } from "../regatron-service/dispositivos/ACInteligente/Termometro";
-import {
-    Dispositivo,
-    DispositivoEnum,
-} from "../regatron-service/dispositivos/Dispositivo";
 import { Cobertor } from "../regatron-service/dispositivos/LuzInteligente/Cobertor";
 import { FotoSensor } from "../regatron-service/dispositivos/LuzInteligente/Fotosensor";
 import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
@@ -119,15 +115,12 @@ export class Vaso {
         }
     }
 
-    public temPlanta(): boolean{
-        if (this.planta != undefined)
-            return true
-
-        else
-            return false
+    public temPlanta(): boolean {
+        if (this.planta != undefined) return true;
+        else return false;
     }
 
-    public getId(): number{
+    public getId(): number {
         return this.id;
     }
 

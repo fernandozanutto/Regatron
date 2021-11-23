@@ -10,7 +10,7 @@ export interface RegadorConfig {
 
 export class GerenciadorAgua implements Dispositivo {
     private quantidade: number = 0;
-    private notificador: Notificador = new Notificador;
+    private notificador: Notificador = new Notificador();
 
     constructor(public regador: Regador, public balanca: Balanca) {
         setInterval(() => {
@@ -24,8 +24,8 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        if (this.balanca.getAguaMl() - 3*this.quantidade <= 0){
-            this.notificador.adicionar("A água do reservatório do vaso")
+        if (this.balanca.getAguaMl() - 3 * this.quantidade <= 0) {
+            this.notificador.adicionar("A água do reservatório do vaso");
         }
 
         if (this.balanca.getAguaMl() - this.quantidade >= 0) {
@@ -48,10 +48,10 @@ export class GerenciadorAgua implements Dispositivo {
         );
     }
 
-    checaNotificacao() : Notificacao | void {
-        const notificacao = this.notificador.ler()
-        if(notificacao != undefined){
-            return notificacao
+    checaNotificacao(): Notificacao | void {
+        const notificacao = this.notificador.ler();
+        if (notificacao != undefined) {
+            return notificacao;
         }
     }
 }

@@ -7,7 +7,7 @@ import { RegatronService } from "../services/RegatronService";
 
 export class VasoController extends BaseController<VasoView> {
     constructor(protected view: VasoView, protected service: RegatronService) {
-        super(view, service)
+        super(view, service);
     }
 
     private vaso!: Vaso;
