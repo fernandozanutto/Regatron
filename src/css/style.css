@@ -19,6 +19,11 @@ h2 {
     margin: 0;
 }
 
+h3 {
+    font-size: 2.4rem;
+    margin: 0;
+}
+
 td {
     padding: 4px 8px;
     align-items: center;
@@ -30,4 +35,20 @@ th {
 
 td button {
     margin: 0;
+}
+
+div.logs {
+    display: flex;
+    flex-direction: row;
+}
+
+div.logs > div {
+    flex: auto;
+}
+
+div.logs div.log-item {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    max-height: 400px;
 }

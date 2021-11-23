@@ -27,14 +27,17 @@ export class VasoController extends BaseController<VasoView> {
         setInterval(() => {
             console.log(this)
             if (this.vaso.gerenciadorAgua){
+                console.log('alsdhasuodhas')
                 this.view.addLogAgua(this.vaso.gerenciadorAgua.notificarEstado())
             }
 
             if (this.vaso.gerenciadorTemp) {
+                console.log('sazxcczxzxczxcczx')
                 this.view.addLogTemperatura(this.vaso.gerenciadorTemp.notificarEstado())
             }
 
             if (this.vaso.gerenciadorLum) {
+                console.log('axlcjbhxckagb')
                 this.view.addLogLuminosidade(this.vaso.gerenciadorLum.notificarEstado())
             }
             

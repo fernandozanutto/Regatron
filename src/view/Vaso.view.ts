@@ -42,9 +42,12 @@ export class VasoView extends BaseView {
             <button id='button'>Cancelar</button>
             <button id='button-salvar'>Salvar</button>
 
-            <div id="log-luminosidade"></div>
-            <div id="log-agua"></div>
-            <div id="log-temperatura"></div>
+
+            <div class="logs">
+                <div><h3>Logs Luminosidade</h3> <div class="log-item" id="log-luminosidade"></div></div>
+                <div><h3>Logs Água</h3> <div class="log-item" id="log-agua"></div></div>
+                <div><h3>Logs Temperatura</h3> <div class="log-item" id="log-temperatura"></div></div>
+            </div>
         </center>
         `
     }
@@ -98,6 +101,10 @@ export class VasoView extends BaseView {
 
         this.inputDescricao = <HTMLInputElement> document.getElementById("descricao")
         this.selectPlanta = <HTMLSelectElement> document.getElementById("planta")
+
+        this.divLogAgua = <HTMLElement> document.getElementById("log-agua")
+        this.divLogLuminosidade = <HTMLElement> document.getElementById("log-luminosidade")
+        this.divLogTemperatura = <HTMLElement> document.getElementById("log-temperatura")
 
         this.inputDescricao.value = vaso.descricao
         this.plantas.forEach(planta => {

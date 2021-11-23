@@ -18,8 +18,8 @@ class App {
 
     private static onReady() {
         App.mainWindow = new App.BrowserWindow({
-            width: 1000,
-            height: 800,
+            width: 1200,
+            height: 1000,
             icon: __dirname + "/test.ico",
             title: "Regatron"
         });

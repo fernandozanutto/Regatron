@@ -67,7 +67,6 @@ export class GerenciadorTemperatura implements Dispositivo {
 
     }
     notificarEstado(): string {
-        return "Gerenciador Temperatura: " + this.termometro.getValorAtual()
+        return "Gerenciador Temperatura: " + this.termometro.getValorAtual() + " ºC"
     }
-
 }
