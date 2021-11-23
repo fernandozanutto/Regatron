@@ -43,12 +43,16 @@ div.logs {
 }
 
 div.logs > div {
-    flex: auto;
+    flex: 1;
 }
 
 div.logs div.log-item {
     display: flex;
     flex-direction: column-reverse;
-    overflow-y: auto;
+    overflow: auto;
     max-height: 400px;
+}
+
+p {
+    margin: 0;
 }

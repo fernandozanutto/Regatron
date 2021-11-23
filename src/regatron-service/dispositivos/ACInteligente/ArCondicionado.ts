@@ -11,11 +11,11 @@ export class ArCondicionado {
         this.ligado = false;
     }
 
-    liga(): void{
+    ligar(): void{
         this.ligado = true;
     }
 
-    desliga(): void{
+    desligar(): void{
         this.ligado = false;
     }
 
@@ -31,13 +31,13 @@ export class ArCondicionado {
         this.temperaturaAtual = novaTemp;
     }
 
-    aquece(novaTemp: number): void{
+    aquecer(novaTemp: number): void{
         if (novaTemp <= this.temperaturaMaxima){
             this.setTemperaturaAtual(novaTemp);
         }
     }
 
-    resfria(novaTemp: number): void{
+    resfriar(novaTemp: number): void{
         if (novaTemp >= this.temperaturaMinima){
             this.setTemperaturaAtual(novaTemp);
         }

@@ -11,7 +11,8 @@ export interface LuminosidadeConfig {
 export class GerenciadorLuminosidade implements Dispositivo {
 
     luminosidadeIdeal: Luminosidade = Luminosidade.SOMBRA 
-    horaAtual : number
+    horaAtual: number
+
     constructor(public fotoSensor: FotoSensor, public lampada: Lampada, public cobertor: Cobertor) {
         this.horaAtual = new Date().getHours()
         setInterval(() => {
@@ -26,31 +27,36 @@ export class GerenciadorLuminosidade implements Dispositivo {
 
     compararEExecutar(): void {
         var luzAtual = this.getLuminosidadeSensor()
-        this.atualizaRelogio()
+
+        this.atualizarRelogio()
+
         if(this.horaAtual >= 6 && this.horaAtual <= 19 && this.lampada.estaLigada())
-            this.lampada.desliga()
+            this.lampada.desligar()
 
         if(luzAtual > this.luminosidadeIdeal){
             switch(luzAtual){
                 case Luminosidade.SOL_PLENO:
-                    this.cobertor.estendeTotalmente()
+                    this.cobertor.estenderTotalmente()
                     break
                 case Luminosidade.MEIA_LUZ:
-                    this.cobertor.estendeParcialmente()
+                    this.cobertor.estenderParcialmente()
                     break
             }
         }
         else if(luzAtual < this.luminosidadeIdeal){
             if(this.horaAtual > 19 || this.horaAtual < 6 || !this.lampada.estaLigada())
-                this.lampada.liga()
+                this.lampada.ligar()
         }
     }
 
     notificarEstado(): string {
-        return "Gerenciador Luminosidade: " + this.getLuminosidadeSensor()
+        const estadoLuminosidade = "Luminosidade: " + this.getLuminosidadeSensor()
+        const estadoCobertor = "Cobertor: " + this.cobertor.getEstado()
+        const estadoLampada = "Lâmpada: " + (this.lampada.estaLigada() ? "ligada" : "desligada")
+        return estadoLuminosidade + " " + estadoCobertor + " " + estadoLampada
     }
 
-    atualizaRelogio(): void {
+    atualizarRelogio(): void {
         this.horaAtual = new Date().getHours()
     }
 

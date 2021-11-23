@@ -1,20 +1,24 @@
-export enum Estado{DESATIVADO, ATIVADO_PARCIALMENTE, ATIVADO}
+export enum Estado{
+    DESATIVADO = "Desativado",
+    ATIVADO_PARCIALMENTE = "Parcialmente", 
+    ATIVADO = "Ativado"
+}
 export class Cobertor {
-    private estado : Estado
+    private estado: Estado
 
     constructor(){
         this.estado = Estado.DESATIVADO
     }
 
-    estendeParcialmente() : void{
+    estenderParcialmente() : void{
         this.estado = Estado.ATIVADO_PARCIALMENTE
     }
 
-    estendeTotalmente() : void{
+    estenderTotalmente() : void{
         this.estado = Estado.ATIVADO
     }
 
-    retrai() : void{
+    retrair() : void{
         this.estado =Estado.DESATIVADO
     }
 

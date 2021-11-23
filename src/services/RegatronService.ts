@@ -10,29 +10,22 @@ export class RegatronService {
     vasos: Vaso[] = []
 
     public listPlantas(): Planta[] {
-        return this.clone(this.plantas)
+        return this.plantas.map(planta => planta.clone())
     }
 
     public listVasos(): Vaso[]{
-        return this.clone(this.vasos)
+        return this.vasos.map(vaso => vaso.clone())
     }
 
     public getPlanta(id: number): Planta | undefined {
         const planta = this.plantas.find(planta => planta.id === id)
-        return this.clone(planta)
+        return planta?.clone()
     }
 
     public getVaso(id: number): Vaso | undefined {
         const vaso = this.vasos.find(vaso => vaso.id === id)
-        const clone = this.clone(vaso)
-
-        if (clone && vaso) {
-            clone.gerenciadorAgua = vaso.gerenciadorAgua
-            clone.gerenciadorTemp = vaso.gerenciadorTemp
-            clone.gerenciadorLum = vaso.gerenciadorLum
-        }
         
-        return clone
+        return vaso?.clone()
     }
 
     public salvarPlanta(planta: Planta): void {
@@ -40,11 +33,11 @@ export class RegatronService {
 
         if (indice == -1){
             planta.id = (this.plantas.length + 1);   // Atrubui um ID pra planta nova
-            this.plantas.push(planta)               //  Planta nova         
+            this.plantas.push(planta.clone())               //  Planta nova         
         }
 
         else{
-            this.plantas[indice] = planta //planta existente
+            this.plantas[indice] = planta.clone() //planta existente
         }
         
     }
@@ -54,16 +47,9 @@ export class RegatronService {
 
         if (indice == -1){
             vaso.id = (this.vasos.length + 1);
-            this.vasos.push(vaso) //vaso novo
+            this.vasos.push(vaso.clone()) //vaso novo
+        } else {
+            this.vasos[indice] = vaso.clone() //vaso existente
         }
-
-        else{
-            this.vasos[indice] = vaso //vaso existente
-        }
-
-    }
-
-    private clone<T>(data: T) {
-        return JSON.parse(JSON.stringify(data)) as T
     }
 }

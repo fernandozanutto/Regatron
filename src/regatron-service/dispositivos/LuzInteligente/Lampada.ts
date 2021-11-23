@@ -5,11 +5,11 @@ export class Lampada {
         this.ligada = false
     }
 
-    liga() : void{
+    ligar() : void{
         this.ligada = true
     }
 
-    desliga() : void{
+    desligar() : void{
         this.ligada = false
     }
 

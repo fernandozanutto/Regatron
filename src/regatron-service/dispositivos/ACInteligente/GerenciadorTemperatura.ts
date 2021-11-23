@@ -39,11 +39,11 @@ export class GerenciadorTemperatura implements Dispositivo {
                 if(this.temperaturaAtual > this.arCondicionado.getTemperaturaAtual()){
                     //aciona resfriamento do ar condicionado
                     const novaTemp = this.arCondicionado.getTemperaturaAtual() - 1;
-                    this.arCondicionado.resfria(novaTemp);
+                    this.arCondicionado.resfriar(novaTemp);
                 }
             }
             else{
-                this.arCondicionado.liga();
+                this.arCondicionado.ligar();
             }
         }
 
@@ -53,20 +53,22 @@ export class GerenciadorTemperatura implements Dispositivo {
                 if (this.temperaturaAtual < this.arCondicionado.getTemperaturaAtual()){
                     //aciona aquecimento do ar condicionado
                     const novaTemp = this.arCondicionado.getTemperaturaAtual() + 1;
-                    this.arCondicionado.aquece(novaTemp);
+                    this.arCondicionado.aquecer(novaTemp);
                 }
             }
             else{
-                this.arCondicionado.liga()
+                this.arCondicionado.ligar()
             }
         }
 
         else{
-            this.arCondicionado.desliga();
+            this.arCondicionado.desligar();
         }
 
     }
     notificarEstado(): string {
-        return "Gerenciador Temperatura: " + this.termometro.getValorAtual() + " ºC"
+        const estadoTemperatura = "Temperatura: " + this.termometro.getValorAtual().toFixed(1) + "ºC"
+        const estadoArCondicionado = "AC: " + (this.arCondicionado.estaLigado() ? "Ligado" : "Desligado") + ": " + this.arCondicionado.getTemperaturaAtual().toFixed(1) + "ºC"
+        return estadoTemperatura + " " + estadoArCondicionado
     }
 }

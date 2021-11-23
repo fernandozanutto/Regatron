@@ -101,7 +101,7 @@ export class Vaso {
 
     public clone(): Vaso{
         const novoVaso = new Vaso({descricao: this.descricao, 
-        gerenciadorTemp: this.gerenciadorTemp, gerenciadorLum: this.gerenciadorLum, 
+        gerenciadorTemp: this.gerenciadorTemp, gerenciadorLum: this.gerenciadorLum, gerenciadorAgua: this.gerenciadorAgua,
         id: this.id, planta: this.planta})
 
         return novoVaso

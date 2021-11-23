@@ -39,7 +39,6 @@ export class VasoView extends BaseView {
                         </tr>
                     </tbody>
                 </table>
-                <h5>Dispositivos:</h5>
                 <table>
                     <tbody>
                         <tr>
@@ -59,7 +58,6 @@ export class VasoView extends BaseView {
                 <button id='button'>Cancelar</button>
                 <button id='button-salvar'>Salvar</button>
             </div>
-
 
             <div class="logs">
                 <div><h3>Logs Luminosidade</h3> <div class="log-item" id="log-luminosidade"></div></div>
@@ -145,19 +143,25 @@ export class VasoView extends BaseView {
 
     addLogLuminosidade(log: string) {
         const text = document.createElement("p")
-        text.innerHTML = log
+        const data = new Date()
+        const textFormat = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()} - ${log}`
+        text.innerHTML = textFormat
         this.divLogLuminosidade?.appendChild(text)
     }
 
     addLogAgua(log: string) {
         const text = document.createElement("p")
-        text.innerHTML = log
+        const data = new Date()
+        const textFormat = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()} - ${log}`
+        text.innerHTML = textFormat
         this.divLogAgua?.appendChild(text)
     }
 
     addLogTemperatura(log: string) {
         const text = document.createElement("p")
-        text.innerHTML = log
+        const data = new Date()
+        const textFormat = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()} - ${log}`
+        text.innerHTML = textFormat
         this.divLogTemperatura?.appendChild(text)
     }
 }

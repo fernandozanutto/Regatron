@@ -8,15 +8,15 @@ export interface RegadorConfig {
 
 export class GerenciadorAgua implements Dispositivo {
 
-    quantidade: number = 0;
+    private quantidade: number = 0;
 
     constructor(
         public regador: Regador,
         public balanca: Balanca) {
             setInterval(() =>{
-                console.log(this.notificarEstado());
+                //console.log(this.notificarEstado());
                 this.compararEExecutar();
-            }, 3_600_000)
+            }, 1200)
     }
 
     setConfiguracao(config: RegadorConfig): void {
@@ -24,10 +24,15 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        this.regador.rega(this.quantidade);         //Isso teoricamente deveria diminuir o nível da agua mas
-        this.balanca.setAguaMl(                     //Já que não estamos usando os componentes o método só n faz nada
-            this.balanca.getAguaMl() - this.quantidade
-        )
+        if (this.balanca.getAguaMl() - this.quantidade >= 0) {
+            this.regador.regar(this.quantidade);         //Isso teoricamente deveria diminuir o nível da agua mas
+            this.balanca.setAguaMl(                     //Já que não estamos usando os componentes o método só n faz nada
+                this.balanca.getAguaMl() - (this.quantidade)
+            )
+        } else {
+            this.regador.regar(this.balanca.getAguaMl())
+            this.balanca.setAguaMl(0) // simulando que regou tudo o que tinha, então o restante é 0
+        }
     }
 
     notificarEstado(): string {
