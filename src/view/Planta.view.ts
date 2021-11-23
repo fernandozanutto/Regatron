@@ -23,7 +23,7 @@ export class PlantaView extends BaseView {
         this.body = `
         <center>
             <div class="container">
-                <p>Planta</p>
+                <h2>Planta</h2>
                 <table>
                     <tbody>
                         <tr>
