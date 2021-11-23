@@ -24,18 +24,18 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        if (this.balanca.getAguaMl() - 3*this.quantidade <= 0){
+        if (this.balanca.getValorAtual() - 3*this.quantidade <= 0){
             this.notificador.adicionar("A água do reservatório do vaso")
         }
 
-        if (this.balanca.getAguaMl() - this.quantidade >= 0) {
+        if (this.balanca.getValorAtual() - this.quantidade >= 0) {
             this.regador.liberaAgua(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
             this.balanca.setAguaMl(
                 //Já que não estamos usando os componentes o método só n faz nada
-                this.balanca.getAguaMl() - this.quantidade
+                this.balanca.getValorAtual() - this.quantidade
             );
         } else {
-            this.regador.liberaAgua(this.balanca.getAguaMl());
+            this.regador.liberaAgua(this.balanca.getValorAtual());
             this.balanca.setAguaMl(0); // simulando que regou tudo o que tinha, então o restante é 0
         }
     }
@@ -43,7 +43,7 @@ export class GerenciadorAgua implements Dispositivo {
     notificarEstado(): string {
         return (
             "Estado do Reservatorio de Agua: " +
-            this.balanca.getAguaMl() +
+            this.balanca.getValorAtual() +
             " mL"
         );
     }
