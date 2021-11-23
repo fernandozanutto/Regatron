@@ -22,7 +22,7 @@ npm run start
 
 ## Authors
 
-- Ernesno Vaz de Oliveira
+- Ernesto Vaz de Oliveira
 - Fernando Zanutto
 - Rafael Antonio Ventura Trevisan
 - Ricco Vasconcellos Constante Soares
