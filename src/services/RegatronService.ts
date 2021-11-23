@@ -5,9 +5,8 @@ import { Vaso } from "../model/Vaso.model";
 export class RegatronService {
 
 
-    plantas: Planta[] = []
-
-    vasos: Vaso[] = []
+    private plantas: Planta[] = []
+    private vasos: Vaso[] = []
 
     public listPlantas(): Planta[] {
         return this.plantas.map(planta => planta.clone())

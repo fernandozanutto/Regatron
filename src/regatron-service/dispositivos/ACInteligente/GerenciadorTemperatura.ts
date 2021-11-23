@@ -13,8 +13,8 @@ export class GerenciadorTemperatura implements Dispositivo {
     temperaturaAtual: number = 0;
 
     constructor(
-        public termometro: Termometro,
-        public arCondicionado: ArCondicionado
+        private termometro: Termometro,
+        private arCondicionado: ArCondicionado
     ) {
         setInterval(() => {
             this.compararEExecutar();

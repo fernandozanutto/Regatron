@@ -118,7 +118,7 @@ export class Regatron {
                 gerenciadorTemp: this.gerenciadorTemperatura1,
                 gerenciadorLum: this.gerenciadorLuminosidade1,
                 id: 1,
-                planta: this.database.plantas[0],
+                planta: this.database.getPlanta(0),
             })
         );
 
@@ -129,7 +129,7 @@ export class Regatron {
                 gerenciadorLum: this.gerenciadorLuminosidade2,
                 gerenciadorAgua: this.gerenciadorAgua1,
                 id: 2,
-                planta: this.database.plantas[0],
+                planta: this.database.getPlanta(0),
             })
         );
 
@@ -139,7 +139,7 @@ export class Regatron {
                 gerenciadorTemp: this.gerenciadorTemperatura3,
                 gerenciadorLum: this.gerenciadorLuminosidade3,
                 id: 3,
-                planta: this.database.plantas[1],
+                planta: this.database.getPlanta(1),
             })
         );
 
