@@ -29,13 +29,13 @@ export class GerenciadorAgua implements Dispositivo {
         }
 
         if (this.balanca.getAguaMl() - this.quantidade >= 0) {
-            this.regador.regar(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
+            this.regador.liberaAgua(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
             this.balanca.setAguaMl(
                 //Já que não estamos usando os componentes o método só n faz nada
                 this.balanca.getAguaMl() - this.quantidade
             );
         } else {
-            this.regador.regar(this.balanca.getAguaMl());
+            this.regador.liberaAgua(this.balanca.getAguaMl());
             this.balanca.setAguaMl(0); // simulando que regou tudo o que tinha, então o restante é 0
         }
     }

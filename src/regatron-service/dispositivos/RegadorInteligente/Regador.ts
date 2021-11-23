@@ -1,5 +1,5 @@
 export class Regador {
     constructor() {}
 
-    regar(quantidade: number): void {}
+    liberaAgua(quantidade: number): void {}
 }
