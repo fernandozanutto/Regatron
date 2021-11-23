@@ -25,22 +25,40 @@ export class VasoView extends BaseView {
         super()
         this.body = `
         <center>
-        <p>Vaso</p>
-            Descrição: <input type="text" name="descricao" id="descricao">
-            <br>
-            Planta: <select name="planta" id="planta"></select>
-            <br>
-            Dispositivos:
-            <br>
-            Luminosidade: <select name="luminosidade" id="luminosidade"><option value="1">Ativar</option><option value="0">Desativar</option></select>
-            <br>
-            Água: <select name="agua" id="agua"><option value="1">Ativar</option><option value="0">Desativar</option></select>
-            <br>
-            Temperatura: <select name="temperatura" id="temperatura"><option value="1">Ativar</option><option value="0">Desativar</option></select>
-            <br>
-
-            <button id='button'>Cancelar</button>
-            <button id='button-salvar'>Salvar</button>
+            <div class = "container">
+                <h2>Vaso</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Descrição: </td>
+                            <td><input type="text" name="descricao" id="descricao"></td>
+                        </tr>
+                        <tr>
+                            <td>Planta: </td>
+                            <td><select class="u-full-width" name="planta" id="planta"></select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h5>Dispositivos:</h5>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Luminosidade: </td>
+                            <td><select name="luminosidade" id="luminosidade"><option value="1">Ativar</option><option value="0">Desativar</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>Água: </td>
+                            <td><select name="agua" id="agua"><option value="1">Ativar</option><option value="0">Desativar</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>Temperatura: </td>
+                            <td><select name="temperatura" id="temperatura"><option value="1">Ativar</option><option value="0">Desativar</option></select></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id='button'>Cancelar</button>
+                <button id='button-salvar'>Salvar</button>
+            </div>
 
 
             <div class="logs">
