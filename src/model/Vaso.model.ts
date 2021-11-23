@@ -48,7 +48,7 @@ export class Vaso {
     }
 
     public getLuminosidade(){
-        return this.planta?.luminosidade || Luminosidade.SOMBRA;
+        return this.planta?.luminosidade || Luminosidade.Sombra;
     }
 
     public getQuantidadeAgua(){

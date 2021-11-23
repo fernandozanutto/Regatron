@@ -14,10 +14,10 @@ export class PlantaController extends BaseController<PlantaView> {
             if (dbPlanta) {
                 this.planta = dbPlanta
             } else {
-                this.planta = new Planta({id: 0, luminosidade: Luminosidade.MEIA_LUZ, nomeCientifico: "", nomeUsual: "", quantidadeAguaPadrao: 0, temperaturaMaximaPadrao: 0, temperaturaMinimaPadrao: 0})    
+                this.planta = new Planta({id: 0, luminosidade: Luminosidade.Meia_Luz, nomeCientifico: "", nomeUsual: "", quantidadeAguaPadrao: 0, temperaturaMaximaPadrao: 0, temperaturaMinimaPadrao: 0})    
             }
         } else {
-            this.planta = new Planta({id: 0, luminosidade: Luminosidade.MEIA_LUZ, nomeCientifico: "", nomeUsual: "", quantidadeAguaPadrao: 0, temperaturaMaximaPadrao: 0, temperaturaMinimaPadrao: 0})
+            this.planta = new Planta({id: 0, luminosidade: Luminosidade.Meia_Luz, nomeCientifico: "", nomeUsual: "", quantidadeAguaPadrao: 0, temperaturaMaximaPadrao: 0, temperaturaMinimaPadrao: 0})
         }
     }
 

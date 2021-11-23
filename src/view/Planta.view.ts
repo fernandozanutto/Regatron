@@ -46,7 +46,13 @@ export class PlantaView extends BaseView {
                             <td><input type="number" name="quantidade_agua" id="quantidade_agua"></td>
                         <tr>
                             <td>Luminosidade: </td>
-                            <td><select class="u-full-width" name="luminosidade" id="luminosidade"><option value="0">Sol Pleno</option><option value="1">Sombra</option><option value="2">Meia luz</option></select></td>
+                            <td>
+                                <select class="u-full-width" name="luminosidade" id="luminosidade">
+                                <option value="0">Sol Pleno</option>
+                                <option value="1">Sombra</option>
+                                <option value="2">Meia luz</option>
+                                </select>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,7 +70,7 @@ export class PlantaView extends BaseView {
         this.planta.temperaturaMinimaPadrao = parseFloat(this.inputTempMinima?.value || "0.0")
         this.planta.temperaturaMaximaPadrao = parseFloat(this.inputTempMaxima?.value || "0.0")
         this.planta.quantidadeAguaPadrao = parseFloat(this.inputQuantidadeAgua?.value || "0")
-        this.planta.luminosidade = Luminosidade[parseInt(this.selectLuminosidade?.value || "0")]
+        this.planta.luminosidade = parseInt(this.selectLuminosidade?.value || "0")
     }
 
     bindViewEvents(): void {

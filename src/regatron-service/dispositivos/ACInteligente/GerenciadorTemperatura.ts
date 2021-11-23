@@ -69,6 +69,6 @@ export class GerenciadorTemperatura implements Dispositivo {
     notificarEstado(): string {
         const estadoTemperatura = "Temperatura: " + this.termometro.getValorAtual().toFixed(1) + "ºC"
         const estadoArCondicionado = "AC: " + (this.arCondicionado.estaLigado() ? "Ligado" : "Desligado") + ": " + this.arCondicionado.getTemperaturaAtual().toFixed(1) + "ºC"
-        return estadoTemperatura + " " + estadoArCondicionado
+        return estadoTemperatura + " - " + estadoArCondicionado
     }
 }

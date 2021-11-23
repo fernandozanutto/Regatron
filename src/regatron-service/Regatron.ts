@@ -55,15 +55,15 @@ export class Regatron {
         this.database = database
 
         this.database.salvarPlanta(new Planta({id: 1, nomeCientifico: "Helianthus Annuus", 
-        nomeUsual: "Girassol", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 200, 
+        nomeUsual: "Girassol", luminosidade: Luminosidade.Sol_Pleno, quantidadeAguaPadrao: 200, 
         temperaturaMaximaPadrao: 30, temperaturaMinimaPadrao: 10}))
 
         this.database.salvarPlanta(new Planta({id: 2, nomeCientifico: "Cattleya Purpurata", 
-        nomeUsual: "Orquídea", luminosidade: Luminosidade.MEIA_LUZ, quantidadeAguaPadrao: 250, 
+        nomeUsual: "Orquídea", luminosidade: Luminosidade.Meia_Luz, quantidadeAguaPadrao: 250, 
         temperaturaMaximaPadrao: 28, temperaturaMinimaPadrao: 14}))
 
         this.database.salvarPlanta(new Planta({id: 3, nomeCientifico: "Leucanthemum Vulgare ", 
-        nomeUsual: "Margarida", luminosidade: Luminosidade.SOL_PLENO, quantidadeAguaPadrao: 150, 
+        nomeUsual: "Margarida", luminosidade: Luminosidade.Sombra, quantidadeAguaPadrao: 150, 
         temperaturaMaximaPadrao: 29, temperaturaMinimaPadrao: 5}))
 
         this.database.salvarVaso(new Vaso({descricao: "Vaso Azul", 

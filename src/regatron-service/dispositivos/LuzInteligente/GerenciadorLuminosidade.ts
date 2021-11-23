@@ -10,7 +10,7 @@ export interface LuminosidadeConfig {
 
 export class GerenciadorLuminosidade implements Dispositivo {
 
-    luminosidadeIdeal: Luminosidade = Luminosidade.SOMBRA 
+    luminosidadeIdeal: Luminosidade = Luminosidade.Sombra 
     horaAtual: number
 
     constructor(public fotoSensor: FotoSensor, public lampada: Lampada, public cobertor: Cobertor) {
@@ -35,10 +35,10 @@ export class GerenciadorLuminosidade implements Dispositivo {
 
         if(luzAtual > this.luminosidadeIdeal){
             switch(luzAtual){
-                case Luminosidade.SOL_PLENO:
+                case Luminosidade.Sol_Pleno:
                     this.cobertor.estenderTotalmente()
                     break
-                case Luminosidade.MEIA_LUZ:
+                case Luminosidade.Meia_Luz:
                     this.cobertor.estenderParcialmente()
                     break
             }
@@ -50,10 +50,10 @@ export class GerenciadorLuminosidade implements Dispositivo {
     }
 
     notificarEstado(): string {
-        const estadoLuminosidade = "Luminosidade: " + this.getLuminosidadeSensor()
+        const estadoLuminosidade = "Luminosidade: " + Luminosidade[this.getLuminosidadeSensor()]
         const estadoCobertor = "Cobertor: " + this.cobertor.getEstado()
         const estadoLampada = "Lâmpada: " + (this.lampada.estaLigada() ? "ligada" : "desligada")
-        return estadoLuminosidade + " " + estadoCobertor + " " + estadoLampada
+        return estadoLuminosidade + " - " + estadoCobertor + " - " + estadoLampada
     }
 
     atualizarRelogio(): void {
@@ -63,18 +63,18 @@ export class GerenciadorLuminosidade implements Dispositivo {
     getLuminosidadeSensor() {
         var luz : Luminosidade 
         const valor = this.fotoSensor.getValorAtual()
-        switch(valor){
+        switch(valor) {
             case 0:
-                luz = Luminosidade.SOMBRA
+                luz = Luminosidade.Sombra
                 break
             case 1:
-                luz = Luminosidade.MEIA_LUZ
+                luz = Luminosidade.Meia_Luz
                 break
             case 2:
-                luz = Luminosidade.SOL_PLENO
+                luz = Luminosidade.Sol_Pleno
                 break
             default:
-                luz = Luminosidade.SOMBRA //darkness prevails
+                luz = Luminosidade.Sombra //darkness prevails
                 break
         }
         return luz
