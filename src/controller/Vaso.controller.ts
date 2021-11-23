@@ -8,15 +8,6 @@ import { RegatronService } from "../services/RegatronService";
 export class VasoController extends BaseController<VasoView> {
     constructor(protected view: VasoView, protected service: RegatronService) {
         super(view, service)
-        setInterval(() => {
-            if (this.vaso.gerenciadorAgua) {
-                const notificacao = this.vaso.gerenciadorAgua.checaNotificacao()
-                if(notificacao){
-                    alert(notificacao.mensagem)
-                }
-            }
-        }, 1000);
-        
     }
 
     private vaso!: Vaso;
