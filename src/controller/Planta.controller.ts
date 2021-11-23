@@ -49,10 +49,10 @@ export class PlantaController extends BaseController<PlantaView> {
                         alert("Todos campos são obrigatórios")
                         break
                     case 2:
-                        alert("Temperatura deve estar entre 0 e 35 graus")
+                        alert("Temperaturas deve estar entre 0 e 35 graus")
                         break
                     case 3:
-                        alert("Temperatura mínima deve ser menor que a temperatura máxima")
+                        alert("A temperatura mínima não deve ser maior que a temperatura máxima")
                         break
                     case 4:
                         alert("O nome da planta deve possuir apenas letras")
@@ -61,7 +61,6 @@ export class PlantaController extends BaseController<PlantaView> {
                         alert("Quantidade de água diária deve estar entre 100 e 2000ml")
                         break
                 }
-
             }
             else{
                 this.service.salvarPlanta(planta);
