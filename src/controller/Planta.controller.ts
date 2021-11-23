@@ -1,4 +1,4 @@
-import { NavigatorController, Pages } from "../Main";
+import { NavigatorController } from "../Main";
 import { Luminosidade } from "../model/Luminosidade";
 import { Planta } from "../model/Planta.model";
 import { PlantaView } from "../view/Planta.view";
@@ -42,27 +42,30 @@ export class PlantaController extends BaseController<PlantaView> {
         };
 
         this.view.onSalvarButtonClick = (planta: Planta) => {
-            const isNotValid = this.validarInput(planta)
-            if(isNotValid){
-                switch(isNotValid){
+            const isNotValid = this.validarInput(planta);
+            if (isNotValid) {
+                switch (isNotValid) {
                     case 1:
-                        alert("Todos os campos são obrigatórios")
-                        break
+                        alert("Todos os campos são obrigatórios");
+                        break;
                     case 2:
-                        alert("Temperaturas deve estar entre 0 e 35 graus")
-                        break
+                        alert("Temperaturas deve estar entre 0 e 35 graus");
+                        break;
                     case 3:
-                        alert("A temperatura mínima não deve ser maior que a temperatura máxima")
-                        break
+                        alert(
+                            "A temperatura mínima não deve ser maior que a temperatura máxima"
+                        );
+                        break;
                     case 4:
-                        alert("O nome da planta deve possuir apenas letras")
-                        break
+                        alert("O nome da planta deve possuir apenas letras");
+                        break;
                     case 5:
-                        alert("Quantidade de água diária deve estar entre 100 e 2000ml")
-                        break
+                        alert(
+                            "Quantidade de água diária deve estar entre 100 e 2000ml"
+                        );
+                        break;
                 }
-            }
-            else{
+            } else {
                 this.service.salvarPlanta(planta);
                 NavigatorController.goBack();
             }
@@ -71,33 +74,37 @@ export class PlantaController extends BaseController<PlantaView> {
         this.view.bindViewData(this.planta);
     }
 
-    validarInput(planta : Planta) : number{ 
-    //returns 0 if input is valid, or the first business rule it violates, in case its invalid 
-        const onlyLettersRegex= new RegExp(/^[A-Za-z\s]*$/)
+    validarInput(planta: Planta): number {
+        //returns 0 if input is valid, or the first business rule it violates, in case its invalid
+        const onlyLettersRegex = new RegExp(/^[A-Za-z\s]*$/);
 
-        if(!planta.nomeCientifico || !planta.nomeUsual){
-            return 1
-        }
-        else if(planta.temperaturaMinimaPadrao < 0 || planta.temperaturaMinimaPadrao > 35){
-            return 2
-        }
-        else if(planta.temperaturaMaximaPadrao < 0 || planta.temperaturaMaximaPadrao > 35){
-            return 2
-        }
-        else if(planta.temperaturaMaximaPadrao < planta.temperaturaMinimaPadrao){
-            return 3
-        }
-        else if(!onlyLettersRegex.test(planta.nomeCientifico)){
-            return 4
-        }
-        else if(!onlyLettersRegex.test(planta.nomeUsual)){
-            return 4
-        }
-        else if(planta.quantidadeAguaPadrao < 100 || planta.quantidadeAguaPadrao > 2000){
-            return 5
-        }
-        else{
-            return 0
+        if (!planta.nomeCientifico || !planta.nomeUsual) {
+            return 1;
+        } else if (
+            planta.temperaturaMinimaPadrao < 0 ||
+            planta.temperaturaMinimaPadrao > 35
+        ) {
+            return 2;
+        } else if (
+            planta.temperaturaMaximaPadrao < 0 ||
+            planta.temperaturaMaximaPadrao > 35
+        ) {
+            return 2;
+        } else if (
+            planta.temperaturaMaximaPadrao < planta.temperaturaMinimaPadrao
+        ) {
+            return 3;
+        } else if (!onlyLettersRegex.test(planta.nomeCientifico)) {
+            return 4;
+        } else if (!onlyLettersRegex.test(planta.nomeUsual)) {
+            return 4;
+        } else if (
+            planta.quantidadeAguaPadrao < 100 ||
+            planta.quantidadeAguaPadrao > 2000
+        ) {
+            return 5;
+        } else {
+            return 0;
         }
     }
 }

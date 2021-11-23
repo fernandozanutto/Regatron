@@ -1,11 +1,10 @@
-export class Balanca {
+export class Balanca implements Sensor{
     private aguaml: number;
 
     constructor() {
         this.aguaml = 5000;
     }
-
-    getAguaMl(): number {
+    getValorAtual(): number {
         return this.aguaml;
     }
 
