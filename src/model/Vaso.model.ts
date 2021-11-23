@@ -119,6 +119,14 @@ export class Vaso {
         }
     }
 
+    public temPlanta(): boolean{
+        if (this.planta != undefined)
+            return true
+            
+        else
+            return false
+    }
+
     public clone(): Vaso {
         const novoVaso = new Vaso({
             descricao: this.descricao,
@@ -128,7 +136,6 @@ export class Vaso {
             id: this.id,
             planta: this.planta,
         });
-
         return novoVaso;
     }
 }

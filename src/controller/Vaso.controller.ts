@@ -23,7 +23,7 @@ export class VasoController extends BaseController<VasoView> {
         this.plantasDisponiveis = this.service.listPlantas();
 
         setInterval(() => {
-            if (this.vaso.gerenciadorAgua) {
+            if (this.vaso.gerenciadorAgua && this.vaso.temPlanta()) {
                 this.view.addLogAgua(
                     this.vaso.gerenciadorAgua.notificarEstado()
                 );
@@ -33,13 +33,13 @@ export class VasoController extends BaseController<VasoView> {
                 }
             }
 
-            if (this.vaso.gerenciadorTemp) {
+            if (this.vaso.gerenciadorTemp && this.vaso.temPlanta()) {
                 this.view.addLogTemperatura(
                     this.vaso.gerenciadorTemp.notificarEstado()
                 );
             }
 
-            if (this.vaso.gerenciadorLum) {
+            if (this.vaso.gerenciadorLum && this.vaso.temPlanta()) {
                 this.view.addLogLuminosidade(
                     this.vaso.gerenciadorLum.notificarEstado()
                 );

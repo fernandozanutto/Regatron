@@ -118,7 +118,7 @@ export class Regatron {
                 gerenciadorTemp: this.gerenciadorTemperatura1,
                 gerenciadorLum: this.gerenciadorLuminosidade1,
                 id: 1,
-                planta: this.database.getPlanta(1),
+                planta: this.database.getPlanta(0),
             })
         );
 
