@@ -5,51 +5,53 @@ import { VasoView } from "../view/Vaso.view";
 import { BaseController } from "./BaseController";
 
 export class VasoController extends BaseController<VasoView> {
-
-    private vaso!: Vaso
-    private plantasDisponiveis!: Planta[]
+    private vaso!: Vaso;
+    private plantasDisponiveis!: Planta[];
 
     override onCreate() {
         if (this.parameters.id) {
-            const dbVaso = this.service.getVaso(this.parameters.id)
+            const dbVaso = this.service.getVaso(this.parameters.id);
             if (dbVaso) {
-                this.vaso = dbVaso
+                this.vaso = dbVaso;
             } else {
-                this.vaso = new Vaso({descricao: "", id: 0})
+                this.vaso = new Vaso({ descricao: "", id: 0 });
             }
         } else {
-            this.vaso = new Vaso({descricao: "", id: 0})
+            this.vaso = new Vaso({ descricao: "", id: 0 });
         }
 
-        this.plantasDisponiveis = this.service.listPlantas()
-
+        this.plantasDisponiveis = this.service.listPlantas();
 
         setInterval(() => {
-            if (this.vaso.gerenciadorAgua){
-                this.view.addLogAgua(this.vaso.gerenciadorAgua.notificarEstado())
+            if (this.vaso.gerenciadorAgua) {
+                this.view.addLogAgua(
+                    this.vaso.gerenciadorAgua.notificarEstado()
+                );
             }
 
             if (this.vaso.gerenciadorTemp) {
-                this.view.addLogTemperatura(this.vaso.gerenciadorTemp.notificarEstado())
+                this.view.addLogTemperatura(
+                    this.vaso.gerenciadorTemp.notificarEstado()
+                );
             }
 
             if (this.vaso.gerenciadorLum) {
-                this.view.addLogLuminosidade(this.vaso.gerenciadorLum.notificarEstado())
+                this.view.addLogLuminosidade(
+                    this.vaso.gerenciadorLum.notificarEstado()
+                );
             }
-            
-        }, 2000)
+        }, 2000);
     }
 
     configureView(): void {
         this.view.onVoltarButtonClick = () => {
-            NavigatorController.goBack()
-        }
+            NavigatorController.goBack();
+        };
         this.view.onSalvarButtonClick = (vaso: Vaso) => {
-            this.service.salvarVaso(vaso)
-            NavigatorController.goBack()
-        }
+            this.service.salvarVaso(vaso);
+            NavigatorController.goBack();
+        };
 
-        this.view.bindViewData(this.vaso, this.plantasDisponiveis)
+        this.view.bindViewData(this.vaso, this.plantasDisponiveis);
     }
-    
 }

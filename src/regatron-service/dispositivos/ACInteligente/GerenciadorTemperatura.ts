@@ -8,67 +8,74 @@ export interface ACConfig {
 }
 
 export class GerenciadorTemperatura implements Dispositivo {
-
     temperaturaMinima: number = 0;
     temperaturaMaxima: number = 0;
     temperaturaAtual: number = 0;
 
     constructor(
-        public termometro: Termometro, 
+        public termometro: Termometro,
         public arCondicionado: ArCondicionado
     ) {
-
         setInterval(() => {
             this.compararEExecutar();
             // console.log(this.notificarEstado())
-        }, 1000)
+        }, 1000);
     }
 
-    setConfiguracao({tempMinima, tempMaxima}: ACConfig): void {
+    setConfiguracao({ tempMinima, tempMaxima }: ACConfig): void {
         this.temperaturaMinima = tempMinima;
-        this.temperaturaMaxima = tempMaxima
+        this.temperaturaMaxima = tempMaxima;
     }
 
     compararEExecutar(): void {
         this.temperaturaAtual = this.termometro.getValorAtual();
         const arLigado = this.arCondicionado.estaLigado();
 
-        if(this.temperaturaAtual > this.temperaturaMaxima){//temp da planta acima do maximo
-            if (arLigado){
+        if (this.temperaturaAtual > this.temperaturaMaxima) {
+            //temp da planta acima do maximo
+            if (arLigado) {
                 //testa se o ambiente nao esta sendo resfriado
-                if(this.temperaturaAtual > this.arCondicionado.getTemperaturaAtual()){
+                if (
+                    this.temperaturaAtual >
+                    this.arCondicionado.getTemperaturaAtual()
+                ) {
                     //aciona resfriamento do ar condicionado
-                    const novaTemp = this.arCondicionado.getTemperaturaAtual() - 1;
+                    const novaTemp =
+                        this.arCondicionado.getTemperaturaAtual() - 1;
                     this.arCondicionado.resfriar(novaTemp);
                 }
-            }
-            else{
+            } else {
                 this.arCondicionado.ligar();
             }
-        }
-
-        else if(this.temperaturaAtual < this.temperaturaMinima){//temp da planta abaixo do minimo
-            if (arLigado){
+        } else if (this.temperaturaAtual < this.temperaturaMinima) {
+            //temp da planta abaixo do minimo
+            if (arLigado) {
                 //testa se o ambiente nao esta sendo aquecido
-                if (this.temperaturaAtual < this.arCondicionado.getTemperaturaAtual()){
+                if (
+                    this.temperaturaAtual <
+                    this.arCondicionado.getTemperaturaAtual()
+                ) {
                     //aciona aquecimento do ar condicionado
-                    const novaTemp = this.arCondicionado.getTemperaturaAtual() + 1;
+                    const novaTemp =
+                        this.arCondicionado.getTemperaturaAtual() + 1;
                     this.arCondicionado.aquecer(novaTemp);
                 }
+            } else {
+                this.arCondicionado.ligar();
             }
-            else{
-                this.arCondicionado.ligar()
-            }
-        }
-
-        else{
+        } else {
             this.arCondicionado.desligar();
         }
-
     }
     notificarEstado(): string {
-        const estadoTemperatura = "Temperatura: " + this.termometro.getValorAtual().toFixed(1) + "ºC"
-        const estadoArCondicionado = "AC: " + (this.arCondicionado.estaLigado() ? "Ligado" : "Desligado") + ": " + this.arCondicionado.getTemperaturaAtual().toFixed(1) + "ºC"
-        return estadoTemperatura + " - " + estadoArCondicionado
+        const estadoTemperatura =
+            "Temperatura: " + this.termometro.getValorAtual().toFixed(1) + "ºC";
+        const estadoArCondicionado =
+            "AC: " +
+            (this.arCondicionado.estaLigado() ? "Ligado" : "Desligado") +
+            ": " +
+            this.arCondicionado.getTemperaturaAtual().toFixed(1) +
+            "ºC";
+        return estadoTemperatura + " - " + estadoArCondicionado;
     }
 }

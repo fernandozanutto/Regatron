@@ -3,44 +3,43 @@ export class ArCondicionado {
     private temperaturaMinima: number;
     private temperaturaMaxima: number;
     private ligado: boolean;
-    
-    constructor(){
+
+    constructor() {
         this.temperaturaAtual = 20;
         this.temperaturaMinima = 15;
         this.temperaturaMaxima = 28;
         this.ligado = false;
     }
 
-    ligar(): void{
+    ligar(): void {
         this.ligado = true;
     }
 
-    desligar(): void{
+    desligar(): void {
         this.ligado = false;
     }
 
-    estaLigado(): boolean{
+    estaLigado(): boolean {
         return this.ligado;
     }
 
-    getTemperaturaAtual(): number{
+    getTemperaturaAtual(): number {
         return this.temperaturaAtual;
     }
 
-    setTemperaturaAtual(novaTemp: number): void{
+    setTemperaturaAtual(novaTemp: number): void {
         this.temperaturaAtual = novaTemp;
     }
 
-    aquecer(novaTemp: number): void{
-        if (novaTemp <= this.temperaturaMaxima){
+    aquecer(novaTemp: number): void {
+        if (novaTemp <= this.temperaturaMaxima) {
             this.setTemperaturaAtual(novaTemp);
         }
     }
 
-    resfriar(novaTemp: number): void{
-        if (novaTemp >= this.temperaturaMinima){
+    resfriar(novaTemp: number): void {
+        if (novaTemp >= this.temperaturaMinima) {
             this.setTemperaturaAtual(novaTemp);
         }
     }
-
 }

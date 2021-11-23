@@ -1,3 +1,3 @@
 interface Sensor {
-    getValorAtual(): number
+    getValorAtual(): number;
 }

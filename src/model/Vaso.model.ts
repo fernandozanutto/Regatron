@@ -1,7 +1,10 @@
 import { ArCondicionado } from "../regatron-service/dispositivos/ACInteligente/ArCondicionado";
 import { GerenciadorTemperatura } from "../regatron-service/dispositivos/ACInteligente/GerenciadorTemperatura";
 import { Termometro } from "../regatron-service/dispositivos/ACInteligente/Termometro";
-import { Dispositivo, DispositivoEnum } from "../regatron-service/dispositivos/Dispositivo";
+import {
+    Dispositivo,
+    DispositivoEnum,
+} from "../regatron-service/dispositivos/Dispositivo";
 import { Cobertor } from "../regatron-service/dispositivos/LuzInteligente/Cobertor";
 import { FotoSensor } from "../regatron-service/dispositivos/LuzInteligente/Fotosensor";
 import { GerenciadorLuminosidade } from "../regatron-service/dispositivos/LuzInteligente/GerenciadorLuminosidade";
@@ -28,14 +31,14 @@ export class Vaso {
     public gerenciadorTemp?: GerenciadorTemperatura;
     public gerenciadorLum?: GerenciadorLuminosidade;
 
-    constructor(
-        {id,
+    constructor({
+        id,
         descricao,
         planta,
         gerenciadorAgua,
         gerenciadorTemp,
-        gerenciadorLum} : VasoDTO
-    ) { 
+        gerenciadorLum,
+    }: VasoDTO) {
         this.id = id;
         this.descricao = descricao;
         this.planta = planta;
@@ -47,64 +50,85 @@ export class Vaso {
         this.configurarGerenciadorTemp();
     }
 
-    public getLuminosidade(){
+    public getLuminosidade() {
         return this.planta?.luminosidade || Luminosidade.Sombra;
     }
 
-    public getQuantidadeAgua(){
+    public getQuantidadeAgua() {
         return this.planta?.quantidadeAguaPadrao || -1;
     }
 
-    public getTempMinima(){
+    public getTempMinima() {
         return this.planta?.temperaturaMinimaPadrao || -1;
     }
 
-    public getTempMaxima(){
+    public getTempMaxima() {
         return this.planta?.temperaturaMaximaPadrao || -1;
     }
 
-    private configurarGerenciadorTemp(){
-        if (this.gerenciadorTemp){
-            this.gerenciadorTemp.setConfiguracao({tempMinima: this.getTempMinima(), tempMaxima: this.getTempMaxima()})
+    private configurarGerenciadorTemp() {
+        if (this.gerenciadorTemp) {
+            this.gerenciadorTemp.setConfiguracao({
+                tempMinima: this.getTempMinima(),
+                tempMaxima: this.getTempMaxima(),
+            });
         }
     }
 
-    private configurarGerenciadorLum(){
-        if (this.gerenciadorLum){
-            this.gerenciadorLum.setConfiguracao({luminosidadeIdeal: this.getLuminosidade()})
+    private configurarGerenciadorLum() {
+        if (this.gerenciadorLum) {
+            this.gerenciadorLum.setConfiguracao({
+                luminosidadeIdeal: this.getLuminosidade(),
+            });
         }
     }
 
-    private configurarGerenciadorAgua(){
-        if (this.gerenciadorAgua){
-            this.gerenciadorAgua.setConfiguracao({quantidade: this.getQuantidadeAgua()})
+    private configurarGerenciadorAgua() {
+        if (this.gerenciadorAgua) {
+            this.gerenciadorAgua.setConfiguracao({
+                quantidade: this.getQuantidadeAgua(),
+            });
         }
     }
 
-    public adicionarGerenciadorAgua(){
-        if (!this.gerenciadorAgua){
-            this.gerenciadorAgua = new GerenciadorAgua(new Regador(), new Balanca())
-        }
-    }
-    
-    public adicionarGerenciadorTemp(){
-        if (!this.gerenciadorTemp){
-            this.gerenciadorTemp = new GerenciadorTemperatura(new Termometro(), new ArCondicionado())
+    public adicionarGerenciadorAgua() {
+        if (!this.gerenciadorAgua) {
+            this.gerenciadorAgua = new GerenciadorAgua(
+                new Regador(),
+                new Balanca()
+            );
         }
     }
 
-    public adicionarGerenciadorLum(){
-        if (!this.gerenciadorLum){
-            this.gerenciadorLum = new GerenciadorLuminosidade(new FotoSensor(), new Lampada(), new Cobertor())
+    public adicionarGerenciadorTemp() {
+        if (!this.gerenciadorTemp) {
+            this.gerenciadorTemp = new GerenciadorTemperatura(
+                new Termometro(),
+                new ArCondicionado()
+            );
         }
     }
 
-    public clone(): Vaso{
-        const novoVaso = new Vaso({descricao: this.descricao, 
-        gerenciadorTemp: this.gerenciadorTemp, gerenciadorLum: this.gerenciadorLum, gerenciadorAgua: this.gerenciadorAgua,
-        id: this.id, planta: this.planta})
-
-        return novoVaso
+    public adicionarGerenciadorLum() {
+        if (!this.gerenciadorLum) {
+            this.gerenciadorLum = new GerenciadorLuminosidade(
+                new FotoSensor(),
+                new Lampada(),
+                new Cobertor()
+            );
+        }
     }
 
+    public clone(): Vaso {
+        const novoVaso = new Vaso({
+            descricao: this.descricao,
+            gerenciadorTemp: this.gerenciadorTemp,
+            gerenciadorLum: this.gerenciadorLum,
+            gerenciadorAgua: this.gerenciadorAgua,
+            id: this.id,
+            planta: this.planta,
+        });
+
+        return novoVaso;
+    }
 }

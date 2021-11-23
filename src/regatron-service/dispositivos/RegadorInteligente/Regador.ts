@@ -1,6 +1,5 @@
 export class Regador {
-
-    constructor(){}
+    constructor() {}
 
     regar(quantidade: number): void {}
 }

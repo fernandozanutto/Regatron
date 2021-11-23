@@ -1,3 +1,3 @@
 interface ConfigPlanta {
-    getConfig(): void
+    getConfig(): void;
 }

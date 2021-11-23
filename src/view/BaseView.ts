@@ -1,5 +1,5 @@
 export abstract class BaseView {
-    body: string = ""
+    body: string = "";
 
-    abstract bindViewEvents(): void
+    abstract bindViewEvents(): void;
 }

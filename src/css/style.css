@@ -6,7 +6,8 @@ div.row + div.row {
     margin-top: 1rem;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
 }
 

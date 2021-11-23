@@ -1,19 +1,19 @@
 export class Lampada {
-    private ligada : boolean
+    private ligada: boolean;
 
-    constructor(){
-        this.ligada = false
+    constructor() {
+        this.ligada = false;
     }
 
-    ligar() : void{
-        this.ligada = true
+    ligar(): void {
+        this.ligada = true;
     }
 
-    desligar() : void{
-        this.ligada = false
+    desligar(): void {
+        this.ligada = false;
     }
 
-    estaLigada() : boolean{
-        return this.ligada
+    estaLigada(): boolean {
+        return this.ligada;
     }
 }

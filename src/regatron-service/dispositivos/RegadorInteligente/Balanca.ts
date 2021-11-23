@@ -1,16 +1,15 @@
-export class Balanca{
-
+export class Balanca {
     private aguaml: number;
 
-    constructor(){
-        this.aguaml = 5000
+    constructor() {
+        this.aguaml = 5000;
     }
 
-    getAguaMl(): number{
+    getAguaMl(): number {
         return this.aguaml;
     }
 
-    setAguaMl(novoVolume: number): void{
+    setAguaMl(novoVolume: number): void {
         this.aguaml = novoVolume;
     }
 }

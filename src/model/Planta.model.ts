@@ -13,13 +13,21 @@ export interface PlantaDTO {
 export class Planta {
     public id: number;
     public nomeCientifico: string;
-    public nomeUsual: string
+    public nomeUsual: string;
     public quantidadeAguaPadrao: number;
     public temperaturaMinimaPadrao: number;
     public temperaturaMaximaPadrao: number;
     public luminosidade: Luminosidade;
 
-    constructor({id, nomeCientifico, nomeUsual, quantidadeAguaPadrao, temperaturaMinimaPadrao, temperaturaMaximaPadrao, luminosidade}: PlantaDTO) {
+    constructor({
+        id,
+        nomeCientifico,
+        nomeUsual,
+        quantidadeAguaPadrao,
+        temperaturaMinimaPadrao,
+        temperaturaMaximaPadrao,
+        luminosidade,
+    }: PlantaDTO) {
         this.id = id;
         this.nomeCientifico = nomeCientifico;
         this.nomeUsual = nomeUsual;
@@ -30,12 +38,16 @@ export class Planta {
     }
 
     public clone(): Planta {
-
-        const novaPlanta = new Planta({id: this.id, nomeCientifico: this.nomeCientifico, 
-        nomeUsual: this.nomeUsual, luminosidade: this.luminosidade, quantidadeAguaPadrao: this.quantidadeAguaPadrao, 
-        temperaturaMaximaPadrao: this.temperaturaMaximaPadrao, temperaturaMinimaPadrao: this.temperaturaMinimaPadrao})
+        const novaPlanta = new Planta({
+            id: this.id,
+            nomeCientifico: this.nomeCientifico,
+            nomeUsual: this.nomeUsual,
+            luminosidade: this.luminosidade,
+            quantidadeAguaPadrao: this.quantidadeAguaPadrao,
+            temperaturaMaximaPadrao: this.temperaturaMaximaPadrao,
+            temperaturaMinimaPadrao: this.temperaturaMinimaPadrao,
+        });
 
         return novaPlanta;
     }
 }
-

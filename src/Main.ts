@@ -10,48 +10,51 @@ import { TestView } from "./view/TestView";
 import { VasoView } from "./view/Vaso.view";
 import { Regatron } from "./regatron-service/Regatron";
 
-
 export enum Pages {
     HOME,
     TEST,
     PLANTA,
-    VASO
+    VASO,
 }
 export class NavigatorController {
-    private static currentPage: BaseController<any>
+    private static currentPage: BaseController<any>;
 
-    public static service : RegatronService
+    public static service: RegatronService;
 
-    private static pagesStack: BaseController<any>[] = []
+    private static pagesStack: BaseController<any>[] = [];
 
     private static pagesMap: { [key in Pages]: () => BaseController<any> } = {
         [Pages.HOME]: () => new HomeController(new HomeView(), this.service),
         [Pages.TEST]: () => new TestController(new TestView(), this.service),
-        [Pages.PLANTA]: () => new PlantaController(new PlantaView(), this.service),
-        [Pages.VASO]: () => new VasoController(new VasoView(), this.service)
-    }
-    
-    static navigate(page: Pages, parameters: {[key: string]: any} = {}) : void {
+        [Pages.PLANTA]: () =>
+            new PlantaController(new PlantaView(), this.service),
+        [Pages.VASO]: () => new VasoController(new VasoView(), this.service),
+    };
+
+    static navigate(
+        page: Pages,
+        parameters: { [key: string]: any } = {}
+    ): void {
         if (this.currentPage !== undefined) {
-            this.currentPage.pause()
-            this.pagesStack.push(this.currentPage)
+            this.currentPage.pause();
+            this.pagesStack.push(this.currentPage);
         }
 
-        this.currentPage = this.pagesMap[page]()
-        this.currentPage.init(parameters)
+        this.currentPage = this.pagesMap[page]();
+        this.currentPage.init(parameters);
     }
 
     static goBack(): void {
-        const lastPage = this.pagesStack.pop()
-        
+        const lastPage = this.pagesStack.pop();
+
         if (lastPage !== undefined) {
-            this.currentPage.finish()
-            this.currentPage = lastPage
-            this.currentPage.resume()
+            this.currentPage.finish();
+            this.currentPage = lastPage;
+            this.currentPage.resume();
         }
     }
 }
-const service = new RegatronService()
+const service = new RegatronService();
 const regatron = new Regatron(service);
 NavigatorController.service = service;
-NavigatorController.navigate(Pages.HOME)
+NavigatorController.navigate(Pages.HOME);
