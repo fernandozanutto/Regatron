@@ -98,4 +98,13 @@ export class Vaso {
             this.gerenciadorLum = new GerenciadorLuminosidade(new FotoSensor(), new Lampada(), new Cobertor())
         }
     }
+
+    public clone(): Vaso{
+        const novoVaso = new Vaso({descricao: this.descricao, 
+        gerenciadorTemp: this.gerenciadorTemp, gerenciadorLum: this.gerenciadorLum, 
+        id: this.id, planta: this.planta})
+
+        return novoVaso
+    }
+
 }

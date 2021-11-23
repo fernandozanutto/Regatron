@@ -28,5 +28,14 @@ export class Planta {
         this.quantidadeAguaPadrao = quantidadeAguaPadrao;
         this.luminosidade = luminosidade;
     }
+
+    public clone(): Planta {
+
+        const novaPlanta = new Planta({id: this.id, nomeCientifico: this.nomeCientifico, 
+        nomeUsual: this.nomeUsual, luminosidade: this.luminosidade, quantidadeAguaPadrao: this.quantidadeAguaPadrao, 
+        temperaturaMaximaPadrao: this.temperaturaMaximaPadrao, temperaturaMinimaPadrao: this.temperaturaMinimaPadrao})
+
+        return novaPlanta;
+    }
 }
 
