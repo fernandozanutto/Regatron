@@ -73,6 +73,13 @@ export class Regatron {
         this.balanca1
     );
 
+    private regador2 = new Regador();
+    private balanca2 = new Balanca();
+    private gerenciadorAgua2 = new GerenciadorAgua(
+        this.regador2,
+        this.balanca2
+    );
+
     constructor(database: RegatronService) {
         this.database = database;
 
@@ -104,9 +111,9 @@ export class Regatron {
             new Planta({
                 id: 3,
                 nomeCientifico: "Leucanthemum Vulgare ",
-                nomeUsual: "Margarida",
+                nomeUsual: "Margarida com sede",
                 luminosidade: Luminosidade.Sombra,
-                quantidadeAguaPadrao: 150,
+                quantidadeAguaPadrao: 2000,
                 temperaturaMaximaPadrao: 29,
                 temperaturaMinimaPadrao: 5,
             })
@@ -117,8 +124,9 @@ export class Regatron {
                 descricao: "Vaso Azul",
                 gerenciadorTemp: this.gerenciadorTemperatura1,
                 gerenciadorLum: this.gerenciadorLuminosidade1,
+                gerenciadorAgua: this.gerenciadorAgua2,
                 id: 1,
-                planta: this.database.getPlanta(0),
+                planta: this.database.getPlanta(3),
             })
         );
 
@@ -139,12 +147,13 @@ export class Regatron {
                 gerenciadorTemp: this.gerenciadorTemperatura3,
                 gerenciadorLum: this.gerenciadorLuminosidade3,
                 id: 3,
-                planta: this.database.getPlanta(2),
+                planta: this.database.getPlanta(1),
             })
         );
 
         console.log("Plantas existentes: ", this.database.listPlantas());
         console.log("Vasos existentes: ", this.database.listVasos());
+
         setInterval(() => {
             var vasos = this.database.listVasos()
             vasos.forEach(function(vaso){

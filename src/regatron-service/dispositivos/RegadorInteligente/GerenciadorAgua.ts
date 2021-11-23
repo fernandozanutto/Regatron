@@ -13,10 +13,12 @@ export class GerenciadorAgua implements Dispositivo {
     private notificador: Notificador = new Notificador;
 
     constructor(public regador: Regador, public balanca: Balanca) {
+        this.compararEExecutar();
+        console.log(this.quantidade)
         setInterval(() => {
             //console.log(this.notificarEstado());
             this.compararEExecutar();
-        }, 1200);
+        }, 15000);
     }
 
     setConfiguracao(config: RegadorConfig): void {
@@ -24,7 +26,7 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        if (this.balanca.getAguaMl() - 3*this.quantidade <= 0){
+        if (this.balanca.getAguaMl() - 3*this.quantidade <= 0 && this.notificador.estaVazio()){
             this.notificador.adicionar("A água do reservatório está acabando!")
         }
 

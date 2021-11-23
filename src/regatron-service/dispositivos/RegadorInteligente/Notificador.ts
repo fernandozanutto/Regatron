@@ -13,6 +13,10 @@ export class Notificador {
     ler() : Notificacao | undefined{
         return this.fila.pop()
     }
+
+    estaVazio() : boolean{
+        return this.fila.length == 0
+    }
 }
 
     
