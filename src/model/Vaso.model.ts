@@ -122,9 +122,13 @@ export class Vaso {
     public temPlanta(): boolean{
         if (this.planta != undefined)
             return true
-            
+
         else
             return false
+    }
+
+    public getId(): number{
+        return this.id;
     }
 
     public clone(): Vaso {

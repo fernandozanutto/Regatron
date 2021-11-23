@@ -111,9 +111,9 @@ export class Regatron {
             new Planta({
                 id: 3,
                 nomeCientifico: "Leucanthemum Vulgare ",
-                nomeUsual: "Margarida com sede",
+                nomeUsual: "Margarida",
                 luminosidade: Luminosidade.Sombra,
-                quantidadeAguaPadrao: 2000,
+                quantidadeAguaPadrao: 1000,
                 temperaturaMaximaPadrao: 29,
                 temperaturaMinimaPadrao: 5,
             })
@@ -160,7 +160,7 @@ export class Regatron {
                 if (vaso.gerenciadorAgua) {
                     const notificacao = vaso.gerenciadorAgua.checaNotificacao()
                     if(notificacao){
-                        alert(notificacao.mensagem)
+                        alert(notificacao.mensagem + " " +vaso.getId() + " está acabando!")
                     }
                 }
             })
