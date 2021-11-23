@@ -3,8 +3,22 @@ import { Planta } from "../model/Planta.model";
 import { Vaso } from "../model/Vaso.model";
 import { VasoView } from "../view/Vaso.view";
 import { BaseController } from "./BaseController";
+import { RegatronService } from "../services/RegatronService";
 
 export class VasoController extends BaseController<VasoView> {
+    constructor(protected view: VasoView, protected service: RegatronService) {
+        super(view, service)
+        setInterval(() => {
+            if (this.vaso.gerenciadorAgua) {
+                const notificacao = this.vaso.gerenciadorAgua.checaNotificacao()
+                if(notificacao){
+                    alert(notificacao.mensagem)
+                }
+            }
+        }, 1000);
+        
+    }
+
     private vaso!: Vaso;
     private plantasDisponiveis!: Planta[];
 
@@ -27,10 +41,6 @@ export class VasoController extends BaseController<VasoView> {
                 this.view.addLogAgua(
                     this.vaso.gerenciadorAgua.notificarEstado()
                 );
-                const notificacao = this.vaso.gerenciadorAgua.checaNotificacao()
-                if(notificacao){
-                    alert(notificacao.mensagem)
-                }
             }
 
             if (this.vaso.gerenciadorTemp && this.vaso.temPlanta()) {
