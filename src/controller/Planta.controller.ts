@@ -46,7 +46,7 @@ export class PlantaController extends BaseController<PlantaView> {
             if(isNotValid){
                 switch(isNotValid){
                     case 1:
-                        alert("Todos campos são obrigatórios")
+                        alert("Todos os campos são obrigatórios")
                         break
                     case 2:
                         alert("Temperaturas deve estar entre 0 e 35 graus")
