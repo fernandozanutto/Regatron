@@ -145,5 +145,16 @@ export class Regatron {
 
         console.log("Plantas existentes: ", this.database.listPlantas());
         console.log("Vasos existentes: ", this.database.listVasos());
+        setInterval(() => {
+            var vasos = this.database.listVasos()
+            vasos.forEach(function(vaso){
+                if (vaso.gerenciadorAgua) {
+                    const notificacao = vaso.gerenciadorAgua.checaNotificacao()
+                    if(notificacao){
+                        alert(notificacao.mensagem)
+                    }
+                }
+            })
+        }, 2000);
     }
 }
