@@ -1,6 +1,8 @@
 import { Dispositivo } from "../Dispositivo";
 import { Regador } from "./Regador";
 import { Balanca } from "./Balanca";
+import { Notificador } from "./Notificador";
+import { Notificacao } from "../../../model/Notificacao";
 
 export interface RegadorConfig {
     quantidade: number;
@@ -8,6 +10,7 @@ export interface RegadorConfig {
 
 export class GerenciadorAgua implements Dispositivo {
     private quantidade: number = 0;
+    private notificador: Notificador = new Notificador;
 
     constructor(public regador: Regador, public balanca: Balanca) {
         setInterval(() => {
@@ -21,7 +24,10 @@ export class GerenciadorAgua implements Dispositivo {
     }
 
     compararEExecutar(): void {
-        if (this.balanca.getAguaMl() - this.quantidade >= 0) {
+        if (this.balanca.getAguaMl() - 3*this.quantidade <= 0){
+            this.notificador.adicionar("A água do reservatório está acabando!")
+        }
+        else if (this.balanca.getAguaMl() - this.quantidade >= 0) {
             this.regador.regar(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
             this.balanca.setAguaMl(
                 //Já que não estamos usando os componentes o método só n faz nada
@@ -39,5 +45,12 @@ export class GerenciadorAgua implements Dispositivo {
             this.balanca.getAguaMl() +
             " mL"
         );
+    }
+
+    checaNotificacao() : Notificacao | void {
+        const notificacao = this.notificador.ler()
+        if(notificacao != undefined){
+            return notificacao
+        }
     }
 }

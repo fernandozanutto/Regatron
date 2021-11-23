@@ -27,6 +27,10 @@ export class VasoController extends BaseController<VasoView> {
                 this.view.addLogAgua(
                     this.vaso.gerenciadorAgua.notificarEstado()
                 );
+                const notificacao = this.vaso.gerenciadorAgua.checaNotificacao()
+                if(notificacao){
+                    alert(notificacao.mensagem)
+                }
             }
 
             if (this.vaso.gerenciadorTemp) {
