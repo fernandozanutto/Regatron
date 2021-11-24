@@ -20,9 +20,13 @@ class App {
         App.mainWindow = new App.BrowserWindow({
             width: 1200,
             height: 1000,
+            show: false,
             icon: __dirname + "/test.ico",
             title: "Regatron",
         });
+
+        App.mainWindow.maximize();
+        App.mainWindow.show();
 
         const path = join("file://", __dirname, "/index.html");
         App.mainWindow.loadURL(path);
