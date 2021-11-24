@@ -18,7 +18,6 @@ export class GerenciadorTemperatura implements Dispositivo {
     ) {
         setInterval(() => {
             this.compararEExecutar();
-            // console.log(this.notificarEstado())
         }, 1000);
     }
 

@@ -19,7 +19,6 @@ export class GerenciadorLuminosidade implements Dispositivo {
     ) {
         this.horaAtual = new Date().getHours();
         setInterval(() => {
-            // console.log(this.notificarEstado())
             this.compararEExecutar();
         }, 1000);
     }
