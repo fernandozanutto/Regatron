@@ -6,7 +6,7 @@ Regatron is a project developed for the Software Engineering course at UFRGS. It
 
 ## Requirements
 
-npm (node package manager)
+npm (node package manager) - [how to install](https://docs.npmjs.com/cli/v8/configuring-npm/install)
 
 ## Instructions to run
 
