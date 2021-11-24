@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fernandozanutto/INF01127-Regatron.git"
+    "url": "git+https://github.com/fernandozanutto/Regatron.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/fernandozanutto/INF01127-Regatron/issues"
+    "url": "https://github.com/fernandozanutto/Regatron/issues"
   },
-  "homepage": "https://github.com/fernandozanutto/INF01127-Regatron#readme"
+  "homepage": "https://github.com/fernandozanutto/Regatron#readme"
 }
