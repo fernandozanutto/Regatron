@@ -160,25 +160,28 @@ export class VasoView extends BaseView {
     addLogLuminosidade(log: string) {
         const textElement = this.formatLogElement(log);
 
-        this.divLogLuminosidade?.appendChild(textElement);
+        this.divLogLuminosidade?.prepend(textElement);
     }
 
     addLogAgua(log: string) {
         const textElement = this.formatLogElement(log);
 
-        this.divLogAgua?.appendChild(textElement);
+        this.divLogAgua?.prepend(textElement);
     }
 
     addLogTemperatura(log: string) {
         const textElement = this.formatLogElement(log);
 
-        this.divLogTemperatura?.appendChild(textElement);
+        this.divLogTemperatura?.prepend(textElement);
     }
 
     private formatLogElement(log: string): HTMLElement {
         const text = document.createElement("p");
         const data = new Date();
-        const textFormat = `${data.getHours()}:${data.getMinutes()}:${data.getSeconds()} - ${log}`;
+        const hora = data.getHours().toString().padStart(2, "0");
+        const minutos = data.getMinutes().toString().padStart(2, "0");
+        const segundos = data.getSeconds().toString().padStart(2, "0");
+        const textFormat = `${hora}:${minutos}:${segundos} - ${log}`;
         text.innerHTML = textFormat;
         return text;
     }

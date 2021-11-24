@@ -89,7 +89,7 @@ export class Regatron {
                 nomeCientifico: "Helianthus Annuus",
                 nomeUsual: "Girassol",
                 luminosidade: Luminosidade.Sol_Pleno,
-                quantidadeAguaPadrao: 200,
+                quantidadeAguaPadrao: 480 * 60,
                 temperaturaMaximaPadrao: 30,
                 temperaturaMinimaPadrao: 10,
             })
@@ -101,7 +101,7 @@ export class Regatron {
                 nomeCientifico: "Cattleya Purpurata",
                 nomeUsual: "Orquídea",
                 luminosidade: Luminosidade.Meia_Luz,
-                quantidadeAguaPadrao: 250,
+                quantidadeAguaPadrao: 960 * 60,
                 temperaturaMaximaPadrao: 28,
                 temperaturaMinimaPadrao: 14,
             })
@@ -110,10 +110,10 @@ export class Regatron {
         this.database.salvarPlanta(
             new Planta({
                 id: 3,
-                nomeCientifico: "Leucanthemum Vulgare ",
+                nomeCientifico: "Leucanthemum Vulgare",
                 nomeUsual: "Margarida",
                 luminosidade: Luminosidade.Sombra,
-                quantidadeAguaPadrao: 1000,
+                quantidadeAguaPadrao: 1920 * 60,
                 temperaturaMaximaPadrao: 29,
                 temperaturaMinimaPadrao: 5,
             })
@@ -155,7 +155,8 @@ export class Regatron {
             var vasos = this.database.listVasos();
             vasos.forEach(function (vaso) {
                 if (vaso.gerenciadorAgua) {
-                    const notificacao = vaso.gerenciadorAgua.checaNotificacao();
+                    const notificacao =
+                        vaso.gerenciadorAgua.checarNotificacao();
                     if (notificacao) {
                         alert(
                             notificacao.mensagem +

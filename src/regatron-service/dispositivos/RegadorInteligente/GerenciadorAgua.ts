@@ -9,30 +9,40 @@ export interface RegadorConfig {
 }
 
 export class GerenciadorAgua implements Dispositivo {
-    private quantidade: number = 0;
+    private quantidadePorDia: number = 0;
     private notificador: Notificador = new Notificador();
+    private static readonly INTERVALO_REGADA = 30_000;
 
     constructor(public regador: Regador, public balanca: Balanca) {
         setInterval(() => {
             //console.log(this.notificarEstado());
             this.compararEExecutar();
-        }, 30000);
+        }, GerenciadorAgua.INTERVALO_REGADA);
     }
 
     setConfiguracao(config: RegadorConfig): void {
-        this.quantidade = config.quantidade;
+        this.quantidadePorDia = config.quantidade;
+    }
+
+    private getQuantidadePorRegada(): number {
+        const regadasPorDia =
+            (24 * 60 * 60 * 1000) / GerenciadorAgua.INTERVALO_REGADA;
+        return this.quantidadePorDia / regadasPorDia;
     }
 
     compararEExecutar(): void {
-        if (this.balanca.getValorAtual() - 3 * this.quantidade <= 0) {
-            this.notificador.adicionar("A água do reservatório do vaso");
+        if (
+            this.balanca.getValorAtual() - 3 * this.getQuantidadePorRegada() <=
+            0
+        ) {
+            this.notificador.adicionar("Encher água do reservatório do vaso");
         }
 
-        if (this.balanca.getValorAtual() - this.quantidade >= 0) {
-            this.regador.liberaAgua(this.quantidade); //Isso teoricamente deveria diminuir o nível da agua mas
+        if (this.balanca.getValorAtual() - this.getQuantidadePorRegada() >= 0) {
+            this.regador.liberaAgua(this.getQuantidadePorRegada()); //Isso teoricamente deveria diminuir o nível da agua mas
             this.balanca.setAguaMl(
                 //Já que não estamos usando os componentes o método só n faz nada
-                this.balanca.getValorAtual() - this.quantidade
+                this.balanca.getValorAtual() - this.getQuantidadePorRegada()
             );
         } else {
             this.regador.liberaAgua(this.balanca.getValorAtual());
@@ -43,12 +53,12 @@ export class GerenciadorAgua implements Dispositivo {
     notificarEstado(): string {
         return (
             "Estado do Reservatorio de Agua: " +
-            this.balanca.getValorAtual() +
+            this.balanca.getValorAtual().toFixed(2) +
             " mL"
         );
     }
 
-    checaNotificacao(): Notificacao | void {
+    checarNotificacao(): Notificacao | void {
         const notificacao = this.notificador.ler();
         if (notificacao != undefined) {
             return notificacao;

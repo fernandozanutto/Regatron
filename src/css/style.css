@@ -49,7 +49,7 @@ div.logs > div {
 
 div.logs div.log-item {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     overflow: auto;
     max-height: 400px;
 }
