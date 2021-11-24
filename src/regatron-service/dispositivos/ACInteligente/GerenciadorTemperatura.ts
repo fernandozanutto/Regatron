@@ -31,14 +31,11 @@ export class GerenciadorTemperatura implements Dispositivo {
         const arLigado = this.arCondicionado.estaLigado();
 
         if (this.temperaturaAtual > this.temperaturaMaxima) {
-            //temp da planta acima do maximo
             if (arLigado) {
-                //testa se o ambiente nao esta sendo resfriado
                 if (
-                    this.temperaturaAtual >
+                    this.temperaturaAtual <=
                     this.arCondicionado.getTemperaturaAtual()
                 ) {
-                    //aciona resfriamento do ar condicionado
                     const novaTemp =
                         this.arCondicionado.getTemperaturaAtual() - 1;
                     this.arCondicionado.resfriar(novaTemp);
@@ -47,14 +44,11 @@ export class GerenciadorTemperatura implements Dispositivo {
                 this.arCondicionado.ligar();
             }
         } else if (this.temperaturaAtual < this.temperaturaMinima) {
-            //temp da planta abaixo do minimo
             if (arLigado) {
-                //testa se o ambiente nao esta sendo aquecido
                 if (
-                    this.temperaturaAtual <
+                    this.temperaturaAtual >= 
                     this.arCondicionado.getTemperaturaAtual()
                 ) {
-                    //aciona aquecimento do ar condicionado
                     const novaTemp =
                         this.arCondicionado.getTemperaturaAtual() + 1;
                     this.arCondicionado.aquecer(novaTemp);

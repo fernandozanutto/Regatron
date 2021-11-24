@@ -46,22 +46,22 @@ export class PlantaController extends BaseController<PlantaView> {
             if (isNotValid) {
                 switch (isNotValid) {
                     case 1:
-                        alert("Todos os campos são obrigatórios");
+                        alert("Todos os campos devem ser preenchidos.");
                         break;
                     case 2:
-                        alert("Temperaturas deve estar entre 0 e 35 graus");
+                        alert("Temperaturas devem estar entre 0 e 35 graus.");
                         break;
                     case 3:
                         alert(
-                            "A temperatura mínima não deve ser maior que a temperatura máxima"
+                            "A temperatura mínima não deve ser maior que a temperatura máxima."
                         );
                         break;
                     case 4:
-                        alert("O nome da planta deve possuir apenas letras");
+                        alert("O nome da planta deve possuir apenas letras.");
                         break;
                     case 5:
                         alert(
-                            "Quantidade de água diária deve estar entre 100 e 2000ml"
+                            "Quantidade de água diária deve estar entre 100 e 2000ml."
                         );
                         break;
                 }
@@ -75,7 +75,6 @@ export class PlantaController extends BaseController<PlantaView> {
     }
 
     validarInput(planta: Planta): number {
-        //returns 0 if input is valid, or the first business rule it violates, in case its invalid
         const onlyLettersRegex = new RegExp(/^[A-Za-z\s]*$/);
 
         if (!planta.nomeCientifico || !planta.nomeUsual) {
