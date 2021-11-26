@@ -2,7 +2,7 @@
 
 ## Description
 
-Regatron is a project developed for the Software Engineering course at UFRGS. It aims to create an hypothetical IoT solution to facilitate the act of taking care of indoor plantas, interconnecting smart sensors and actuators (controlling temperature, light and plant watering) which are configurable and show an alert when human interaction is needed.
+Regatron is a project developed for the Software Engineering course at UFRGS. It aims to create an hypothetical IoT solution to facilitate the act of taking care of indoor plants, interconnecting smart sensors and actuators (controlling temperature, light and plant watering) which are configurable and show an alert when human interaction is needed.
 
 ## Overview
 
